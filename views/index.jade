@@ -3,10 +3,19 @@ extends layout
 block content
 	h1= title
 	p Welcome to The Football App
-	div(class="main row" ng-controller="MainController")
-		div(class="form-group" class="col-md-6")
-			label(for="user") Name: 
-			input(type="text", ng-model="test", placeholder="{{test}}", class="form-control")
-		div(class="col-md-6")
-			label(for="user") Results:
-			div {{test}}
+	div(class="main" ng-controller="MainController")
+		div(class="row")
+			div(class="form-group" class="col-md-6")
+				label(for="user") Name: 
+				input(type="text", ng-model="test", placeholder="{{test}}", class="form-control")
+		div(class="row")
+			div(class="col-md-6")
+				label(for="user") Results:
+				div {{test}}
+		div(class="row")
+			div(class="col-md-4") 
+				label(for="hometeam") Home:
+			div(class="col-md-4")
+				label(for="visitteam") Visitor:
+		football-teams(info="schedule.Teams")
+			
