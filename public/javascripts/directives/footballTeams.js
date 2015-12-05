@@ -2,7 +2,7 @@ app.directive('footballTeams', function(){
 	return {
 		restrict: 'E',
 		scope: {
-			info: '='
+			info: '=',
 		},
 		templateUrl: 'public/javascripts/directives/footballTeam.html'
 		}	

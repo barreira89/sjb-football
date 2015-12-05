@@ -1,18 +1,15 @@
-<div class="row">
-	<div class="row" data-toggle="buttons" ng-repeat="team in info track by $index" id="{{$index}}">
+<div class="row col-md-12">
+	<div class="row" ng-data="info" data-toggle="buttons" ng-repeat="team in info">
 		<div class="col-md-4 centered">
 			<label class="btn btn-default btn-block">
-				<input type="radio" name="{{$index}}" > {{team.home}}
+				<input type="radio"> {{team.home}}
 			</label>
 		</div>
 		<div class="col-md-4">
 			 <label class="btn btn-default btn-block">
-				<input type="radio" name="{{$index}}"> {{team.visitor}}
+				<input type="radio"> {{team.visitor}}
 			</label>
 		</div>
 	</div>
+	</div>
 </div>
-<!--
-		<div class="col-md-4"> 
-			<button type="button" class="btn btn-default" id="{{$index}} home"> {{team.home}} </button>
-		</div> -->

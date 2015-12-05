@@ -4,18 +4,16 @@ block content
 	h1= title
 	p Welcome to The Football App
 	div(class="main" ng-controller="MainController")
-		div(class="row")
-			div(class="form-group" class="col-md-6")
-				label(for="user") Name: 
-				input(type="text", ng-model="test", placeholder="{{test}}", class="form-control")
-		div(class="row")
+		div(class="row form-group" ng-data="schedule")
 			div(class="col-md-6")
-				label(for="user") Results:
-				div {{test}}
+				label(for="sel1") Week:
+				select(class="form-control" ng-model="results.selected" ng-change="getByWeek(results.selected)")
+					option(value="1" selected="true") 1
+					option(value="2") 2
 		div(class="row")
 			div(class="col-md-4") 
 				label(for="hometeam") Home:
 			div(class="col-md-4")
 				label(for="visitteam") Visitor:
-		football-teams(info="schedule.Teams")
+		football-teams(info="result" ng-data="result")
 			

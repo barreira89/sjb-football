@@ -1,14 +1,15 @@
 doctype html
 html(ng-app='Football')
-  head
-    title= title
-    link(rel='stylesheet', href='public/stylesheets/style.css')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.min.js')
-    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-    script(src='public/javascripts/app.js')
-    script(src='public/javascripts/controllers/MainController.js')
-    script(src='public/javascripts/directives/footballTeams.js')
-  body
-    block content
+	head
+		title= title
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.js')
+		script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js')
+		link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+		link(rel='stylesheet', href='public/stylesheets/style.css')
+		script(src='public/javascripts/app.js')
+		script(src='public/javascripts/controllers/MainController.js')
+		script(src='public/javascripts/directives/footballTeams.js')
+	body(class="vertical-center")
+		div(class="container")
+			block content
