@@ -1,15 +1,24 @@
 <div class="row col-md-12">
-	<div class="row" ng-data="info" data-toggle="buttons" ng-repeat="team in info">
-		<div class="col-md-4 centered">
-			<label class="btn btn-default btn-block">
-				<input type="radio"> {{team.home}}
-			</label>
+	<div ng-data="info" data-toggle="buttons" ng-repeat="team in info">
+		<div class ="row">
+			<div class="col-md-4 centered">
+				<img class="img-circle center-block" height="64" ng-src="{{pics[team.home]}}">
+			</div>
+			<div class="col-md-4">
+				<img class="img-circle center-block" height="64" ng-src="{{pics[team.visitor]}}">
+			</div>
 		</div>
-		<div class="col-md-4">
-			 <label class="btn btn-default btn-block">
-				<input type="radio"> {{team.visitor}}
-			</label>
+		<div class="row">
+			<div class="col-md-4 centered">
+				<label class="btn btn-default btn-block">
+					<input type="radio"> {{team.home}}
+				</label>
+			</div>
+			<div class="col-md-4">
+				 <label class="btn btn-default btn-block">
+					<input type="radio"> {{team.visitor}}
+				</label>
+			</div>
 		</div>
-	</div>
 	</div>
 </div>

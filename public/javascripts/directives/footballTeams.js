@@ -3,6 +3,7 @@ app.directive('footballTeams', function(){
 		restrict: 'E',
 		scope: {
 			info: '=',
+			pics: '='
 		},
 		templateUrl: 'public/javascripts/directives/footballTeam.html'
 		}	
