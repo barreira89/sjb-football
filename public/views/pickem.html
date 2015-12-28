@@ -1,0 +1,23 @@
+<div class="jumbotron text-center"> 
+	<div ng-show="un" >  <h2> Hello: {{un}} </h2> </div>
+	<h1> Football Pick'em </h1>
+	<p> Select a week and pick the winners </p>
+		<div class="container row form-group">
+				<div class="col-md-4 col-md-offset-5">
+					<label for="sel1">
+						<select class="form-control" ng-model="results.selected" ng-options="week.Week for week in schedule" ng-change="getByWeek(results.selected)" />
+					</label>
+				</div>
+		</div>
+</div>
+	<div class="container">
+			<div class="row">
+					<div ng-show="results" class="col-md-4 col-md-offset-2"> 
+						<label for="visit"> Visitor: </label>
+					</div>
+					<div ng-show="results" class="col-md-4">
+						<label for="home"> Home: </label>
+					</div>
+				</div>
+			<football-teams info="result" pics="pics" ng-data="result" games="games" winners="winners" user="un">
+</div>

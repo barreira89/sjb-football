@@ -1,13 +1,13 @@
 <div class="row" ng-repeat="week in info track by $index" id="{{week.Week}}">
 	<div class="row"> <h4> Week {{week.Week}} </h4>
 	<div class="row" data-toggle="buttons" ng-repeat="team in week.Teams">
-		<div class="col-sm-2 centered">
-			<input type="radio" name="{{$index}} home" /> 
-			<label for="{{$index}} home" class="btn btn-default">{{team.home}}</label>
+		<div class="col-md-2 col-md-3-offset centered">
+			<input type="radio" name="{{team.visitor}}" /> 
+			<label for="{{$index}} home" class="btn btn-default">{{team.visitor}}</label>
 		</div>
-		<div class="col-sm-2 centered">
-				<input type="radio" name="{{$index}} away"/>
-				<label for="{{$index}} away" class="btn btn-default btn-md">  {{team.visitor}}
+		<div class="col-md-2 col-md-3-offset centered">
+				<input type="radio" name="{{team.home}}"/>
+				<label for="{{$index}} away" class="btn btn-default btn-md">  {{team.home}} </label>
 		</div>
 	</div>
 	</div>

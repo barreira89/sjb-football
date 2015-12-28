@@ -1,17 +1,7 @@
 extends layout
 
 block content
-	h1 Football Pick'em
-	p Select a week and pick the winner
-	div(class="main" ng-controller="MainController")
-		div(class="row form-group" ng-data="schedule")
-			div(class="col-md-6")
-				label(for="sel1") Week:
-				select(class="form-control" ng-model="results.selected" ng-options="week.Week for week in schedule" ng-change="getByWeek(results.selected)")
-		div(class="row")
-			div(class="col-md-4") 
-				label(for="hometeam") Home:
-			div(class="col-md-4")
-				label(for="visitteam") Visitor:
-		football-teams(info="result" pics="pics" ng-data="result")
+	div
+		div(ng-view)
+		
 			

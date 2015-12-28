@@ -1,24 +1,43 @@
-<div class="row col-md-12">
-	<div ng-data="info" data-toggle="buttons" ng-repeat="team in info">
-		<div class ="row">
-			<div class="col-md-4 centered">
-				<img class="img-circle center-block" height="64" ng-src="{{pics[team.home]}}">
+<form>
+<div ng-data="info" ng-repeat="team in info.Games track by $index">
+	<div class ="row">
+		<div class="col-md-8 col-md-offset-2 centered">
+		<uib-accordion>
+			<uib-accordion-group is-open=true heading="{{team.visitor}} vs. {{team.home}}">
+			<div class="row">
+				<div class="col-md-6">
+					<label class="btn btn-default btn-block" ng-model ="games[$index]" uib-btn-radio="team.visitor" uncheckable> {{team.visitor}} </label>
+				</div>
+				<div class="col-md-6">
+					<label class="btn btn-default btn-block" ng-model ="games[$index]" uib-btn-radio="team.home" uncheckable > {{team.home}} </label>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<img class="img-circle center-block" height="64" ng-src="{{pics[team.visitor]}}">
+			<div class="row">
+				<div class="col-md-6">	
+					<img class="img-circle center-block" height="56" ng-src="{{pics[team.visitor]}}">
+				</div>
+				<div class="col-md-6">
+					<img class="img-circle center-block" height="56" ng-src="{{pics[team.home]}}">
+				</div>
 			</div>
+			</uib-accordion-group>
+		</uib-accordion>
 		</div>
-		<div class="row">
-			<div class="col-md-4 centered">
-				<label class="btn btn-default btn-block">
-					<input type="radio"> {{team.home}}
-				</label>
-			</div>
-			<div class="col-md-4">
-				 <label class="btn btn-default btn-block">
-					<input type="radio"> {{team.visitor}}
-				</label>
-			</div>
+		<div class="col-md-2">
+			{{winners[info.Week][$index]}}
+		</div>
 		</div>
 	</div>
 </div>
+<div class= "row" ng-show="info.Games">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-6">
+			<label class="btn btn-primary btn-block" ng-click="reset()"> Reset </label>
+		</div>
+		<div class="col-md-6">
+			<label class="btn btn-primary btn-block" ng-click="submit()"> Submit </label>
+		</div>
+	</div>
+</div>
+</div>
+</form>
