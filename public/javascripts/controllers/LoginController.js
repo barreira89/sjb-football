@@ -19,11 +19,14 @@ app.controller('LoginController', ['$scope', 'auth', '$location', function($scop
 	};
 	
 	$scope.register = function(credentials){
-		auth.register(credentials.username, credentials.password, credentials.email).then(function (user){
-			$location.path('#/');
-		}, function (err){
-			console.log("Error")
-			$scope.errormsg = err;
+		auth.register(credentials.username, credentials.password, credentials.email)
+			.then(function (user){
+				$location.path('#/');
+			})
+			.catch(function (err){
+				console.log(err);
+				$scope.error = true;
+				$scope.errormsg = err.message;
 		});	
 	};
 	

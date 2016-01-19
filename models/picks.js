@@ -4,7 +4,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
 
 var Picks = new Schema({
     username: String,
-	week: String,
+	week: Number,
 	picks: Schema.Types.Mixed 
 });
 

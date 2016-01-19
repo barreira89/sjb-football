@@ -88,6 +88,32 @@ router.get('/schedules', function(req, res){
 	
 });
 
+router.get('/schedules/:id', function(req, res){
+	var db = req.db;
+	var week = parseInt(req.params.id);
+	var collection = db.get('schedule');
+	
+	collection.find({Week: week}, function(e, docs){
+		res.send(docs);
+	});
+	
+});
+
+router.post('/schedules/:id', function(req, res){
+	var db = req.db;
+	var pl = req.body;
+	var week = parseInt(req.params.id);
+	
+	var collection = db.get('schedule');
+	
+	collection.update(
+		{"Week": week},
+		pl
+	);
+	res.send(200);
+	
+});
+
 router.get('/logos', function (req, res){
 	var db = req.db;
 	var collection = db.get('pics');

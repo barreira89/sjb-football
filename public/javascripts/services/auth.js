@@ -64,7 +64,7 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
     })
     // handle error
     .error(function (data) {
-      deferred.reject();
+      deferred.reject(data);
     });
 
   // return promise object

@@ -1,4 +1,4 @@
-app.directive('footballTeams', ['schedule', function(schedule){
+app.directive('footballTeams', ['schedule', 'users', function(schedule, users){
 	return {
 		restrict: 'E',
 		scope:{
@@ -6,7 +6,8 @@ app.directive('footballTeams', ['schedule', function(schedule){
 			pics: '=',
 			games: '=',
 			winners: '=',
-			user: '='
+			user: '=',
+			pickos: '='
 		},
 		templateUrl: 'public/javascripts/directives/footballTeam.html',
 		link: function(scope, element, attrs){
@@ -19,11 +20,21 @@ app.directive('footballTeams', ['schedule', function(schedule){
 			scope.submit = function (){
 				if(scope.user){
 					var body = {};
-					body.picks = scope.games;
+					body.picks = scope.pickos;
 					body.username = scope.user;
 					body.week = scope.info.Week;
 					schedule.postWinners(body);
 				}
+				refreshUser();
+			}
+			
+			refreshUser = function(){
+				users.getUser(scope.user).success(
+					function(data){
+						scope.use = data;
+						console.log("Refreshed");
+				});
 			}
 		}
+
 }}]);

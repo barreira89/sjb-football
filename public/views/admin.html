@@ -1,0 +1,43 @@
+<div class="container-fluid">
+	<h1> Set Winners </h1>
+	<div class="text-center">
+		<label for="sel1">
+			<select class="form-control" ng-model="wk.selected" ng-options="week.Week for week in schedule | orderBy: 'Week'" ng-change="getScheduleByWeek(wk.selected.Week)" />
+		</label>
+	</div>
+	<div ng-repeat="weeks in games" class="row">
+			<div ng-repeat="game in weeks.Games track by $index">
+				<div class="panel panel-default col-sm-2">
+				<div class="panel-heading"> ID: {{game.gid}}</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-7">
+							<label class="btn btn-default btn-xs pickbtn" ng-model ="weeks.Games[$index].winner" uib-btn-radio="'visitor'"> <b> {{game.visitor}} </b></label>
+						</div>
+						<div class="col-sm-5">
+							<input class="form-control input-sm score-txt" type="number" ng-model="weeks.Games[$index].visitscore"></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-7">
+						<label class="btn btn-default btn-xs pickbtn" ng-model ="weeks.Games[$index].winner" uib-btn-radio="'home'"> <b> {{game.home}} </b></label>			
+						</div>
+						<div class="col-sm-5">
+						<input type="number" class="form-control input-sm score-txt" ng-model="weeks.Games[$index].homescore"></input>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+	</div>
+	<div class= "row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-6">
+				<label class="btn btn-primary btn-block" ng-click="reset()"> Reset </label>
+			</div>
+			<div class="col-md-6">
+				<label class="btn btn-primary btn-block" ng-click="submit(games,wk.selected.Week)"> Submit </label>
+			</div>
+		</div>
+	</div>
+</div>

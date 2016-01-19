@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var Accounts = require('../models/account');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     var db = req.db;
-	console.log("db" + req.db);
     var collection = db.get('accounts');
 	
     collection.find({},function(e,docs){
@@ -29,11 +29,23 @@ router.get('/:username', function (req, res){
 			body.picks = doc2;
 			res.send(body);
 		})
-		
 	});
 	
-	
 });
+
+router.delete('/:username', function(req, res){
+	var user = req.params.username;
+	var query = {username: user};
+	
+	Accounts.findOneAndRemove(query, function (err){
+		if(err){
+			console.log(err);
+			res.status(400).send('Did not delete');
+		} else{
+			res.status(200).send('Deleted:' + user);
+		}
+	});
+})
 
 module.exports = router;
 	

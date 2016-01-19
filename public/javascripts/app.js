@@ -17,6 +17,14 @@ app.config(function ($routeProvider) {
 		controller: 'UserController',
 		templateUrl: 'public/views/userlist.html'
 	})
+	.when('/users/details', {
+		controller: 'UserController',
+		templateUrl: 'public/views/userdetail.html'
+	})
+	.when('/admin', {
+		controller: 'AdminController',
+		templateUrl: 'public/views/admin.html'
+	})
 	.otherwise({ 
       redirectTo: '/' 
     }); 

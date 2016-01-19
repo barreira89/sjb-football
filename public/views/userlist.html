@@ -1,8 +1,26 @@
 <div class="container-fluid">
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-3">
 		<div ng-repeat="names in userlist">
-		{{names.username}} | {{names.email}} | <a href="/users/{{names.username}}"> Details </a>
+		<div>
+			<button class="btn btn-default user-btn" ng-click="getDetail(names.username)"> {{names.username}}</button>
+		</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div> <h2> {{un | uppercase}} </h2> </div>
+		<div ng-repeat="pick in picks | orderBy:'week'">
+				<uib-accordion>
+					<uib-accordion-group heading="Week: {{pick.week}}">
+						<div ng-repeat="(k, v) in pick.picks"> 
+							Game: {{k}}
+							{{glist[k].visitor}} @ {{glist[k].home}}
+							<label>
+							{{ v == glist[k].winner ? 'Win' : 'Lose'}}
+							</label>
+						</div>
+					</uib-accordion-group>
+				</uib-accordion>
 		</div>
 	</div>
 </div>
