@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var AWS = require('aws-sdk');
 AWS.config.region = 'us-east-1';
-var ep = new AWS.Endpoint('http://localhost:8000')
-var dynamodb = new AWS.DynamoDB({ endpoint: ep });
-var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: ep});
+var ep = new AWS.Endpoint('http://localhost:8000')'
+// { endpoint: ep }
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
