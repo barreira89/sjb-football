@@ -117,7 +117,7 @@ router.get('/schedule', function(req, res, next){
 			"#wk": "Week"
 		},
 		ExpressionAttributeValues: {
-			":yyyy": week
+			":wk": week
 		}
 	};
 	
