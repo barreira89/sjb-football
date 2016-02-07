@@ -107,6 +107,35 @@ router.get('/listItems', function(req, res, next){
 	
 });
 
+router.get('/schedule', function(req, res, next){
+	var week = req.query.week;
+	
+	var params = {
+		TableName : "schedule",
+		KeyConditionExpression: "#wk = :wk",
+		ExpressionAttributeNames:{
+			"#wk": "Week"
+		},
+		ExpressionAttributeValues: {
+			":yyyy": week
+		}
+	};
+	
+	
+	docClient.query(params, function(err, data){
+		if (err) { 
+			console.log (err);
+			res.status(500).send(err);
+		}
+		else {
+			console.log(data);
+			res.status(200).send(data);
+		}
+	});
+	
+	
+});
+
 
 module.exports = router;
 	
