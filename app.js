@@ -10,9 +10,12 @@ var db = monk('127.0.0.1:27017/nodetest1');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
+var AWS = require('aws-sdk');
+var dynamodb = new AWS.DynamoDB();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var dynamo = require('./routes/dynamo');
 
 var app = express();
 
@@ -54,6 +57,7 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/dynamo', dynamo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

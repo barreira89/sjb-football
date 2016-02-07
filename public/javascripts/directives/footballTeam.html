@@ -1,5 +1,5 @@
 <form>
-	<div ng-data="info" ng-repeat="team in info.Games track by $index">
+	<div ng-data="result" ng-repeat="team in result.Games track by $index">
 		<div>
 			<div class="col-md-3 centered">
 			<uib-accordion>
@@ -14,10 +14,7 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<label class="score">
-						{{team.visitscore}}
-					
-						</label>
+						<label class="score"> {{team.visitscore}} </label>
 					</div>
 				</div>
 				<div class="row">
@@ -41,7 +38,7 @@
 			</div>
 		</div>
 	</div>
-	<div class= "row" ng-show="info.Games">
+	<div class= "row" ng-show="result.Games">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="col-md-6">
 				<label class="btn btn-primary btn-block" ng-click="reset()"> Reset </label>
@@ -49,6 +46,12 @@
 			<div class="col-md-6">
 				<label class="btn btn-primary btn-block" ng-click="submit()"> Submit </label>
 			</div>
+		</div>
+	</div>
+	<div ng-data="submitted" ng-show="submitted" class="row text-centered">
+		<div class="alert alert-success">
+			<a ng-click="submitted = false" class="close" data-dismiss="alert" aria-label="close"> &times; </a>
+			{{submitted}}
 		</div>
 	</div>
 </form>

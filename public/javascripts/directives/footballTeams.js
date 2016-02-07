@@ -1,14 +1,7 @@
 app.directive('footballTeams', ['schedule', 'users', function(schedule, users){
 	return {
 		restrict: 'E',
-		scope:{
-			info: '=',
-			pics: '=',
-			games: '=',
-			winners: '=',
-			user: '=',
-			pickos: '='
-		},
+		scope:false,
 		templateUrl: 'public/javascripts/directives/footballTeam.html',
 		link: function(scope, element, attrs){
 			
@@ -18,22 +11,30 @@ app.directive('footballTeams', ['schedule', 'users', function(schedule, users){
 			}
 			
 			scope.submit = function (){
-				if(scope.user){
+				if(scope.un){
 					var body = {};
 					body.picks = scope.pickos;
-					body.username = scope.user;
-					body.week = scope.info.Week;
+					body.username = scope.un;
+					body.week = scope.result.Week;
 					schedule.postWinners(body);
+					scope.submitted = "Submitted picks for week" + scope.result.Week + " # Of Picks:" + numOfPicks(scope.pickos);
 				}
 				refreshUser();
 			}
 			
 			refreshUser = function(){
-				users.getUser(scope.user).success(
+				users.getUser(scope.un).success(
 					function(data){
 						scope.use = data;
-						console.log("Refreshed");
 				});
+			}
+			
+			numOfPicks = function(data){
+				if(data){
+					return Object.keys(data).length;
+				}else{
+					return 0;
+				}
 			}
 		}
 

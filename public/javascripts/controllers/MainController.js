@@ -5,6 +5,8 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 	
 	$scope.un = auth.getUser();
 		
+	console.log($scope.un);
+	
 	users.getUser($scope.un).success(
 		function(data){
 			$scope.use = data;
