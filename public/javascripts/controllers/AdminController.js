@@ -19,8 +19,17 @@ app.controller('AdminController', ['$scope', 'users', '$location', 'schedule', f
 		}).error(function(err){
 			console.log(err);
 		})
-		
 	}
 	
+	$scope.$watchCollection('weeks', function(oldValue, newValue){
+		console.log("visitor score watch");
+	},true)
+	
 
-}]);
+}])
+.controller('testController', function($scope){
+	console.log("Test Controller");
+	$scope.$watch('team.score', function(oldValue, newValue){
+		console.log("testController watch");		
+	})
+});
