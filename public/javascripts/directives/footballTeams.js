@@ -7,23 +7,24 @@ app.directive('footballTeams', ['schedule', 'users', function(schedule, users){
 			
 			scope.reset = function (){
 				console.log(scope.games);
-				scope.games = {};				
+				scope.model.userPicks = {};				
 			}
 			
 			scope.submit = function (){
-				if(scope.un){
-					var body = {};
-					body.picks = scope.pickos;
-					body.username = scope.un;
-					body.week = scope.result.Week;
-					schedule.postWinners(body);
-					scope.submitted = "Submitted picks for week" + scope.result.Week + " # Of Picks:" + numOfPicks(scope.pickos);
+				if(scope.model.userName){
+					var picksRequest = {
+						picks: scope.model.userPicks,
+						username: scope.model.userName,
+						week: scope.model.weekSchedule.weekNumber,
+					};
+					schedule.postWinners(picksRequest);
+					scope.submitted = "Submitted " + numOfPicks(picksRequest.picks) + " picks for week " + picksRequest.week;
 				}
 				refreshUser();
 			}
 			
 			refreshUser = function(){
-				users.getUser(scope.un).success(
+				users.getUser(scope.model.userName).success(
 					function(data){
 						scope.use = data;
 				});

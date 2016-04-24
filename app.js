@@ -16,6 +16,7 @@ var dynamodb = new AWS.DynamoDB();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dynamo = require('./routes/dynamo');
+var schedules = require('./routes/schedules');
 
 var app = express();
 
@@ -37,6 +38,8 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 var Account = require('./models/account');
@@ -58,6 +61,7 @@ app.use(function(req,res,next){
 app.use('/', routes);
 app.use('/users', users);
 app.use('/dynamo', dynamo);
+app.use('/schedules', schedules);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

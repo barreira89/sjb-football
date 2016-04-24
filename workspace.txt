@@ -1,0 +1,20 @@
+<NotepadPlus>
+    <Project name="node">
+        <Folder name="views">
+            <File name="views\error.jade" />
+            <File name="views\hike.jade" />
+            <File name="views\index.jade" />
+            <File name="views\layout.jade" />
+            <File name="views\react.html" />
+            <File name="views\react.jade" />
+            <File name="views\userlist.jade" />
+        </Folder>
+        <Folder name="routes">
+            <File name="routes\dynamo.js" />
+            <File name="routes\index.js" />
+            <File name="routes\users.js" />
+        </Folder>
+        <File name="app.js" />
+    </Project>
+    <Project name="angular" />
+</NotepadPlus>

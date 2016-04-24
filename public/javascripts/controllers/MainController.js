@@ -1,15 +1,28 @@
 app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', function($scope, schedule, auth, users){	
-	$scope.result = {};
+	$scope.weekSchedule = {};
 	$scope.games = {};
 	$scope.checked = false;
 	
-	$scope.un = auth.getUser();
-		
-	console.log($scope.un);
+	$scope.model = {
+			games : {},
+			weekSchedule : {},
+			checked: false,
+			userName: auth.getUser(),
+			userPicks: {}
+		 }
 	
-	users.getUser($scope.un).success(
+	$scope.userName = auth.getUser();
+	
+	schedule.getLogos().success(
+		function(data){
+			$scope.pics = data[0];
+		}
+	)
+	
+	users.getUser($scope.userName).success(
 		function(data){
 			$scope.use = data;
+			setParentUser(data);
 		}
 	)
 	
@@ -18,31 +31,29 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 			$scope.schedule = data;
 		}
 	);
-		
-	schedule.getLogos().success(
-		function(data){
-			$scope.pics = data[0];
-		}
-	);
 	
-	$scope.refreshUser = function(){
-		users.getUser($scope.un).success(
+	setParentUser = function (userData){
+			var username = userData.user[0] && userData.user[0].username;
+			if(username) $scope.$parent.$root.masterUserName = username;
+	}
+	
+	this.refreshUser = function(){
+		users.getUser($scope.userName).success(
 			function(data){
 				$scope.use = data;
 			}
 		)
 	}
 	
-	$scope.getByWeek = function(week){
+	this.getByWeek = function(week){
 		$scope.games = {};
-		$scope.results.week = week;
-		console.log($scope.use);
-		$scope.pickos = users.getUserPicksByWeek($scope.use, week);
-		console.log($scope.pickos);
+		$scope.weekSchedule.weekNumber = week;
+		$scope.model.userPicks = users.getUserPicksByWeek($scope.use, week);
+		
 		for(x in $scope.schedule){
-			var curr = $scope.schedule[x].Week;
-			if (curr==week.Week){
-				$scope.result = $scope.schedule[x];
+			var curWeek = $scope.schedule[x].weekNumber;
+			if (curWeek == week.weekNumber){
+				$scope.model.weekSchedule = $scope.schedule[x];
 			}
 		}
 	}

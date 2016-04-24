@@ -1,24 +1,34 @@
 app.factory('schedule', ['$http', function($http) { 
   var dataservices = {};
+  var logos = {};
+  var schedule;
+  var gameList;
+  setUpLogos();
+  setUpSchedule();
+  
+  dataservices.getLogoByTeam = function(team){
+	  return logos[team];
+  }
   
   dataservices.getSchedule = function (){
 	 return $http({
 		  method: 'GET',
-		  url: '/schedules'
+		  url: '/schedules',
+		  cache: true
 	  })	  
   }
-  
-  dataservices.getScheduleByWeek = function (week){
+    
+  dataservices.getScheduleByWeek = function (week){	
 	 return $http({
 		  method: 'GET',
 		  url: '/schedules/'+ week
 	  })	  
   }
   
-  dataservices.updateSchedule = function (pl, wk){
+  dataservices.updateSchedule = function (pl, week){
 	  return $http({
 		  method: 'POST',
-		  url: '/schedules/' + wk,
+		  url: '/schedules/' + week,
 		  data: pl
 	  })
 	  
@@ -39,23 +49,58 @@ app.factory('schedule', ['$http', function($http) {
 	  })
   }
 
-  dataservices.gamesByWeek = function(s){
-	 var games = {};
-	 for (i = 0, len = s.length; i < len; i ++){
-		var wk = parseInt(s[i].Week);
-		var ob = {};
-		for(var x in s[i].Games){
-			var y = s[i].Games[x];
-			var h = y.home;
-			var v = y.visitor;
-			var w = y.winner;
-			console.log(y.winner);
-			games[y.gid] = {"home": h, "visitor":v, "winner": w};
-		}
-		//games[wk] = s[i].Games;
+//Returns gameList object: "gameId":{"home","visitor","winner"}
+dataservices.getGameList = function (callback) {
+	if (gameList) {
+		callback(gameList);
+	} else {
+		dataservices.getSchedule().success(function (data) {
+			schedule = data;
+			setUpGameList();
+			callback(gameList);
+		})
 	}
-	return games;
-  }
+}
+ 
+dataservices.getGameById = function(gameId){
+	return gameList[gameId];
+} 
   
-  return dataservices;
-}]);
+return dataservices;
+
+function setUpLogos(){
+	$http({
+		  method: 'GET',
+		  url: '/logos'
+	  }).success( function(data){
+		  logos = data[0];
+	 })
+}
+
+function setUpSchedule(){
+	$http({
+		  method: 'GET',
+		  url: '/schedules'
+	  }).success( function(data){
+		   schedule = data;
+		   setUpGameList();
+	 })
+}
+
+function setUpGameList(){
+	var games = {};	 
+	 for (i = 0, len = schedule.length; i < len; i ++){
+		var listOfGames = schedule[i].games;
+		for(var x in listOfGames){
+			var game = listOfGames[x];
+			games[game.gid] = 
+			{
+				home: game.home, 
+				visitor:game.visitor, 
+				winner:game.winner
+			};
+		}
+	}
+	gameList = games;
+}
+}]); 

@@ -6,17 +6,20 @@
 			<button class="btn btn-default user-btn" ng-click="getDetail(names.username)"> {{names.username}}</button>
 		</div>
 		</div>
-	</div>
+	</div>	
 	<div class="col-md-6">
-		<div> <h2> {{un | uppercase}} </h2> </div>
-		<div ng-repeat="pick in picks | orderBy:'week'">
+	{{allPicks}}
+		<div> <h2> {{userModel.username | uppercase}} </h2> </div>
+		<div ng-show="userModel.winsByWeek.total"> Total Points: {{userModel.winsByWeek.total}} </div>
+		<div ng-repeat="pick in userModel.userPicks	 | orderBy:'week'">
 				<uib-accordion>
-					<uib-accordion-group heading="Week: {{pick.week}}">
+				{{test('201')}}
+					<uib-accordion-group heading="Week: {{pick.week}} | Pts: {{userModel.winsByWeek[pick.week]}}">
 						<div ng-repeat="(k, v) in pick.picks"> 
-							Game: {{k}}
-							{{glist[k].visitor}} @ {{glist[k].home}}
-							<label>
-							{{ v == glist[k].winner ? 'Win' : 'Lose'}}
+							Game: {{k}} | 
+							{{gameList[k].visitor}} @ {{gameList[k].home}}
+							<label> |
+							{{isWinner(k, v)}}
 							</label>
 						</div>
 					</uib-accordion-group>

@@ -1,25 +1,28 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding-top: 50px; 
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 50px;
+  background-color: white;	
 }
 .navbar{
-	background-color: #2d2d30;
+	background-color: #546B01;
 	opacity:0.7;
 }
 .navbar li a, .navbar .navbar-brand { 
-    color: #d5d5d5 !important;
+    color: #FFFFFF !important;
 }
 .login{
 	margin-top: 15px;
 }
+.panel-heading{
+	color: #036564;
+}
 .jumbotron{
-	background-image: url('/public/logos/stadium3.jpg');
-	background-size: cover;
-	height: 350px;
+	height: 280px;
 	margin-bottom: 0px;
+	background: #FFFFFF;
 }
 .my-container{
-	background-color: rgba(204, 169, 169, 0.09);
 	padding-top: 15px;
 	padding-bottom: 25px;
 	}
@@ -38,8 +41,9 @@ a {
 }
 .main-panel{
 	display: inline-block;
-	width: 500px;
-	background-color: rgba(194, 199, 220, 0.90);
+	width: 750px;
+	color: #FFFFFF;
+	background-color: #A45E19;
 	border-radius: 15px;
 }
 .lose{
@@ -53,7 +57,6 @@ a {
 	margin-top: 4px;
 }
 .panel-body{
-	background-color: rgba(204, 169, 169, 0.09);
 	margin: 1px;
 }
 .score{

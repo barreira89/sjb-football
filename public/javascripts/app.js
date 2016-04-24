@@ -3,7 +3,8 @@ app.config(function ($routeProvider) {
   $routeProvider 
     .when('/', { 
       controller: 'MainController', 
-      templateUrl: 'public/views/pickem.html' 
+      templateUrl: 'public/views/pickem.html',
+	  controllerAs: 'mctrl'
     })
 	.when('/login', {
 		controller: 'LoginController',

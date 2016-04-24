@@ -1,44 +1,9 @@
 <form>
-	<div ng-data="result" ng-repeat="team in result.Games track by $index">
-		<div>
-			<div class="col-md-3 centered">
-			<uib-accordion>
-				<uib-accordion-group is-open=true heading="{{team.visitor}} vs. {{team.home}}">
-				<div class="row">
-					<div class="col-md-3">	
-						<img class="img-circle pickimg" ng-class="{'lose': team.winner == 'home'}" height="36" ng-src="{{pics[team.visitor]}}" >
-					</div>
-					<div class="col-md-6">
-						<div class="pox">
-							<label class="btn btn-default btn-sm btn-block pickbtn" ng-class="{'btn-success': team.winner == 'visitor'}" ng-model ="pickos[team.gid]" uib-btn-radio="'visitor'" uncheckable> <b> {{team.visitor}} </b></label>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<label class="score"> {{team.visitscore}} </label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<img class="img-circle pickimg" ng-class="{'lose': team.winner == 'visitor'}" height="36" ng-src="{{pics[team.home]}}">
-					</div>
-					<div class="col-md-6">
-						<div class="pox">
-							<label class="btn btn-default btn-sm btn-block pickbtn" ng-class="{'btn-success': team.winner == 'home'}" ng-model ="pickos[team.gid]" uib-btn-radio="'home'" uncheckable> <b> {{team.home}} </b> </label>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<label class="score">
-						{{team.homescore}}
-						</label>
-					</div>
-				</div>
-				</uib-accordion-group>
-			</uib-accordion>
-			</div>
-			</div>
-		</div>
+	<div ng-data="model.weekSchedule" ng-repeat="game in model.weekSchedule.games track by $index">
+		<game-panel game="game"></game-panel>
 	</div>
-	<div class= "row" ng-show="result.Games">
+
+	<div class= "row" ng-show="model.weekSchedule.games">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="col-md-6">
 				<label class="btn btn-primary btn-block" ng-click="reset()"> Reset </label>
@@ -50,8 +15,8 @@
 	</div>
 	<div ng-data="submitted" ng-show="submitted" class="row text-centered">
 		<div class="alert alert-success">
-			<a ng-click="submitted = false" class="close" data-dismiss="alert" aria-label="close"> &times; </a>
-			{{submitted}}
+				<a ng-click="submitted = false" class="close" data-dismiss="alert" aria-label="close"> &times; </a>
+				{{submitted}}
 		</div>
 	</div>
 </form>

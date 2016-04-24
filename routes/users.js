@@ -6,6 +6,7 @@ var Accounts = require('../models/account');
 router.get('/', function(req, res, next) {
     var db = req.db;
     var collection = db.get('accounts');
+	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
 	
     collection.find({},function(e,docs){
         res.send(docs);

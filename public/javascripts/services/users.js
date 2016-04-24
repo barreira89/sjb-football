@@ -15,28 +15,44 @@ userservices.getUser = function (username){
 	})
 } 
 
-userservices.getUserPicks = function (ud){
-	var p = ud.picks;
-	var pickz = {};
-	for (i = 0, len = p.length; i < len; i ++){
-		var x = p[i].picks;
-		for (var k in x){
-			pickz[k] = x[k];
-		}
-	}
-	return pickz;
+userservices.getUserPicks = function () {
+	return $http({
+			method: 'GET',
+			url: '/picks'
+	})
 }
 
 userservices.getUserPicksByWeek = function (userdata, week){
-	var p = userdata.picks
-	var pickz = {};
-	for (i = 0, len = p.length; i < len; i ++){
-		if(p[i].week == week.Week){
-			pickz = p[i].picks;
+	var userPicks = userdata.picks;
+	var weekPicks = {};
+	userPicks.forEach(function(pick){
+		if (pick.week == week.weekNumber){
+			weekPicks = pick.picks
 		}
-	}
-	return pickz;
+	})
+	return weekPicks;
 } 
+  
+userservices.getUserWins = function (userPicks, gameList){
+	var winsByWeek = {};
+	var totalWins = 0;
+	for(i = 0; i < userPicks.length; i ++){
+		var currentWeek = userPicks[i].week;
+		var currentWins = 0;
+		var picks = userPicks[i].picks;
+		for (game in picks){
+			var actualWinner = gameList[game].winner;
+			var userPick = picks[game];
+			if(userPick == actualWinner){
+				++ currentWins;
+				++ totalWins;
+			}
+		}
+		winsByWeek[currentWeek] = currentWins;
+	}
+	winsByWeek['total'] = totalWins;
+	return winsByWeek;	
+}  
   
  return userservices;
 }]);
