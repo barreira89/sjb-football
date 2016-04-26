@@ -6,10 +6,24 @@ body {
 }
 .navbar{
 	background-color: #546B01;
-	opacity:0.7;
+	opacity:0.9;
+	margin-bottom: 0;
 }
 .navbar li a, .navbar .navbar-brand { 
-    color: #FFFFFF !important;
+    color: #d5d5d5 !important;
+}
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: black;
+}
+.open .dropdown-toggle {
+	color: black;
+	background-color: #555 !important;
+}
+.dropdown-menu li a {
+	color: #000 !important;
+	text-align: right;
+	background-color: black;
 }
 .login{
 	margin-top: 15px;
@@ -25,7 +39,7 @@ body {
 .my-container{
 	padding-top: 15px;
 	padding-bottom: 25px;
-	}
+}
 .tile{
 	width:100%;
 	border-style: solid;

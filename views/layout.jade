@@ -23,14 +23,14 @@ html(ng-app='Football')
 		meta(name="viewport" content="width=device-width, inital-scale=1")
 	body
 		nav(class="navbar navbar-default navbar-fixed-top")
-			div(class="container")
+			div(class="container-fluid")
 				div(class="navbar-header")
-					button(type="button" class="navbar-toggle")
+					button(type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar")
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
-				a(class="navbar-brand" href="#/users" ng-data="masterUserName") {{masterUserName | uppercase}}
-				div(class="collapse navbar-collapse")
+					a(class="navbar-brand" href="#/users" ng-data="masterUserName") {{masterUserName | uppercase}}
+				div(class="collapse navbar-collapse" id="myNavbar")
 					ul(class="nav navbar-nav navbar-right")
 						li
 							a(href="#/") About

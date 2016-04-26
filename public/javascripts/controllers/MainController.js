@@ -3,6 +3,9 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 	$scope.games = {};
 	$scope.checked = false;
 	
+	
+	//Model for Main Controller class
+	
 	$scope.model = {
 			games : {},
 			weekSchedule : {},
@@ -19,12 +22,13 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 		}
 	)
 	
-	users.getUser($scope.userName).success(
-		function(data){
+	if ($scope.userName) {
+		users.getUser($scope.userName).success(
+			function (data) {
 			$scope.use = data;
 			setParentUser(data);
-		}
-	)
+		})
+	}
 	
 	schedule.getSchedule().success(
 		function(data){
@@ -48,7 +52,10 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 	this.getByWeek = function(week){
 		$scope.games = {};
 		$scope.weekSchedule.weekNumber = week;
-		$scope.model.userPicks = users.getUserPicksByWeek($scope.use, week);
+		
+		if ($scope.use){
+			userPicks(week);
+		}
 		
 		for(x in $scope.schedule){
 			var curWeek = $scope.schedule[x].weekNumber;
@@ -56,5 +63,9 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 				$scope.model.weekSchedule = $scope.schedule[x];
 			}
 		}
+	}
+	
+	function userPicks(week){
+		$scope.model.userPicks = users.getUserPicksByWeek($scope.use, week);	
 	}
 }]);

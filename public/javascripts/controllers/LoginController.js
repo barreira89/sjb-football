@@ -4,9 +4,7 @@ app.controller('LoginController', ['$scope', 'auth', '$location', function($scop
 		password: ''
 	};
 	$scope.error=false;
-	
-	console.log(auth.getUserStatus());
-	
+		
 	$scope.login = function(credentials){
 		auth.login(credentials.username, credentials.password)
 			.then(function (){
