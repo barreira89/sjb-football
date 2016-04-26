@@ -1,4 +1,4 @@
-app.controller('AdminController', ['$scope', 'users', '$location', 'schedule', '$uibModal', function ($scope, users, $location, schedule, $uibModal) {
+app.controller('AdminController', ['$scope', 'users', 'auth', '$location', 'schedule', '$uibModal', function ($scope, users, auth, $location, schedule, $uibModal) {
 	schedule.getSchedule()
 		.success(function(data) {
 			$scope.schedule = data;
@@ -26,7 +26,7 @@ app.controller('AdminController', ['$scope', 'users', '$location', 'schedule', '
 		
 	$scope.submit = function(games,week){
 		userGames = games[0];
-		console.log(userGames);
+		console.log("Admin:" + auth.isAdmin());
 		schedule.updateSchedule(userGames,week).success(function(data){
 			$scope.submitted = "Submitted Update For Week " + week + " | " + numberOfGamesPicked(userGames) + " Games";
 			open();
@@ -45,11 +45,7 @@ app.controller('AdminController', ['$scope', 'users', '$location', 'schedule', '
 		})
 		return count;
 	}
-	
-	$scope.$watchCollection('weeks', function(oldValue, newValue){
-		console.log("visitor score watch");
-	},true)
-	
+		
 	$scope.updateGame = function(gid, gameData){
 		var game = getGameById(gid);
 		game.winner = gameData.gameWinner;

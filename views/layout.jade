@@ -15,6 +15,7 @@ html(ng-app='Football')
 		script(src='public/javascripts/controllers/LoginController.js')
 		script(src='public/javascripts/controllers/UserController.js')
 		script(src='public/javascripts/controllers/AdminController.js')
+		script(src='public/javascripts/controllers/CollapseController.js')
 		script(src='public/javascripts/directives/footballTeams.js')
 		script(src='public/javascripts/directives/gamePanel.js')
 		script(src='public/javascripts/services/schedule.js')
@@ -23,23 +24,23 @@ html(ng-app='Football')
 		meta(name="viewport" content="width=device-width, inital-scale=1")
 	body
 		nav(class="navbar navbar-default navbar-fixed-top")
-			div(class="container-fluid")
+			div(class="container-fluid" ng-controller="CollapseCtrl")
 				div(class="navbar-header")
-					button(type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar")
+					button(type="button" class="navbar-toggle" ng-click="toggleCollapse()")
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
 					a(class="navbar-brand" href="#/users" ng-data="masterUserName") {{masterUserName | uppercase}}
-				div(class="collapse navbar-collapse" id="myNavbar")
+				div(class="collapse navbar-collapse" uib-collapse="isCollapsed")
 					ul(class="nav navbar-nav navbar-right")
 						li
-							a(href="#/") About
+							a(href="#/" ng-click="menuCollapse()") About
 						li
-							a(href="#/login") Sign In
+							a(href="#/login" ng-click="menuCollapse()") Sign In
 						li
-							a(href="#/users") Users
+							a(href="#/users" ng-click="menuCollapse()") Users
 						li
-							a(href="#/admin") Admin
+							a(href="#/admin" ng-click="menuCollapse()") Admin
 		block content
 		
 		

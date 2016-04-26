@@ -1,8 +1,8 @@
 app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) { 
   var authservices = {};
-  var un = null;
+  var un;
   
-  var user = null;
+  var user;
   
   authservices.isLoggedIn = function(){
 	  if (user){
@@ -11,7 +11,7 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
 		  return false;
 	  }
   }
-  
+   
   authservices.getUser = function (){
 	  return un;
   }
