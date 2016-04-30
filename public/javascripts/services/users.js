@@ -15,10 +15,10 @@ userservices.getUser = function (username){
 	})
 } 
 
-userservices.getUserPicks = function () {
+userservices.getUserPicks = function (username) {
 	return $http({
 			method: 'GET',
-			url: '/picks'
+			url: '/users/'+ username + '/picks'
 	})
 }
 
@@ -32,7 +32,10 @@ userservices.getUserPicksByWeek = function (userdata, week){
 	})
 	return weekPicks;
 } 
-  
+
+
+//Returns an object where the week is the key and number of wins is the value
+//{"1":15,"2":13,"total":49}  
 userservices.getUserWins = function (userPicks, gameList){
 	var winsByWeek = {};
 	var totalWins = 0;

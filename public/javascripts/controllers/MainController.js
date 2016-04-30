@@ -5,7 +5,6 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', functio
 	
 	
 	//Model for Main Controller class
-	
 	$scope.model = {
 			games : {},
 			weekSchedule : {},

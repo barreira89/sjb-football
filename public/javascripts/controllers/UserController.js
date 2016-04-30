@@ -2,8 +2,9 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', fu
     $scope.userlist = {};
 	$scope.userModel = {};
 	$scope.totalwins = 0;
+	gameList = {};
 	schedule.getGameList(function (gameListValue){
-			$scope.gameList = gameListValue;	
+			gameList = gameListValue;
 	});
 	
 	users.getUserPicks().success(function (data){
@@ -20,12 +21,22 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', fu
 				username: data.user[0].username,
 				userPicks: data.picks
 			}
-			$scope.userModel.winsByWeek = users.getUserWins($scope.userModel.userPicks, $scope.gameList);
+			$scope.userModel.winsByWeek = users.getUserWins($scope.userModel.userPicks, gameList);
 			
 		}).error(function (err){
 			console.log(err);
 		});
 	};
+	
+	//gameDetail returns game Object by gameId;
+	
+	$scope.gameDetail = function (gameId){
+		if(gameList){
+			return gameList[gameId];
+		} else {
+			return {};
+		}
+	}
 	
 	users.getUsers().success(function (data) {
 		$scope.userlist = data;
@@ -36,7 +47,7 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', fu
 		$scope.schedule = data;
 	})
 	$scope.isWinner = function(game, winner){
-		var actualWinner = $scope.gameList[game].winner;
+		var actualWinner = gameList[game].winner;
 		
 		if(!actualWinner) return "No Winner Set";
 		

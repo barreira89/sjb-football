@@ -8,18 +8,16 @@
 		</div>
 	</div>	
 	<div class="col-md-6">
-	{{allPicks}}
 		<div> <h2> {{userModel.username | uppercase}} </h2> </div>
 		<div ng-show="userModel.winsByWeek.total"> Total Points: {{userModel.winsByWeek.total}} </div>
+		<!-- make into directive -->
 		<div ng-repeat="pick in userModel.userPicks	 | orderBy:'week'">
 				<uib-accordion>
-				{{test('201')}}
 					<uib-accordion-group heading="Week: {{pick.week}} | Pts: {{userModel.winsByWeek[pick.week]}}">
-						<div ng-repeat="(k, v) in pick.picks"> 
-							Game: {{k}} | 
-							{{gameList[k].visitor}} @ {{gameList[k].home}}
+						<div ng-repeat="(gameId, userPick) in pick.picks"> 
+							Game: {{gameId}} | {{gameDetail(gameId).visitor}} @ {{gameDetail(gameId).home}}
 							<label> |
-							{{isWinner(k, v)}}
+							{{isWinner(gameId, userPick)}}
 							</label>
 						</div>
 					</uib-accordion-group>

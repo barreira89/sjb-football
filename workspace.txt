@@ -15,6 +15,45 @@
             <File name="routes\users.js" />
         </Folder>
         <File name="app.js" />
+        <Folder name="model">
+            <File name="models\account.js" />
+            <File name="models\modelTest.js" />
+            <File name="models\picks.js" />
+            <File name="models\schedule.js" />
+            <File name="models\scheduleModel.js" />
+            <File name="models\test.json" />
+            <File name="models\users.js" />
+        </Folder>
     </Project>
-    <Project name="angular" />
+    <Project name="angular">
+        <Folder name="controllers">
+            <File name="public\javascripts\controllers\AdminController.js" />
+            <File name="public\javascripts\controllers\CollapseController.js" />
+            <File name="public\javascripts\controllers\LoginController.js" />
+            <File name="public\javascripts\controllers\MainController.js" />
+            <File name="public\javascripts\controllers\UserController.js" />
+        </Folder>
+        <Folder name="directives">
+            <File name="public\javascripts\directives\footballTeam-weeks.html" />
+            <File name="public\javascripts\directives\footballTeam.html" />
+            <File name="public\javascripts\directives\footballTeams.js" />
+            <File name="public\javascripts\directives\gamePanel.html" />
+            <File name="public\javascripts\directives\gamePanel.js" />
+        </Folder>
+        <Folder name="services">
+            <File name="public\javascripts\services\auth.js" />
+            <File name="public\javascripts\services\schedule.js" />
+            <File name="public\javascripts\services\users.js" />
+        </Folder>
+        <Folder name="views">
+            <File name="public\views\admin.html" />
+            <File name="public\views\login.html" />
+            <File name="public\views\modal.html" />
+            <File name="public\views\pickem.html" />
+            <File name="public\views\register.html" />
+            <File name="public\views\userdetail.html" />
+            <File name="public\views\userlist.html" />
+        </Folder>
+        <File name="public\javascripts\app.js" />
+    </Project>
 </NotepadPlus>

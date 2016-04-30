@@ -1,38 +1,65 @@
 var express = require('express');
 var router = express.Router();
 var Accounts = require('../models/account');
+var Picks = require('../models/picks');
+var accountFieldFilter = {salt:0,hash:0, __v: 0};
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    var db = req.db;
-    var collection = db.get('accounts');
-	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-	
-    collection.find({},function(e,docs){
-        res.send(docs);
-    });
+	Accounts.find({},accountFieldFilter,function(err,docs){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(docs);
+		}
+	})
 });
 
-router.get('/:username', function (req, res){
-	var db = req.db;
-	var collection = db.get('accounts');
-	var coll2 = db.get('picks');
+router.get('/:username/picks', function (req, res){
+	var userName = req.params.username;
+	console.log(userName);
+	
+	Picks.find({username:userName}, function(err, doc){
+		if(err){
+			res.json(err);
+		} else {
+			res.json(doc);
+		}
+	})
+	
+})
+
+router.get('/:username', function (req, res) {
 	var user = req.params.username;
-	
+
 	var body = {}
-	
-	collection.find({username: user}, function(e, docs){
-		body.user = docs;
-		//res.send(body);
-		coll2.find({username: user}, function(e, doc2){
-			//body.picks = [];
-			//body.picks.push(doc2);
-			body.picks = doc2;
-			res.send(body);
-		})
-	});
-	
+
+	//Find the account
+	Accounts.find({
+		username : user
+	}, accountFieldFilter, function (err, docs) {
+		if (err) {
+			console.log(err);
+			res.sendStatus(500);
+		} else {
+			body.user = docs;
+
+			//Add the picks for that user;
+			Picks.find({
+				username : user
+			}, function (err, pickDocs) {
+				if (err) {
+					res.sendStatus(500);
+				} else {
+					res.send(body);
+				}
+			})
+		}
+	})
+
 });
+
 
 router.delete('/:username', function(req, res){
 	var user = req.params.username;
