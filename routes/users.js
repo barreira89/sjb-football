@@ -44,7 +44,6 @@ router.get('/:username', function (req, res) {
 			res.sendStatus(500);
 		} else {
 			body.user = docs;
-
 			//Add the picks for that user;
 			Picks.find({
 				username : user
@@ -52,6 +51,7 @@ router.get('/:username', function (req, res) {
 				if (err) {
 					res.sendStatus(500);
 				} else {
+					body.picks = pickDocs;
 					res.send(body);
 				}
 			})
