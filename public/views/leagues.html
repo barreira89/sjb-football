@@ -1,0 +1,25 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<div ng-repeat="league in leagueList">
+			<div>
+				<button class="btn btn-default user-btn" ng-click="selectCurrentLeague(league._id)"> {{league.name}} </button>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-9" ng-show="currentLeague">
+			<label> Current Leauge: </label> 
+			<p> {{currentLeague.name}} </p> 
+			<h4> Users: </h4>
+			<div ng-repeat="user in currentLeague.users">
+				User Name: {{user}}
+			</div>
+			<div>
+				<div ng-repeat="user in userList">
+					<a href="" ng-click="addUserToLeague(user.username)"> {{user.username}} </a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

@@ -3,14 +3,13 @@ var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 var Picks = require('./picks');
 
-
-
 var Account = new Schema({
     username: String,
     password: String,
 	email: String,
 	roles: [String],
-	picks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Picks'}]
+	picks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Picks'}],
+	leagues: [{type: mongoose.Schema.Types.ObjectId, ref: 'Leagues'}]
 });
 
 Account.plugin(passportLocalMongoose);

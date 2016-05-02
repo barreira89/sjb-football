@@ -26,6 +26,10 @@ app.config(function ($routeProvider) {
 		controller: 'AdminController',
 		templateUrl: 'public/views/admin.html'
 	})
+	.when('/leagues', {
+		controller: 'LeagueController',
+		templateUrl: 'public/views/leagues.html'
+	})
 	.otherwise({ 
       redirectTo: '/' 
     }); 

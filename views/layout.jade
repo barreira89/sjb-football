@@ -16,9 +16,11 @@ html(ng-app='Football')
 		script(src='public/javascripts/controllers/UserController.js')
 		script(src='public/javascripts/controllers/AdminController.js')
 		script(src='public/javascripts/controllers/CollapseController.js')
+		script(src='public/javascripts/controllers/LeagueController.js')
 		script(src='public/javascripts/directives/footballTeams.js')
 		script(src='public/javascripts/directives/gamePanel.js')
 		script(src='public/javascripts/services/schedule.js')
+		script(src='public/javascripts/services/leagues.js')
 		script(src='public/javascripts/services/auth.js')
 		script(src='public/javascripts/services/users.js')
 		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
@@ -41,6 +43,8 @@ html(ng-app='Football')
 							a(href="#/users" ng-click="menuCollapse()") Users
 						li
 							a(href="#/admin" ng-click="menuCollapse()") Admin
+						li
+							a(href="#/leagues" ng-click="menuCollapse()") Leagues
 		block content
 		
 		
