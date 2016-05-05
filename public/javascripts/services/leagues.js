@@ -21,6 +21,14 @@ leagueServices.createLeague = function (username) {
 			url: '/leagues'
 	})
 }
+
+leagueServices.updateLeague = function (leagueId, data){
+	return $http({
+		method: 'PUT',
+		url: '/leagues/' + leagueId,
+		data: data
+	})
+}
  
  return leagueServices;
 }]);

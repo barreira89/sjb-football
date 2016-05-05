@@ -22,7 +22,6 @@ app.controller('LoginController', ['$scope', 'auth', '$location', function($scop
 				$location.path('#/');
 			})
 			.catch(function (err){
-				console.log(err);
 				$scope.error = true;
 				$scope.errormsg = err.message;
 		});	

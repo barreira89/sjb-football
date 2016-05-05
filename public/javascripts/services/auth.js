@@ -34,13 +34,13 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
 		deferred.resolve();
       } else {
         user = false;
-        deferred.reject();
+        deferred.reject(data);
       }
     })
     // handle error
     .error(function (data) {
       user = false;
-      deferred.reject();
+      deferred.reject(data);
     });
 
   // return promise object
@@ -59,7 +59,7 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
       if(status === 200 && data.status){
         deferred.resolve();
       } else {
-        deferred.reject();
+        deferred.reject(data);
       }
     })
     // handle error

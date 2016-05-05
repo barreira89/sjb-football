@@ -100,7 +100,7 @@ router.post('/register', function (req, res) {
 			return res.status(400).send(err);
 		}
 		passport.authenticate('local')(req, res, function () {
-			res.redirect('/');
+			res.sendStatus(200);
 		});
 	});
 })
