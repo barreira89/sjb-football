@@ -100,7 +100,9 @@ router.post('/register', function (req, res) {
 			return res.status(400).send(err);
 		}
 		passport.authenticate('local')(req, res, function () {
-			res.sendStatus(200);
+			res.status(200).json({
+				status: "user was successfully created"
+			});
 		});
 	});
 })

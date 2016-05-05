@@ -3,7 +3,7 @@ app.controller('LoginController', ['$scope', 'auth', '$location', function($scop
 		username: '',
 		password: ''
 	};
-	$scope.error=false;
+	$scope.errormessage;
 		
 	$scope.login = function(credentials){
 		auth.login(credentials.username, credentials.password)
@@ -11,19 +11,19 @@ app.controller('LoginController', ['$scope', 'auth', '$location', function($scop
 				$location.path('#/');	
 			})
 			.catch(function (){
-				$scope.error = true;
-				$scope.errormsg = "Invalid username/password";
+				$scope.errormessage = "Invalid username/password";
 		});
 	};
 	
 	$scope.register = function(credentials){
 		auth.register(credentials.username, credentials.password, credentials.email)
 			.then(function (user){
+				$scope.error = false;
 				$location.path('#/');
 			})
 			.catch(function (err){
-				$scope.error = true;
-				$scope.errormsg = err.message;
+				console.log(err);
+				$scope.errormessage = err.message;
 		});	
 	};
 	
