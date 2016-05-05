@@ -3,7 +3,11 @@ var router = express.Router();
 var Leagues = require('../models/leagues');
 
 router.get('/', function (req, res) {
-	Leagues.find({}, function (err, docs) {
+	var query = {}
+	if(req.query.username){
+		query = {users:req.query.username}
+	}	
+	Leagues.find(query, function (err, docs) {
 		if (err) {
 			console.log(err);
 			res.sendStatus(500);

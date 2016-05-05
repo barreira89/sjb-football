@@ -1,4 +1,4 @@
-app.controller('UserController', ['$scope', 'users', '$location', 'schedule', function ($scope, users, $location, schedule) {
+app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'leagues', function ($scope, users, $location, schedule, leagues) {
     $scope.userlist = {};
 	$scope.userModel = {};
 	$scope.totalwins = 0;
@@ -17,14 +17,16 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', fu
 	
 	$scope.getDetail = function(user) {
 		users.getUser(user).success(function (data) {
-			$scope.userModel = {	
-				username: data.user[0].username,
-				userPicks: data.picks
-			}
+			$scope.userModel.username = data.user[0].username;
+			$scope.userModel.userPicks = data.picks;
+			$scope.userModel.roles = data.user[0].roles;
 			$scope.userModel.winsByWeek = users.getUserWins($scope.userModel.userPicks, gameList);
 			
 		}).error(function (err){
 			console.log(err);
+		});
+		leagues.getLeaguesByUsername(user).success(function (data){
+			$scope.userModel.leagues = data;
 		});
 	};
 	

@@ -9,7 +9,7 @@ var Account = new Schema({
 	email: String,
 	roles: [String],
 	picks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Picks'}],
-	leagues: [{type: mongoose.Schema.Types.ObjectId, ref: 'Leagues'}]
+	leagues: [String]
 });
 
 Account.plugin(passportLocalMongoose);
