@@ -13,6 +13,26 @@ router.get('/', function (req, res) {
 	});
 })
 
+router.get('/withGame/:pick_id', function (req, res) {
+	var query = buildQuery(req);
+	
+		Picks
+		.findOne({_id : req.params.pick_id})
+		.populate('picks.game')
+		.exec(function (err, pick) {
+			if (err) {
+				console.log(err);
+				res.sendStatus(500);
+			} else {
+				if (pick)
+					return res.json(pick);
+
+				return res.sendStatus(404);
+			}
+		});
+	
+})
+
 router.post('/', function (req, res) {
 	var mappedPick = bodyToPickMapper(req.body);
 	newPick = new Picks(mappedPick);

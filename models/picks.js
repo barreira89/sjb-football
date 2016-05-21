@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Game = require('./games');
 
 var Picks = new Schema({
     username: String,
@@ -11,6 +12,7 @@ var Picks = new Schema({
 		{
 			_id: false,
 			gameId: String,
+			game: {type: Schema.Types.ObjectId, ref: 'Games'},
 			winner: String,
 			details: {
 				_id: false,
