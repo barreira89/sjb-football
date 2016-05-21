@@ -1,31 +1,72 @@
 <div class="container-fluid">
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<div ng-repeat="names in userlist">
 		<div>
-			<button class="btn btn-default user-btn" ng-click="getDetail(names.username)"> {{names.username}}</button>
+			<button class="btn btn-default user-btn" ng-click="getUserDetail(names._id)"> {{names.username}}</button>
 		</div>
 		</div>
 	</div>	
-	<div class="col-md-6">
+	<div class="col-md-8">
+	 
+		<div> <h2> {{userModel2.username | uppercase}} </h2> 
+			<div ng-show="userModel2.winTotal">
+			Total Points: {{userModel2.winTotal().count}} Total Picks: {{userModel2.winTotal().totalPicks}} Percent: {{userModel2.winTotal().percent | percentage:2}}
+			</div>
+		</div>
+		<div ng-repeat="pick in userModel2.picks | orderBy:'week'">
+			<h3> Week: {{pick.week}}</h3>
+			<div ng-repeat="game in pick.picks" class="row">
+				<div class="col-sm-2">
+				{{game.gameId}} 
+				</div>
+				<div class="col-sm-4">
+				{{game.details.home}} @ {{game.details.visitor}} 
+				| User Pick: {{game.details[game.winner]}} | Actual {{game.details[game.details.winner]}}
+				</div>
+				<div class="col-sm-3">
+					<select name="winnerSelect" ng-model="game.winner">
+							<option value="home"> {{game.details.home}} </option>
+							<option value="visitor"> {{game.details.visitor}} </option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<button ng-click="updatePick(pick._id, pick)" class="btn btn-default"> Update </button>
+				</div>
+			</div>
+		</div>
+		<!--
 		<div> <h2> {{userModel.username | uppercase}} </h2> </div>
 		<div ng-show="userModel.winsByWeek.total"> Total Points: {{userModel.winsByWeek.total}} </div>
-		<!-- make into directive -->
-		<div ng-repeat="pick in userModel.userPicks	 | orderBy:'week'">
+		 make into directive 
+
+		<div ng-repeat="currentWeek in userModel.userPicks	 | orderBy:'week'">
 				<uib-accordion>
-					<uib-accordion-group heading="Week: {{pick.week}} | Pts: {{userModel.winsByWeek[pick.week]}}">
-						<div ng-repeat="(gameId, userPick) in pick.picks"> 
-							Game: {{gameId}} | {{gameDetail(gameId).visitor}} @ {{gameDetail(gameId).home}}
-							<label> |
-							{{isWinner(gameId, userPick)}}
-							</label>
+					<uib-accordion-group heading="Week: {{currentWeek.week}} | Pts: {{userModel.winsByWeek[currentWeek.week]}}">
+						<div ng-repeat="game in currentWeek.picks" class="row"> 
+							<div class="col-sm-2">
+								Game:{{game.gameId}} 
+							</div> 
+							<div class="col-sm-4">			
+								{{game.details.visitor}} @ {{game.details.home}}
+								<label> {{isWinner(game.gameId, game.winner)}} </label>
+							</div>
+							<div class="col-md-3">
+								<select name="winnerSelect" ng-model="game.winner">
+									<option value="home"> {{game.details.home}} </option>
+									<option value="visitor"> {{game.details.visitor}} </option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<button ng-click="updatePick(currentWeek.extId, currentWeek)" class="btn btn-default"> Update </button>
+							</div>
 						</div>
 					</uib-accordion-group>
 				</uib-accordion>
-		</div>
+		</div> -->
 	</div>
-	<div class="col-md-3">
-		<h2> Leagues </h2>
+	<div class="col-md-2">
+		<h2 ng-show="userModel.leagues"> Leagues </h2>
 		<div ng-repeat="league in userModel.leagues">
 			{{league.name}}
 		</div>

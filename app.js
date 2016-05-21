@@ -18,6 +18,7 @@ var users = require('./routes/users');
 var dynamo = require('./routes/dynamo');
 var schedules = require('./routes/schedules');
 var leagues = require('./routes/leagues');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -64,6 +65,7 @@ app.use('/users', users);
 app.use('/dynamo', dynamo);
 app.use('/schedules', schedules);
 app.use('/leagues', leagues);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,7 +8,7 @@ var Account = new Schema({
     password: String,
 	email: String,
 	roles: [String],
-	picks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Picks'}],
+	picks: [{type: Schema.Types.ObjectId, ref: 'Picks'}],
 	leagues: [String]
 });
 

@@ -1,20 +1,25 @@
 var express = require('express');
 var router = express.Router();
 var Leagues = require('../models/leagues');
+var Accounts = require('../models/account');
 
 router.get('/', function (req, res) {
 	var query = {}
 	if(req.query.username){
 		query = {users:req.query.username}
-	}	
-	Leagues.find(query, function (err, docs) {
+	}
+	
+	Leagues
+	.find(query)
+	.populate('userIds')
+	.exec(function (err, docs) {
 		if (err) {
 			console.log(err);
 			res.sendStatus(500);
 		} else {
 			res.send(docs);
 		}
-	})
+	});
 })
 
 router.post('/', function (req, res) {

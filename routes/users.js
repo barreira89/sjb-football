@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Accounts = require('../models/account');
 var Picks = require('../models/picks');
+var Schedules = require('../models/schedule');
 var accountFieldFilter = {salt:0,hash:0, __v: 0};
 
 
@@ -18,13 +19,21 @@ router.get('/', function(req, res, next) {
 
 router.get('/:username/picks', function (req, res){
 	var userName = req.params.username;
-	console.log(userName);
-	
-	Picks.find({username:userName}, function(err, doc){
+	///console.log(userName);
+	Picks.find({username:userName}, function(err, picks){
 		if(err){
 			res.json(err);
 		} else {
-			res.json(doc);
+			Schedules.find(function (err,schedule){
+				if(err)
+					return res.send(err);
+				
+				var lookUp = gameDetailLookUp(schedule);
+				var picksWithDetails = withGameDetails(picks, lookUp);
+				return res.json(picksWithDetails);
+				
+			})
+			//res.json(picks);
 		}
 	})
 	
@@ -36,9 +45,7 @@ router.get('/:username', function (req, res) {
 	var body = {}
 
 	//Find the account
-	Accounts.find({
-		username : user
-	}, accountFieldFilter, function (err, docs) {
+	Accounts.find({username : user}, accountFieldFilter, function (err, docs) {
 		if (err) {
 			console.log(err);
 			res.sendStatus(500);
@@ -74,6 +81,27 @@ router.delete('/:username', function(req, res){
 		}
 	});
 })
+
+function withGameDetails(picks, lookUp){
+	//console.log(lookUp);
+	picks.forEach(function(pickObj){
+		pickObj.picks.forEach(function(game){
+			game.details = lookUp[parseInt(game.gameId)];
+		})
+	})
+	return picks;
+}
+
+function gameDetailLookUp(schedule){
+	var lookUp = {}
+	schedule.forEach(function (weekSchedule){
+		weekSchedule.games.forEach(function  (game){
+			lookUp[game.gid] = game;
+		})
+	})
+	return lookUp;
+}
+
 
 module.exports = router;
 	

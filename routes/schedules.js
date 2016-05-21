@@ -5,15 +5,40 @@ var Schedule = require('../models/schedule');
 
 //Returns all schedule Objects
 router.get('/', function (req, res) {
-	Schedule.find(function (err, docs) {
+	var query={};
+	
+	Schedule.find(query, function (err, docs) {
 		if (err) {
-			res.sendStatus(500);
+			res.send(err);
 		} else {
 			res.send(docs);
 		}
 	})
 });
 
+router.get('/gamelist', function (req, res) {
+	var gameList = [];
+	
+	Schedule.find(function (err, docs){
+		if (err){
+			return res.send(err);
+		} else {
+			//format to list of game objects
+			docs.forEach(function (weekSchedule) {
+				weekSchedule.games.forEach(function (game){
+						game['weekNumber'] = weekSchedule.weekNumber;
+						gameList.push(game);
+				})
+			})
+			return res.json(gameList);
+		}
+		
+		
+	})
+	
+	
+	
+})
 
 router.get('/:week', function (req, res) {
 	var week = parseInt(req.params.week);

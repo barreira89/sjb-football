@@ -7,22 +7,26 @@
 			</div>
 			</div>
 		</div>
-		<div class="col-md-9 form-group" ng-show="currentLeague">
-			<h2> {{currentLeague.name}} </h2>
-			<label> Leauge Name: </label>
-			<input class="text" type="text" ng-model="currentLeague.name"></input>
-			<h4> Users: </h4>
-			<div ng-repeat="user in currentLeague.users">
-				{{user}} | <a href="" ng-click="removeUserFromLeague(user)"> Remove </a>
-			</div>
-			<h4> Add Users: </h4>
-			<div>
-				<div ng-repeat="user in userList">
-					<a href="" ng-click="addUserToLeague(user.username)"> {{user.username}} </a>
+		<div class="col-md-6 form-group" ng-show="currentLeague">
+			<div class="panel panel-default">
+				<div class="panel-heading"> <h2> {{currentLeague.name}} </h2> </div>
+				<div class="panel-body">
+				<h4> League Name: </h4>
+					<input class="text" type="text" ng-model="currentLeague.name"></input>
+				<h4> Users: </h4>
+				<div ng-repeat="user in currentLeague.users">
+					{{user}} | <a href="" ng-click="removeUserFromLeague(user)"> Remove </a>
 				</div>
-			</div>
-			<div>
-				<button class="btn btn-default user-btn" ng-click="submitLeague()"> Update Leauge {{currentLeague.name}} </button>
+				<h4> Add Users: </h4>
+				<div>
+					<div ng-repeat="user in userList">
+						<a href="" ng-click="addUserToLeague(user.username)"> {{user.username}} </a>
+					</div>
+				</div>
+				<div>
+					<button class="btn btn-default user-btn" ng-click="submitLeague()"> Update League {{currentLeague.name}} </button>
+				</div>
+				</div>
 			</div>
 		</div>
 	</div>

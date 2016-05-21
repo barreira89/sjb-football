@@ -2,6 +2,7 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'l
     $scope.userlist = {};
 	$scope.userModel = {};
 	$scope.totalwins = 0;
+	$scope.userModel2 = {};
 	gameList = {};
 	schedule.getGameList(function (gameListValue){
 			gameList = gameListValue;
@@ -21,6 +22,7 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'l
 			$scope.userModel.userPicks = data.picks;
 			$scope.userModel.roles = data.user[0].roles;
 			$scope.userModel.winsByWeek = users.getUserWins($scope.userModel.userPicks, gameList);
+			populateGameDetails(data.picks);
 			
 		}).error(function (err){
 			console.log(err);
@@ -30,34 +32,44 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'l
 		});
 	};
 	
-	//gameDetail returns game Object by gameId;
+	$scope.getUserDetail = function(userId){
+		users.getUserModel(userId).success(function (data){
+			$scope.userModel2 = data;
+			$scope.userModel2.winTotal = total($scope.userModel2);
+		})
+	}
 	
-	$scope.gameDetail = function (gameId){
-		if(gameList){
-			return gameList[gameId];
-		} else {
-			return {};
-		}
+	
+	function total(userModel) {
+		return (function () {
+			var count = 0;
+			var totalPicks = 0;
+			userModel.picks.forEach(function (each) {
+				each.picks.forEach(function (pick) {
+					if (pick.winner == pick.details.winner)
+						count++;
+
+					totalPicks++;
+				})
+			})
+			return {
+				count : count,
+				totalPicks : totalPicks,
+				percent : (count / totalPicks)
+			};
+		})
+	}
+
+	$scope.updatePick = function (pickId, pickValues) {
+		users.updatePick(pickId, pickValues).success(function(data){
+			console.log(data);
+		}).error(function (err){
+			console.log(err);
+		});
 	}
 	
 	users.getUsers().success(function (data) {
 		$scope.userlist = data;
-		
 	});
-	
-	schedule.getSchedule().success(function (data){
-		$scope.schedule = data;
-	})
-	$scope.isWinner = function(game, winner){
-		var actualWinner = gameList[game].winner;
 		
-		if(!actualWinner) return "No Winner Set";
-		
-		if (winner == actualWinner){
-			return "Win";
-		} else {
-			return "Lose";
-		}
-	}
-	
 }]);
