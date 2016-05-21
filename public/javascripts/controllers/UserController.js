@@ -1,44 +1,26 @@
 app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'leagues', function ($scope, users, $location, schedule, leagues) {
     $scope.userlist = {};
-	$scope.userModel = {};
-	$scope.totalwins = 0;
-	$scope.userModel2 = {};
-	gameList = {};
-	schedule.getGameList(function (gameListValue){
-			gameList = gameListValue;
-	});
-	
-	users.getUserPicks().success(function (data){
-		$scope.allPicks = data;
-	})
-	
-    schedule.getLogos().success(function (data) {
-	  $scope.pics = data[0];	
-    });
-	
-	$scope.getDetail = function(user) {
-		users.getUser(user).success(function (data) {
-			$scope.userModel.username = data.user[0].username;
-			$scope.userModel.userPicks = data.picks;
-			$scope.userModel.roles = data.user[0].roles;
-			$scope.userModel.winsByWeek = users.getUserWins($scope.userModel.userPicks, gameList);
-			populateGameDetails(data.picks);
-			
-		}).error(function (err){
-			console.log(err);
-		});
-		leagues.getLeaguesByUsername(user).success(function (data){
-			$scope.userModel.leagues = data;
-		});
-	};
-	
+	$scope.userModel = {};	
+		
 	$scope.getUserDetail = function(userId){
 		users.getUserModel(userId).success(function (data){
-			$scope.userModel2 = data;
-			$scope.userModel2.winTotal = total($scope.userModel2);
+			$scope.userModel = data;
+			$scope.userModel.winTotal = total($scope.userModel);
+			leagues.getLeaguesByUsername($scope.userModel.username).success(function(data){
+				$scope.userModel.leagues = data;
+			})
 		})
 	}
 	
+	$scope.removeUserFromLeague = function(userName, league){
+		//remove username from league
+		$scope.userModel.leagues.splice($scope.userModel.leagues.indexOf(league, 1));	
+		
+		leagues.removeUserFromLeague(userName, league).success(function (data){
+			
+		})
+		
+	}
 	
 	function total(userModel) {
 		return (function () {

@@ -13,6 +13,8 @@
             <File name="routes\dynamo.js" />
             <File name="routes\index.js" />
             <File name="routes\users.js" />
+            <File name="routes\picks.js" />
+            <File name="routes\users2.js" />
         </Folder>
         <File name="app.js" />
         <Folder name="model">
@@ -39,11 +41,14 @@
             <File name="public\javascripts\directives\footballTeams.js" />
             <File name="public\javascripts\directives\gamePanel.html" />
             <File name="public\javascripts\directives\gamePanel.js" />
+            <File name="public\javascripts\directives\userStats.html" />
+            <File name="public\javascripts\directives\userStats.js" />
         </Folder>
         <Folder name="services">
             <File name="public\javascripts\services\auth.js" />
             <File name="public\javascripts\services\schedule.js" />
             <File name="public\javascripts\services\users.js" />
+            <File name="public\javascripts\services\leagues.js" />
         </Folder>
         <Folder name="views">
             <File name="public\views\admin.html" />
@@ -51,7 +56,6 @@
             <File name="public\views\modal.html" />
             <File name="public\views\pickem.html" />
             <File name="public\views\register.html" />
-            <File name="public\views\userdetail.html" />
             <File name="public\views\userlist.html" />
         </Folder>
         <File name="public\javascripts\app.js" />

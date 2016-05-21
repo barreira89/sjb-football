@@ -37,5 +37,17 @@ leagueServices.updateLeague = function (leagueId, data){
 	})
 }
  
+leagueServices.removeUserFromLeague = function (username, league){
+	var i = league.users.indexOf(username);
+	if (i != -1) {
+		league.users.splice(i, 1);
+	}
+	console.log(league.users);
+	
+	return leagueServices.updateLeague(league._id, league);
+	
+}
+ 
+ 
  return leagueServices;
 }]);

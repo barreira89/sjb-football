@@ -35,7 +35,7 @@ router.post('/', function (req, res) {
 })
 
 router.get('/:pick_id', function (req, res){
-	Picks.findOne({extId:req.params.pick_id}, {_id:0}, function (err, pick){
+	Picks.findOne({_id:req.params.pick_id}, {_id:0}, function (err, pick){
 		if (err){
 			console.log(err);
 			res.sendStatus(500);
@@ -58,12 +58,6 @@ router.put('/:pick_id', function (req, res){
 			var pickObj = bodyToPickMapper(req.body);
 			//if exists
 			if(pick){
-				console.log('Request Body--------------------');
-				console.log(req.body);
-				console.log('pick----------------------------');
-				console.log(pick);
-				console.log('pickObj ------------------------');
-				console.log(pickObj);
 				
 				pick.username = pickObj.username;
 				pick.week = pickObj.week;
