@@ -115,32 +115,4 @@ router.get('/logos', function (req, res) {
 		res.send(docs);
 	});
 });
-
-router.get('/picks', function (req, res) {
-	Picks.aggregate([{
-				$group : {
-					_id : "$username",
-					picks : {
-						$push : "$$ROOT"
-					}
-				}
-			}, {
-				$project : {
-					_id : 1,
-					picks : {
-						picks : 1,
-						week : 1
-					}
-				}
-			}
-		], function (err, docs) {
-		if (err) {
-			res.send(500);
-		} else {
-			res.json(docs);
-		}
-	})
-
-})
-
 module.exports = router;

@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var MongoClient = require('mongodb').MongoClient;
-var monk = require('monk');
-var db = monk('127.0.0.1:27017/nodetest1');
+//var monk = require('monk');
+//var db = monk('127.0.0.1:27017/nodetest1');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
@@ -53,11 +53,6 @@ mongoose.connect('127.0.0.1:27017/nodetest1', function (err){
 	if(err){
 		console.log(err);
 	}
-});
-
-app.use(function(req,res,next){
-    req.db = db;
-    next();
 });
 
 app.use('/', routes);

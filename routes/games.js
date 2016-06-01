@@ -5,13 +5,30 @@ var Games = require('../models/games');
 router.get('/', function (req, res) {
 	var query = {}
 	query = buildQuery(req);
+	if (req.query.weeklist) {
+		Games.aggregate(
+		[
+			{$group: 
+				{
+					_id: null,
+					weeks: {$addToSet: "$weekNumber"}
+				}
+			}
+		], function (err, docs) {
+			if (err)
+				return res.send(err)
+
+				return res.json(docs);
+		});
+	} else{
 	
-	Games.find(query, function (err, games){
-		if(err) return res.send(err);
-		
-		return res.send(games);
-		
-	})
+		Games.find(query, function (err, games){
+			if(err) return res.send(err);
+			
+			return res.send(games);
+			
+		})
+	}
 	
 })
 
@@ -74,6 +91,8 @@ router.put('/:game_id', function (req, res){
 	})
 })
 
+
+
 module.exports = router;
 
 function gameMerge (gameFromDb, gameFromRequest){
@@ -100,6 +119,8 @@ function buildQuery(req){
 	
 	return query
 }
+
+
 
 function bodyToGameMapper(requestBody) {
 	return {

@@ -5,41 +5,13 @@ var Game = require('./games');
 var Picks = new Schema({
     username: String,
 	userId: String,
-	extId: String,
 	week: Number,
-	updated: { type: Date, default: Date.now },
-	picks: [
-		{
-			_id: false,
-			gameId: String,
-			game: {type: Schema.Types.ObjectId, ref: 'Games'},
-			winner: String,
-			details: {
-				_id: false,
-				home: String,
-				visitor: String,
-				winner: String,
-				gid: Number,
-				homescore: Number,
-				visitscore: Number,
-				weekNumber: Number
-			}
-		}
-	] 
+	game: {type: Schema.Types.ObjectId, ref: 'Games'},
+	winner: String
+},
+{
+	timestamps: true
+	
 });
-
-Picks.index({username: 1, week: 1}, {unique: true});
-
-//If no extId set, use default id
-// Picks.pre('save', function(next) {
-	// if(this.extId){
-		// console.log(this);
-		// console.log("middle ware")
-	// } else {
-		// this.extId = this.get('_id').toString().substring(10);
-	// }
-	// next();
-// })
-
 
 module.exports = mongoose.model('Picks', Picks);

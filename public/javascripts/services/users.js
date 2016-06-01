@@ -18,7 +18,7 @@ userservices.getUser = function (username){
 userservices.getUserPicks = function (username) {
 	return $http({
 			method: 'GET',
-			url: '/users/'+ username + '/picks'
+			url: '/api/picks/' + '?username=' +  username
 	})
 }
 
@@ -32,14 +32,6 @@ userservices.getUserPicksByWeek = function (userdata, week){
 	})
 	return weekPicks;
 } 
-
-userservices.updatePick = function (pickId, pickValues) {
-	return $http({
-		method: 'PUT',
-		url: '/api/picks/' + pickId,
-		data: pickValues
-	})
-}
 
 // userservices.getUserModel = function (userId, callback) {
 	// var user = $http({

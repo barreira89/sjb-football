@@ -15,6 +15,8 @@
             <File name="routes\users.js" />
             <File name="routes\picks.js" />
             <File name="routes\users2.js" />
+            <File name="routes\games.js" />
+            <File name="routes\api.js" />
         </Folder>
         <File name="app.js" />
         <Folder name="model">
@@ -25,6 +27,7 @@
             <File name="models\scheduleModel.js" />
             <File name="models\test.json" />
             <File name="models\users.js" />
+            <File name="models\games.js" />
         </Folder>
     </Project>
     <Project name="angular">
@@ -49,6 +52,9 @@
             <File name="public\javascripts\services\schedule.js" />
             <File name="public\javascripts\services\users.js" />
             <File name="public\javascripts\services\leagues.js" />
+            <File name="public\javascripts\services\games.js" />
+            <File name="public\javascripts\services\picks.js" />
+            <File name="public\javascripts\services\utils.js" />
         </Folder>
         <Folder name="views">
             <File name="public\views\admin.html" />
@@ -57,6 +63,7 @@
             <File name="public\views\pickem.html" />
             <File name="public\views\register.html" />
             <File name="public\views\userlist.html" />
+            <File name="public\views\leagues.html" />
         </Folder>
         <File name="public\javascripts\app.js" />
     </Project>

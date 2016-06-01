@@ -1,59 +1,57 @@
-app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', 'games', 'picks', function($scope, schedule, auth, users, games, picks){	
+app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', 'games', 'picks', 'util', function($scope, schedule, auth, users, games, picks, util){	
 	$scope.weekSchedule = {};
 	$scope.games = {};
 	$scope.checked = false;
 	$scope.currentGames = {};
 	
 	$scope.userModel = {}
-	users.getUserModel('56845b9e078625601cf27dfa').success(function(data){
-		$scope.userModel = data;
+	games.getWeekList().success(function (data){
+		console.log(data);
+		$scope.weekList = data[0].weeks;
 	})
 	
-	picks.getPicksByUsername('thy').success(function (data){
-		//$scope.picks = data;
-	})
-	picks.getPicksByUsernameAndWeek('thy',2).success(function (data){
-		$scope.picks = data;
-	})
+	/*
+		1. User Selects Week
+			getGamesByWeek
+			if user, get user picks by week
+		2. Display Games (if user is logged in, display with picks)
+	*/
 	
-	//create pick model
-	//For each game, find pick 
+	this.getCurrentWeekGames = function (currentWeek) {
+		console.log($scope.weekSchedule.selected);
+		//get list of games for this week, assign to currentGames
+		games.getGamesByWeek(currentWeek).success(function (gameList) {
+			
+			//Current games = games where week = selected week
+			$scope.currentGames = gameList;
+
+			users.getUserModel('56845b9e078625601cf27dfa').success(function (data) {
+				$scope.userModel = data;
 	
-	$scope.attachUserPick = function (game, pickModel){	
-		pickModel.forEach(function(pick){
-			pick.picks.forEach(function(pick){
-				if(pick.game == game._id){
-					console.log(pick);
-					game.pickModel = pick;
-				}	
+				picks.getPicksByUsernameAndWeek('thy', currentWeek).success(function (data) {
+					$scope.userModel.pickModel = data;
+					util.attachUserPicksToGames(gameList, $scope.userModel);
+				})
 			})
+
 		})
 	}
-	//attach current picks to game by Id
-	
-	
-	
-	games.getGames().success(function (gameList){
-		$scope.gameList1 = gameList;
-	})
-	
-	this.getCurrentWeekGames = function (currentWeek){
-		games.getGamesByWeek(currentWeek).success(function(gameList){
-			$scope.currentGames = gameList;
-		})	
-	}
-	
-	//Model for Main Controller class
-	$scope.model = {
-			games : {},
-			weekSchedule : {},
-			checked: false,
-			userName: auth.getUser(),
-			userPicks: {}
-		 }
-	
+		
 	$scope.userName = auth.getUser();
 	
+	$scope.updatePicks = function(username, week, pickData){
+		var gameList = $scope.currentGames
+		var userPicks = util.gatherUserPicks($scope.currentGames);
+		
+		picks.updateListOfPicks(username, week, userPicks).success(function (data){
+			console.log('success');
+			$scope.userModel.pickModel = data;
+			util.attachUserPicksToGames(gameList, $scope.userModel);
+		}).error(function(err){
+			console.log(err);
+		});
+	}
+		
 	schedule.getLogos().success(
 		function(data){
 			$scope.pics = data[0];
@@ -66,14 +64,7 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', 'games'
 			$scope.use = data;
 			setParentUser(data);
 		})
-
 	}
-	
-	schedule.getSchedule().success(
-		function(data){
-			$scope.schedule = data;
-		}
-	);
 	
 	setParentUser = function (userData){
 			var username = userData.user[0] && userData.user[0].username;
@@ -88,23 +79,4 @@ app.controller('MainController', ['$scope', 'schedule', 'auth', 'users', 'games'
 		)
 	}
 	
-	this.getByWeek = function(week){
-		$scope.games = {};
-		$scope.weekSchedule.weekNumber = week;
-		
-		if ($scope.use){
-			userPicks(week);
-		}
-		
-		for(x in $scope.schedule){
-			var curWeek = $scope.schedule[x].weekNumber;
-			if (curWeek == week.weekNumber){
-				$scope.model.weekSchedule = $scope.schedule[x];
-			}
-		}
-	}
-	
-	function userPicks(week){
-		$scope.model.userPicks = users.getUserPicksByWeek($scope.use, week);	
-	}
 }]);

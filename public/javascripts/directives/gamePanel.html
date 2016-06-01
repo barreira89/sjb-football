@@ -3,7 +3,6 @@
 	<uib-accordion>
 				<uib-accordion-group is-open=true heading="{{game.visitor}} vs. {{game.home}}">
 				<div class="row">
-				{{game.pickModel}}
 					<div class="col-md-3 hidden-xs">	
 						<img class="img-circle pickimg" ng-class="{'lose': game.winner == 'home'}" height="36" ng-src="{{logoByTeam(game.visitor)}}" >
 					</div>
@@ -12,7 +11,7 @@
 							<label 
 							class="btn btn-default btn-sm btn-block pickbtn" 
 							ng-class="{'btn-success': winner == 'visitor'}" 
-							ng-model ="game.pickModel.userPick"
+							ng-model ="game.userPicks.winner"
 							uib-btn-radio="'visitor'" 
 							uncheckable> 
 								<b> {{game.visitor}} </b>
@@ -22,6 +21,7 @@
 					<div class="col-md-2 col-xs-4">
 						<label class="score"> {{game.visitscore}} </label>
 					</div>
+					<!--<button class="btn btn-default" ng-click="updatePick(game.userPicks._id, game.userPicks)" > update </button> -->
 				</div>
 				<div class="row">
 					<div class="col-md-3 hidden-xs">
@@ -31,7 +31,7 @@
 						<div class="pox">
 							<label class="btn btn-default btn-sm btn-block pickbtn" 
 							ng-class="{'btn-success': team.winner == 'home'}" 
-							ng-model ="game.pickModel.userPick"
+							ng-model ="game.userPicks.winner"
 							uib-btn-radio="'home'"
 							uncheckable> <b> {{game.home}} </b> </label>
 						</div>

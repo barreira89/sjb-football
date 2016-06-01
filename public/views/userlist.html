@@ -8,30 +8,25 @@
 		</div>
 	</div>	
 	<div class="col-md-8">
-	 
-		<div> <h2> {{userModel.username | uppercase}} </h2> 
+		<div class="row"> <h2> {{userModel.username | uppercase}} </h2> 
 			<user-stats userModel="userModel"></user-stats>
 		</div>
-		<div ng-repeat="pick in userModel.picks | orderBy:'week'">
-			<h3> Week: {{pick.week}}</h3>
-			<div ng-repeat="game in pick.picks" class="row">
-				<div class="col-sm-1">
-				{{game.gameId}} 
-				</div>
-				<div class="col-sm-3">
-				{{game.details.home}} @ {{game.details.visitor}} 
-				</div>
-				<div class="col-sm-2">
-				 <label> {{game.details[game.details.winner]}} </label>
-				</div>
-				<div class="col-sm-2">
-					<select name="winnerSelect" ng-model="game.winner">
-							<option value="home"> {{game.details.home}} </option>
-							<option value="visitor"> {{game.details.visitor}} </option>
+		<div ng-repeat="weekPick in userPicksByWeek"> 
+			<h1> Week: {{weekPick.week}} </h1>
+			<div ng-repeat="pick in weekPick.picks">
+				<div class="row">
+					<div class="col-md-3">
+					<select name="winnerSelect" ng-model="pick.winner">
+							<option value="home"> {{pick.game.home}} </option>
+							<option value="visitor"> {{pick.game.visitor}} </option>
 					</select>
-				</div>
-				<div class="col-md-2">
-					<button ng-click="updatePick(pick._id, pick)" class="btn btn-default"> Update </button>
+					</div>
+					<div class="col-md-6">
+					{{pick.winner}} {{pick.game.date | json }} {{pick.game.weekNumber | json }}
+					</div>
+					<div class="col-md-3">
+						<button ng-click="updatePick(pick._id, pick)" class="btn btn-default"> Update </button>
+					</div>
 				</div>
 			</div>
 		</div>

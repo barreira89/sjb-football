@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Picks = require('../models/picks');
 var Accounts = require('../models/account');
+var mongoose = require('mongoose');
 
 router.get('/', function (req, res) {
 	var query = buildQuery(req);	
@@ -11,6 +12,81 @@ router.get('/', function (req, res) {
 		
 		return res.json(docs);
 	});
+})
+
+router.put('/', function (req, res){
+	var query = {}
+	
+	if(req.query.username && req.query.week){
+		
+		if(Array.isArray(req.body)){
+			var results = [];
+			var recordsDone = 0;
+			for(var i = 0, len = req.body.length; i < len; i++){
+				// pick = new Picks(req.body[i]);
+				
+				// pick.save(function (err, doc){
+					// if(err){
+						// results.push(err);
+						// console.log(err);
+						// recordsDone ++;
+					// }
+					// else {
+						// results.push(doc);
+						// recordsDone++;
+					// }
+					// if(recordsDone == len -1){
+						// return res.send(results);
+					// }
+				// })`
+				if(!req.body[i]._id) req.body[i]._id = new mongoose.mongo.ObjectID();
+				
+				Picks.findOneAndUpdate({_id:req.body[i]._id}, req.body[i], {upsert:true, new:true}, function (err, doc){
+					if (err){
+						 results.push(err);
+						 recordsDone ++;
+					} else {
+						results.push(doc);
+						recordsDone ++;
+					}
+					if(recordsDone == len){
+						return res.send(results);
+					}					
+				})
+			}
+			console.log(results);
+			//return res.send(results);
+		} else {
+		
+		}
+		//err should be 
+	} else {
+		return res.sendStatus(500);
+		
+	}
+	
+	
+	
+})
+router.get('/with', function (req, res) {
+	var query = buildQuery(req);
+	console.log(query);
+		
+		Picks
+		.find(query)
+		.populate('game')
+		.exec(function (err, pick) {
+			if (err) {
+				console.log(err);
+				res.sendStatus(500);
+			} else {
+				if (pick)
+					return res.json(pick);
+
+				return res.sendStatus(404);
+			}
+		});
+	
 })
 
 router.get('/withGame/:pick_id', function (req, res) {
@@ -83,6 +159,8 @@ router.put('/:pick_id', function (req, res){
 				pick.week = pickObj.week;
 				pick.userId = pickObj.userId;
 				pick.picks = pickObj.picks;
+				pick.winner = pickObj.winner;
+				pick.game = pickObj.game;
 				
 				pick.save(function(err, doc){
 					if(err){
@@ -104,6 +182,7 @@ router.put('/:pick_id', function (req, res){
 			}
 		}
 	})
+
 })
 
 module.exports = router;
@@ -130,6 +209,8 @@ function bodyToPickMapper(requestBody) {
 			username : requestBody.username,
 			week : requestBody.week,
 			picks: requestBody.picks,
-			userId: requestBody.userId
+			userId: requestBody.userId,
+			game: requestBody.game,
+			winner: requestBody.winner
 		}
 }

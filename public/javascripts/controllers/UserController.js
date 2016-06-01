@@ -1,4 +1,4 @@
-app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'leagues', function ($scope, users, $location, schedule, leagues) {
+app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'leagues', 'picks', function ($scope, users, $location, schedule, leagues, picks) {
     $scope.userlist = {};
 	$scope.userModel = {};	
 		
@@ -8,6 +8,10 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'l
 			$scope.userModel.winTotal = total($scope.userModel);
 			leagues.getLeaguesByUsername($scope.userModel.username).success(function(data){
 				$scope.userModel.leagues = data;
+			})
+			picks.getPicksByUsername($scope.userModel.username).success(function(data){
+				$scope.userModel.newPickModel = data;
+				$scope.userPicksByWeek = picks.groupPicksByWeek(data);
 			})
 		})
 	}
@@ -26,14 +30,14 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'l
 		return (function () {
 			var count = 0;
 			var totalPicks = 0;
-			userModel.picks.forEach(function (each) {
-				each.picks.forEach(function (pick) {
-					if (pick.winner == pick.details.winner)
-						count++;
+			// userModel.picks.forEach(function (each) {
+				// each.picks.forEach(function (pick) {
+					// if (pick.winner == pick.details.winner)
+						// count++;
 
-					totalPicks++;
-				})
-			})
+					// totalPicks++;
+				// })
+			// })
 			return {
 				count : count,
 				totalPicks : totalPicks,
@@ -43,7 +47,7 @@ app.controller('UserController', ['$scope', 'users', '$location', 'schedule', 'l
 	}
 
 	$scope.updatePick = function (pickId, pickValues) {
-		users.updatePick(pickId, pickValues).success(function(data){
+		picks.updatePick(pickId, pickValues).success(function(data){
 			console.log(data);
 		}).error(function (err){
 			console.log(err);

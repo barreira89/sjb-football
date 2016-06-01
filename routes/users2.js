@@ -155,11 +155,11 @@ function accountMapper(request) {
 
 function withGameDetails(picks, lookUp){
 	//console.log(lookUp);
-	picks.forEach(function(pickObj){
-		pickObj.picks.forEach(function(game){
-			game.details = lookUp[parseInt(game.gameId)];
-		})
-	})
+	// picks.forEach(function(pickObj){
+		// pickObj.picks.forEach(function(game){
+			// game.details = lookUp[parseInt(game.gameId)];
+		// })
+	// })
 	return picks;
 }
 

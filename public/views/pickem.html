@@ -9,8 +9,8 @@
 						<select 
 							class="form-control" 
 							ng-model="weekSchedule.selected" 
-							ng-options="week.weekNumber for week in schedule | orderBy: 'weekNumber'" 
-							ng-change="mctrl.getCurrentWeekGames(weekSchedule.selected.weekNumber)" 
+							ng-options="option for option in weekList | orderBy: option" 
+							ng-change="mctrl.getCurrentWeekGames(weekSchedule.selected)" 
 						/>
 					</label>
 				</div>
@@ -18,14 +18,13 @@
 	</div>
 </div>
 </div>
-<div ng-repeat="pick in picks">
-{{pick}}}
-</div>
+
+<button class="btn btn-default" ng-click="updatePicks('thy', weekSchedule.selected, userModel.pickModel)"> Update All Picks </button>
 <div ng-repeat="game in currentGames">
-	{{attachUserPick(game, picks)}}
 	<game-panel game="game" user="userModel"></game-panel>
 </div>
 <!--
 <div class="container-fluid my-container" ng-show="weekSchedule.selected">
 	<football-teams></football-teams>
 </div>-->
+<!--"week.weekNumber for week in schedule | orderBy: 'weekNumber'" -->

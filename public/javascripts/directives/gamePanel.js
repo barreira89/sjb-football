@@ -1,14 +1,16 @@
-app.directive('gamePanel', ['schedule' , function(schedule){
+app.directive('gamePanel', ['schedule', 'picks', function(schedule, picks){
 	var controller = ['$scope', function ($scope){
 		
 		function init(){
-			if (!$scope.game.pickModel) {
-				$scope.game.pickModel = {
-					game : $scope.game._id,
-					userId : $scope.userModel._id,
-					weekNumber : $scope.game.weekNumber
-				}
-			}
+			//console.log($scope.game.pickModel);
+			
+			// if (!$scope.game.pickModel) {
+				// $scope.game.pickModel = {
+					// game : $scope.game._id,
+					// userId : $scope.userModel._id,
+					// weekNumber : $scope.game.weekNumber
+				// }
+			// }
 			
 			if($scope.userModel.pickModel){
 				$scope.userModel.pickModel.push($scope.game.pickModel)
@@ -17,6 +19,13 @@ app.directive('gamePanel', ['schedule' , function(schedule){
 				$scope.userModel.pickModel.push($scope.game.pickModel);
 			}
 		}
+		
+		$scope.updatePick = function (pickId, pickData){
+			picks.updateOrCreatePick(pickId, pickData).success(function (data){
+				console.log(data);
+			}).error(function (err){console.log(err);})
+		}
+		
 		
 		//findPickById
 		
