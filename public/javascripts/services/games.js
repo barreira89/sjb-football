@@ -36,6 +36,13 @@ gameServices.getGamesByTeam = function (team){
 	})
 }
 
+gameServices.updateGamesByWeek = function (week, gameData) {
+	return $http({
+		method : 'PUT',
+		url : '/api/games' + '?weeknumber=' + parseInt(week),
+		data : gameData
+	})
+}
 gameServices.updateGame = function (gameId, data){
 	return $http({
 		method: 'PUT',

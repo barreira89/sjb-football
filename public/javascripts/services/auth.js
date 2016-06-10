@@ -4,6 +4,8 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
   
   var user;
   
+  var userModel;
+  
   authservices.isLoggedIn = function(){
 	  if (user){
 		  return true;
@@ -13,7 +15,7 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
   }
    
   authservices.getUser = function (){
-	  return un;
+	  if(user)  return user;
   }
   
   authservices.getUserStatus = function (){
@@ -29,8 +31,10 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
-        user = true;
+        user = {};
         un = username;
+		user.id = data.user._id;
+		user.username = username;
 		deferred.resolve();
       } else {
         user = false;

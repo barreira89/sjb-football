@@ -45,6 +45,14 @@ pickServices.getPicksByUsernameAndWeek = function (username, week){
 	})	
 }
 
+pickServices.getPicksByUserIdAndWeek = function (userid, week){
+	return $http({
+			method: 'GET',
+			url: '/api/picks' + '?userid=' + userid +'&'+'week=' + parseInt(week)
+	})	
+}
+
+
 pickServices.updateListOfPicks = function (username, week, pickData){
 	return $http({
 		method: 'PUT',

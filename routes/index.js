@@ -58,6 +58,12 @@ router.post('/winners', function (req, res) {
 });
 
 //Account & User Actions
+router.post('/loginnew', passport.authenticate('local'), function (req, res, next){
+		
+	
+	
+})
+
 
 router.post('/login', function (req, res, next) {
 	passport.authenticate('local', function (err, user, info) {
@@ -78,7 +84,8 @@ router.post('/login', function (req, res, next) {
 				});
 			}
 			res.status(200).json({
-				status : 'Login successful!'
+				status : 'Login successful!',
+				user: user
 			});
 		});
 	})(req, res, next);
@@ -101,7 +108,8 @@ router.post('/register', function (req, res) {
 		}
 		passport.authenticate('local')(req, res, function () {
 			res.status(200).json({
-				status: "user was successfully created"
+				status: "user was successfully created",
+				user: account
 			});
 		});
 	});

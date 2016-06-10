@@ -1,16 +1,16 @@
 <div class="container-fluid">
-<div class="jumbotron text-center"> 
+<div class="jumbotron text-center">
 	<div class="panel panel-default main-panel">
 		<h1> Football Pick'em </h1>
 		<p> Select a week and pick the winners </p>
 		<div class="container row form-group">
 				<div class="text-center">
 					<label for="sel1">
-						<select 
-							class="form-control" 
-							ng-model="weekSchedule.selected" 
-							ng-options="option for option in weekList | orderBy: option" 
-							ng-change="mctrl.getCurrentWeekGames(weekSchedule.selected)" 
+						<select
+							class="form-control"
+							ng-model="weekSchedule.selected"
+							ng-options="option for option in weekList | orderBy: option"
+							ng-change="mctrl.getCurrentWeekGames(weekSchedule.selected)"
 						/>
 					</label>
 				</div>
@@ -18,13 +18,11 @@
 	</div>
 </div>
 </div>
-
-<button class="btn btn-default" ng-click="updatePicks('thy', weekSchedule.selected, userModel.pickModel)"> Update All Picks </button>
 <div ng-repeat="game in currentGames">
 	<game-panel game="game" user="userModel"></game-panel>
 </div>
-<!--
-<div class="container-fluid my-container" ng-show="weekSchedule.selected">
-	<football-teams></football-teams>
-</div>-->
-<!--"week.weekNumber for week in schedule | orderBy: 'weekNumber'" -->
+<div class="row">
+	<div class="col-md-offset-4 col-md-4">
+		<button class="btn btn-default form-control" ng-show="currentGames" ng-click="updatePicks('thy', weekSchedule.selected, userModel.pickModel)"> Update All Picks </button>
+	</div>
+</div>

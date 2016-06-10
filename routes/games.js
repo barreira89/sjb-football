@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Games = require('../models/games');
+var mongoose = require('mongoose');
 
 router.get('/', function (req, res) {
 	var query = {}
@@ -51,6 +52,42 @@ router.post('/', function (req, res) {
 		}
 	})
 })
+router.put('/', function(req,res){
+	//Check query for weeknumber
+	
+	if(req.query.weeknumber){
+		if(Array.isArray(req.body)){
+			var results = [];
+			var recordsDone = 0;
+			
+			//Loop through each game in the array, add or update the game;
+			for(var i = 0, len = req.body.length; i < len; i++){
+				var currentGame = req.body[i];
+				
+				//check if it has an ID, if not assign
+				if(!currentGame._id) currentGame._id = new mongoose.mongo.ObjectID();
+				
+				Games.findOneAndUpdate({_id:currentGame._id}, currentGame, {upsert:true, new:true}, function (err, doc){
+					//Add Results to results array
+					if (err){
+						 results.push(err);
+						 recordsDone ++;
+					} else {
+						results.push(doc);
+						recordsDone ++;
+					}
+					//send when complete
+					if(recordsDone == len){
+						return res.send(results);
+					}					
+				})
+			}
+		}
+	} else {
+		return res.sendStatus(400);
+	}
+})
+
 
 router.get('/:game_id', function (req, res){
 	Games.findById({_id:req.params.game_id}, function (err, doc){

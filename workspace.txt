@@ -17,6 +17,7 @@
             <File name="routes\users2.js" />
             <File name="routes\games.js" />
             <File name="routes\api.js" />
+            <File name="routes\logos.js" />
         </Folder>
         <File name="app.js" />
         <Folder name="model">

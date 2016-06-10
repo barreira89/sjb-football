@@ -37,7 +37,7 @@ app.factory('schedule', ['$http', function($http) {
   dataservices.getLogos = function (){
 	 return $http({
 		  method: 'GET',
-		  url: '/logos'
+		  url: '/api/logos'
 	  })	  
   }
   
@@ -71,9 +71,12 @@ return dataservices;
 function setUpLogos(){
 	$http({
 		  method: 'GET',
-		  url: '/logos'
+		  url: '/api/logos'
 	  }).success( function(data){
-		  logos = data[0];
+		  logos = {}
+		  data.map(function(logo){
+			  logos[logo.team] = logo.logo;
+		  });
 	 })
 }
 

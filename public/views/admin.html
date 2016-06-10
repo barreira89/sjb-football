@@ -2,43 +2,38 @@
 	<h1> Set Winners </h1>
 	<div class="text-center">
 		<label for="sel1">
-			<select class="form-control" ng-model="wk.selected" ng-options="week.weekNumber for week in schedule | orderBy: 'weekNumber'" ng-change="getScheduleByWeek(wk.selected.weekNumber)" />
+			<select class="form-control" ng-model="wk.selected" ng-options="week for week in weekList | orderBy: week" ng-change="getScheduleByWeek(wk.selected)" />
 		</label>
 	</div>
 	<div class="container-fluid">
-	<div ng-repeat="weeks in games" class="row">
-			<div ng-repeat="game in weeks.games track by $index" ng-controller="testController">
-				<div class="panel panel-default col-sm-2">
-				<div class="panel-heading"> ID: {{game.gid}}</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-7 col-xs-6">
-						<label class="btn btn-default btn-xs pickbtn" ng-model ="game.winner" uib-btn-radio="'home'"> <b> {{game.home}} </b></label>			
-						</div>
-						<div class="col-sm-5 col-xs-6">
-						<input type="number" class="form-control input-sm score-txt" ng-model="game.homescore"></input>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-7 col-xs-6">
-							<label class="btn btn-default btn-xs pickbtn" ng-model ="game.winner" uib-btn-radio="'visitor'"> <b> {{game.visitor}} </b></label>
-						</div>
-						<div class="col-sm-5 col-xs-6">
-							<input class="form-control input-sm score-txt" type="number" ng-model="game.visitscore"></input>
-						</div>
-					</div>
+	<div ng-repeat="game in currentGames">
+		<div class="panel panel-default col-sm-2">
+			<div class="row">
+				<div class="col-sm-7 col-xs-6">
+					<label class="btn btn-default btn-xs pickbtn" ng-model ="game.winner" uib-btn-radio="'home'"> <b> {{game.home}} </b></label>
 				</div>
+				<div class="col-sm-5 col-xs-6">
+					<input type="number" class="form-control input-sm score-txt" ng-model="game.homescore"></input>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-sm-7 col-xs-6">
+					<label class="btn btn-default btn-xs pickbtn" ng-model ="game.winner" uib-btn-radio="'visitor'"> <b> {{game.visitor}} </b></label>
+				</div>
+				<div class="col-sm-5 col-xs-6">
+					<input type="number" class="form-control input-sm score-txt" ng-model="game.visitscore"></input>
+				</div>
+			</div>
+		</div>
 	</div>
 	</div>
 	<div class= "row">
-		<div class="col-md-8 col-md-offset-2" ng-show="games">
+		<div class="col-md-8 col-md-offset-2" ng-show="currentGames">
 			<div class="col-md-6">
 				<label class="btn btn-primary btn-block" ng-click="reset()"> Reset </label>
 			</div>
 			<div class="col-md-6">
-				<label class="btn btn-primary btn-block" ng-click="submit(games,wk.selected.weekNumber)" data-toggle="modal" data-target="#myModal"> Submit </label>
+				<label class="btn btn-primary btn-block" ng-click="updateGames(wk.selected, currentGames)" data-toggle="modal" data-target="#myModal"> Submit </label>
 			</div>
 		</div>
 	</div>

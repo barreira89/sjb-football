@@ -21,8 +21,11 @@
 							<option value="visitor"> {{pick.game.visitor}} </option>
 					</select>
 					</div>
-					<div class="col-md-6">
-					{{pick.winner}} {{pick.game.date | json }} {{pick.game.weekNumber | json }}
+					<div class="col-md-3">
+						{{pick.game.visitor}} @ {{pick.game.home}}
+					</div>
+					<div class="col-md-3">
+						 {{pick.winner}} | {{pick.game.winner}}
 					</div>
 					<div class="col-md-3">
 						<button ng-click="updatePick(pick._id, pick)" class="btn btn-default"> Update </button>

@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 router.get('/', function (req, res) {
 	var query = buildQuery(req);	
 	
+	console.log(query);
 	Picks.find(query, function (err, docs){
 		if (err) return res.sendStatus(404);
 		
@@ -23,22 +24,6 @@ router.put('/', function (req, res){
 			var results = [];
 			var recordsDone = 0;
 			for(var i = 0, len = req.body.length; i < len; i++){
-				// pick = new Picks(req.body[i]);
-				
-				// pick.save(function (err, doc){
-					// if(err){
-						// results.push(err);
-						// console.log(err);
-						// recordsDone ++;
-					// }
-					// else {
-						// results.push(doc);
-						// recordsDone++;
-					// }
-					// if(recordsDone == len -1){
-						// return res.send(results);
-					// }
-				// })`
 				if(!req.body[i]._id) req.body[i]._id = new mongoose.mongo.ObjectID();
 				
 				Picks.findOneAndUpdate({_id:req.body[i]._id}, req.body[i], {upsert:true, new:true}, function (err, doc){
@@ -61,12 +46,8 @@ router.put('/', function (req, res){
 		}
 		//err should be 
 	} else {
-		return res.sendStatus(500);
-		
+		return res.sendStatus(400);
 	}
-	
-	
-	
 })
 router.get('/with', function (req, res) {
 	var query = buildQuery(req);
@@ -190,15 +171,14 @@ module.exports = router;
 function buildQuery (request){
 	var query = {}
 	
-	if (request.query.username){
+	if (request.query.username)	
 		query.username = request.query.username;
-	}
-	if (request.query.userid){
-		query.userId = request.query.userid;
-	}
-	if(request.query.week){
-		query.week = request.query.week
-	}
+	
+	if (request.query.userid) 
+		query.user = request.query.userid;
+	
+	if(request.query.week) 
+		query.week = request.query.week;
 	
 	return query;
 }
