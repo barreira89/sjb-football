@@ -1,6 +1,6 @@
-app.factory('util', ['$http', function($http) { 
+app.factory('util', ['$http', function($http) {
  var utils = {};
- 
+
  utils.attachUserPicksToGames = function (gameList, userModel) {
  	var userPicks = userModel.pickModel
 
@@ -23,14 +23,14 @@ app.factory('util', ['$http', function($http) {
  			})
  		}
  }
- 
+
  utils.gatherUserPicks = function (gameList) {
  	var userPicks = [];
-	
+
  	gameList.forEach(function (game) {
  		userPicks.push(game.userPicks);
  	})
-	
+
  	return userPicks;
 
  }
