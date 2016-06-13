@@ -8,12 +8,6 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
 
     var accountModel = auth.getUser();
 
-    /**
-    	1. User Selects Week
-    		getGamesByWeek
-    		if user, get user picks by week
-    	2. Display Games (if user is logged in, display with picks)
-    */
 
     this.getCurrentWeekGames = function(currentWeek) {
 
@@ -37,10 +31,13 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
         })
     }
 
-    $scope.userName = accountModel && accountModel.username || 'guest';
+    $scope.userName = accountModel && accountModel.username;
 
     $scope.updatePicks = function(username, week, pickData) {
-        var gameList = $scope.currentGames
+				if (!username) return;
+
+				console.log('Reached!');
+				var gameList = $scope.currentGames
         var userPicks = util.gatherUserPicks($scope.currentGames);
 
         picks.updateListOfPicks(username, week, userPicks).success(function(data) {
@@ -50,7 +47,10 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
             console.log(err);
         });
     }
-
+		/**
+		* If User Is Logged In, then get user information
+		*
+		*/
     if ($scope.userName) {
         users.getUser($scope.userName).success(
             function(data) {
