@@ -7,7 +7,9 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
     })
 
     var accountModel = auth.getUser();
-
+    if(accountModel){
+      $scope.userName = accountModel.username;
+    }
 
     this.getCurrentWeekGames = function(currentWeek) {
 
@@ -31,16 +33,14 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
         })
     }
 
-    $scope.userName = accountModel && accountModel.username;
-
-    $scope.updatePicks = function(username, week, pickData) {
-				if (!username) return;
+    $scope.updatePicks = function(week, pickData) {
+				if (!accountModel) return;
 
 				console.log('Reached!');
 				var gameList = $scope.currentGames
         var userPicks = util.gatherUserPicks($scope.currentGames);
 
-        picks.updateListOfPicks(username, week, userPicks).success(function(data) {
+        picks.updateListOfPicks(accountModel.username, week, userPicks).success(function(data) {
             $scope.userModel.pickModel = data;
             util.attachUserPicksToGames(gameList, $scope.userModel);
         }).error(function(err) {
@@ -51,7 +51,9 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
 		* If User Is Logged In, then get user information
 		*
 		*/
-    if ($scope.userName) {
+
+
+    if (accountModel && accountModel.username) {
         users.getUser($scope.userName).success(
             function(data) {
                 $scope.use = data;
