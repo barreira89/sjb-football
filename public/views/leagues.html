@@ -30,4 +30,14 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<!--section for week with user picks and standings-->
+	 <div ng-repeat="weeks in leagueSummary">
+		 	<h4> Week: {{weeks.week}} </h4>
+			<div ng-repeat="results in weeks.results | orderBy: '-wins'">
+					{{results.username}} | Wins: {{results.wins}} Losses: {{results.losses}}
+			</div>
+
+	 </div>
+	</div>
 </div>

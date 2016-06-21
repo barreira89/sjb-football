@@ -7,11 +7,12 @@ var Picks = new Schema({
 	userId: String,
 	week: Number,
 	game: {type: Schema.Types.ObjectId, ref: 'Games'},
-	winner: String
+	winner: String,
+  result: String
 },
 {
 	timestamps: true
-	
+
 });
 
 module.exports = mongoose.model('Picks', Picks);

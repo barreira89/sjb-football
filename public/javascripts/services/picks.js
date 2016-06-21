@@ -1,6 +1,6 @@
-app.factory('picks', ['$http', function($http) { 
+app.factory('picks', ['$http', function($http) {
  var pickServices = {};
- 
+
 pickServices.getPicks = function (){
 	 return $http({
 		 method: 'GET',
@@ -13,7 +13,7 @@ pickServices.getPickById = function (pickId){
 		method: 'GET',
 		url: '/api/picks/' + pickId
 	})
-} 
+}
 
 pickServices.getPicksByUsername = function (username) {
 	return $http({
@@ -23,18 +23,18 @@ pickServices.getPicksByUsername = function (username) {
 }
 pickServices.groupPicksByWeek = function (picks){
 	var output = [];
-	
+
 	var mapped = {}
 	picks.forEach(function (obj) {
 		if (!mapped[obj.week]) 	mapped[obj.week] = [];
-		
+
 		mapped[obj.week].push(obj);
 	})
-	
+
 	for (x in mapped){
 		output.push({week: x, picks: mapped[x]})
 	}
-	
+
 	return output;
 }
 
@@ -42,14 +42,14 @@ pickServices.getPicksByUsernameAndWeek = function (username, week){
 	return $http({
 			method: 'GET',
 			url: '/api/picks' + '?username=' + username +'&'+'week=' + parseInt(week)
-	})	
+	})
 }
 
 pickServices.getPicksByUserIdAndWeek = function (userid, week){
 	return $http({
 			method: 'GET',
 			url: '/api/picks' + '?userid=' + userid +'&'+'week=' + parseInt(week)
-	})	
+	})
 }
 
 
@@ -64,16 +64,16 @@ pickServices.updatePick = function(pickId, pickData){
 	return $http({
 		method: 'PUT',
 		url: '/api/picks/' + pickId,
-		data: pickData		
+		data: pickData
 	})
-	
-	
+
+
 }
 
 pickServices.updateOrCreatePick = function (pickId, pickData){
 	var method;
 	var requestId = pickId || '';
-	
+
 	if(pickId){
 		method = 'PUT';
 		console.log(method);
@@ -81,13 +81,35 @@ pickServices.updateOrCreatePick = function (pickId, pickData){
 		method = 'POST';
 		console.log(method);
 	}
-	
+
 	return $http({
 			method: method,
 			url: '/api/picks/' + requestId,
 			data: pickData
-	})	
+	})
 }
+
+pickServices.winCalculation = function total(userModel) {
+     return (function() {
+         var winCount = 0,
+            totalPicks = 0;
+
+         userModel.newPickModel.forEach(function(pick) {
+              var winnerOfTheGame = pick.game && pick.game.winner || 'winnerNotSet';
+
+              if (pick.winner == winnerOfTheGame)
+                 winCount++;
+
+             if(winnerOfTheGame !== 'winnerNotSet')
+                  totalPicks++;
+         })
+         return {
+             count: winCount,
+             totalPicks: totalPicks,
+             percent: (winCount / totalPicks)
+         };
+     })
+ }
 
  return pickServices;
 }]);

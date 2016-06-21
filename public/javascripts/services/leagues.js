@@ -1,4 +1,4 @@
-app.factory('leagues', ['$http', function($http) { 
+app.factory('leagues', ['$http', function($http) {
  var leagueServices = {};
 
 leagueServices.getLeagues = function (){
@@ -13,7 +13,7 @@ leagueServices.getLeagueById = function (leagueId){
 		method: 'GET',
 		url: '/leagues/' + leagueId
 	})
-} 
+}
 
 leagueServices.createLeague = function (username) {
 	return $http({
@@ -36,18 +36,25 @@ leagueServices.updateLeague = function (leagueId, data){
 		data: data
 	})
 }
- 
+
 leagueServices.removeUserFromLeague = function (username, league){
 	var i = league.users.indexOf(username);
 	if (i != -1) {
 		league.users.splice(i, 1);
 	}
 	console.log(league.users);
-	
+
 	return leagueServices.updateLeague(league._id, league);
-	
+
 }
- 
- 
+
+ leagueServices.getLeagueSummary= function(leagueId){
+   return $http({
+     method: 'GET',
+     url: '/leagues/' + leagueId + '/weeksummary'
+   })
+
+ }
+
  return leagueServices;
 }]);

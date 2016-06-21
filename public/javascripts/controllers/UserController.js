@@ -1,4 +1,4 @@
-app.controller('UserController', ['$scope', 'users', '$location', 'leagues', 'picks', function ($scope, users, $location,leagues, picks) {
+app.controller('UserController', ['$scope', 'users', 'util','$location', 'leagues', 'picks', function ($scope, users, util, $location, leagues, picks) {
   $scope.userlist = {};
 	$scope.userModel = {};
 
@@ -11,7 +11,7 @@ app.controller('UserController', ['$scope', 'users', '$location', 'leagues', 'pi
 			picks.getPicksByUsername($scope.userModel.username).success(function(data){
         //May not need to be added to scope;
         $scope.userModel.newPickModel = data;
-        $scope.userModel.winTotal = total($scope.userModel);
+        $scope.userModel.winTotal = picks.winCalculation($scope.userModel);
 				$scope.userPicksByWeek = picks.groupPicksByWeek(data);
 			})
 		})
@@ -25,27 +25,6 @@ app.controller('UserController', ['$scope', 'users', '$location', 'leagues', 'pi
 
 		})
 
-	}
-
-  //Move to Utils?
-  function total(userModel) {
-	    return (function() {
-	        var winCount = 0;
-	        var totalPicks = 0;
-
-	        userModel.newPickModel.forEach(function(pick) {
-	            if (pick.winner == pick.game.winner)
-	                count++;
-
-
-	            totalPicks++;
-	        })
-	        return {
-	            count: winCount,
-	            totalPicks: totalPicks,
-	            percent: (count / totalPicks)
-	        };
-	    })
 	}
 
 	$scope.updatePick = function (pickId, pickValues) {
