@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<div ng-repeat="league in leagueList">
 			<div>
 				<button class="btn btn-default user-btn" ng-click="selectCurrentLeague(league._id)"> {{league.name}} </button>
@@ -29,15 +29,19 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<!--section for week with user picks and standings-->
-	 <div ng-repeat="weeks in leagueSummary">
-		 	<h4> Week: {{weeks.week}} </h4>
-			<div ng-repeat="results in weeks.results | orderBy: '-wins'">
-					{{results.username}} | Wins: {{results.wins}} Losses: {{results.losses}}
+		<div class="col-md-3">
+			<div class="row">
+				<!--section for week with user picks and standings-->
+			 <div ng-repeat="weeks in leagueSummary">
+					<h4> Week: {{weeks.week}} </h4>
+					<div class="row" ng-repeat="results in weeks.results | orderBy: '-wins'">
+							<div class="col-md-4">{{results.username}}</div>
+							<div class="col-md-8">
+							 | Wins: {{results.wins}} Losses: {{results.losses}}
+						 </div>
+					</div>
+			 </div>
 			</div>
-
-	 </div>
+		</div>
 	</div>
 </div>
