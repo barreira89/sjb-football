@@ -28,6 +28,8 @@ pickServices.groupPicksByWeek = function (picks){
 	picks.forEach(function (obj) {
 		if (!mapped[obj.week]) 	mapped[obj.week] = [];
 
+    obj.userResult = calculateWinner(obj);
+
 		mapped[obj.week].push(obj);
 	})
 
@@ -112,4 +114,21 @@ pickServices.winCalculation = function total(userModel) {
  }
 
  return pickServices;
+
+ function calculateWinner(pick) {
+    return (function() {
+        var gameWinner = pick.game && pick.game.winner || 'winnerNotSet';
+        var result;
+
+        if (pick.winner == gameWinner) {
+            result = 'Win'
+        } else {
+            result = 'Loss'
+        }
+
+        return {
+            gameResult: result
+        }
+    })
+  }
 }]);

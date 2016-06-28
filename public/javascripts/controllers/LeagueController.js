@@ -28,18 +28,18 @@ app.controller('LeagueController', ['$scope', 'leagues', 'users', 'picks', funct
 	}
 
 	$scope.removeUserFromLeague = function (user) {
-		var lea = $scope.currentLeague.users;
-		if (lea) {
-			if (lea.indexOf(user) > -1) {
-				lea.splice(lea.indexOf(user), 1);
+		var league = $scope.currentLeague.users;
+		if (league) {
+			if (league.indexOf(user) > -1) {
+				league.splice(league.indexOf(user), 1);
 			}
 		}
 	}
 
 	$scope.submitLeague = function () {
 		if ($scope.currentLeague) {
-			leagues.updateLeague($scope.currentLeague._id, $scope.currentLeague).success(function () {
-				console.log('updated!');
+			leagues.updateLeague($scope.currentLeague._id, $scope.currentLeague).success(function (data) {
+        console.log('updated!');
 			});
 		}
 	}

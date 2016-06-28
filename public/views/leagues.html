@@ -7,7 +7,7 @@
 			</div>
 			</div>
 		</div>
-		<div class="col-md-6 form-group" ng-show="currentLeague">
+		<div class="col-md-5 form-group" ng-show="currentLeague">
 			<div class="panel panel-default">
 				<div class="panel-heading"> <h2> {{currentLeague.name}} </h2> </div>
 				<div class="panel-body">
@@ -29,11 +29,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-5">
 			<div class="row">
 				<!--section for week with user picks and standings-->
 			 <div ng-repeat="weeks in leagueSummary">
-					<h4> Week: {{weeks.week}} </h4>
+					<h3> Week: {{weeks.week}} </h3>
+					<hr>
 					<div class="row" ng-repeat="results in weeks.results | orderBy: '-wins'">
 							<div class="col-md-4">{{results.username}}</div>
 							<div class="col-md-8">
