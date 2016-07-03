@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-	"test": "node_modules/.bin/mocha -w"
+    "test": "node_modules/.bin/mocha -w"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -12,14 +12,11 @@
     "debug": "^2.1.1",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
-    "jade": "~1.11.0",
-    "mongodb": "1.4",
     "mongoose": "^4.4.13",
     "morgan": "~1.6.1",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^1.0.0",
-    "serve-favicon": "^2.2.0",
-    "should": "~2.1.0"
+    "serve-favicon": "^2.2.0"
   }
 }

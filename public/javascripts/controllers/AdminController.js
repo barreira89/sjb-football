@@ -13,31 +13,45 @@ app.controller('AdminController', ['$scope', 'games', function($scope, games) {
         $scope.getScheduleByWeek = function(week) {
             games.getGamesByWeek(week).success(function(data) {
                 $scope.currentGames = data;
+                $scope.currentGames.forEach(function(game){
+
+                  game.calcWin = (function(){
+                    if(game.homescore > game.visitscore){
+                      game.winner = 'home';
+                    }
+                    if(game.visitscore > game.homescore){
+                      game.winner = 'visitor';
+                    }
+                  });
+
+                })
             })
         }
 
-        /**function calculateWinner(game){
-        	return (
-        		function(){
-        			if (game.homescore > game.visitscore) {
-        				game.winner = 'home';
-        			}
-
-        			if(game.visitscore > game.homescore){
-        				game.winner = 'visitor';
-        			}
-
-        			//return game.winner;
-        		}
-        	)
-        }*/
+        // function calculateWinner(game){
+        // 	return (
+        // 		function(){
+        // 			if (game.homescore > game.visitscore) {
+        // 				game.winner = 'home';
+        // 			}
+        //
+        // 			if(game.visitscore > game.homescore){
+        // 				game.winner = 'visitor';
+        // 			}
+        //
+        // 			//return game.winner;
+        // 		}
+        // 	)
+        // }
 
         $scope.updateGames = function(weeknumber, gameData) {
             games.updateGamesByWeek(weeknumber, gameData).success(function(data) {
                 $scope.currentGames = data;
+
             });
         }
     }])
+
     /*.controller('testController', function ($scope) {
     	//$scope.currentGame = {};
 

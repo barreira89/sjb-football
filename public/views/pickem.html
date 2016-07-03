@@ -18,6 +18,6 @@
 </div>
 <div class="row">
 	<div class="col-md-offset-4 col-md-4">
-		<button class="btn btn-default form-control" ng-show="currentGames" ng-click="updatePicks(weekSchedule.selected, userModel.pickModel)"> Update All Picks </button>
+		<button class="btn btn-default form-control" ng-show="currentGames && userName" ng-disabled="!userName" ng-click="updatePicks(weekSchedule.selected, userModel.pickModel)"> Update Picks </button>
 	</div>
 </div>

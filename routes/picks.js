@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 router.get('/', function (req, res) {
 	var query = buildQuery(req);
 
-	console.log(query);
 	Picks.find(query, function (err, docs){
 		if (err) return res.sendStatus(404);
 
@@ -53,7 +52,6 @@ router.put('/', function (req, res){
 })
 router.get('/with', function (req, res) {
 	var query = buildQuery(req);
-	console.log(query);
 
 		Picks
 		.find(query)
@@ -138,13 +136,15 @@ router.put('/:pick_id', function (req, res){
 			//if exists
 			if(pick){
 
-				pick.username = pickObj.username;
-				pick.week = pickObj.week;
-				pick.userId = pickObj.userId;
-				pick.picks = pickObj.picks;
-				pick.winner = pickObj.winner;
-				pick.game = pickObj.game;
-
+				with(pick) {
+				    username = pickObj.username;
+				    week = pickObj.week;
+				    userId = pickObj.userId;
+				    picks = pickObj.picks;
+				    winner = pickObj.winner;
+				    game = pickObj.game;
+				}
+				
 				pick.save(function(err, doc){
 					if(err){
 							console.log("Error Saving Update");

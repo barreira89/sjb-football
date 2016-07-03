@@ -44,7 +44,6 @@ router.post('/winners', function (req, res) {
 
 	obj = picks.toObject();
 	delete obj._id;
-	console.log("Object:" + obj);
 
 	Picks.findOneAndUpdate(query, obj, {
 		upsert : true
@@ -59,9 +58,9 @@ router.post('/winners', function (req, res) {
 
 //Account & User Actions
 router.post('/loginnew', passport.authenticate('local'), function (req, res, next){
-		
-	
-	
+
+
+
 })
 
 

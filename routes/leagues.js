@@ -62,7 +62,6 @@ router.get('/:league_id/summary', function(req, res) {
     var query = {
         _id: req.params.league_id
     }
-    console.log(query);
     Leagues
         .find(query)
         .exec(function(err, leagues) {
@@ -92,7 +91,6 @@ router.get('/:league_id/summary', function(req, res) {
 
                         outArray = resultsToArray(reducedWeeks);
 
-                        console.log(outArray);
                         return res.json(outArray);
 
                     })
@@ -176,8 +174,9 @@ router.put('/:league_id', function(req, res) {
             console.log(err);
             res.sendStatus(500);
         } else {
-            league.users = bodyToLeagueMapper(req.body).users;
-            league.name = bodyToLeagueMapper(req.body).name;
+						mappedLeague = bodyToLeagueMapper(req.body);
+						league.users = mappedLeague.users;
+            league.name = mappedLeague.name;
 
             league.save(function(err, doc) {
                 if (err)

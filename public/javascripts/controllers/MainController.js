@@ -1,6 +1,7 @@
 app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', function($scope, auth, users, games, picks, util) {
     $scope.currentGames;
     $scope.userModel = {}
+    $scope.dis = false;
 
     games.getWeekList().success(function(data) {
         $scope.weekList = data[0].weeks;
