@@ -1,1 +1,0 @@
-ssh -L 4321:localhost:27017 root@107.170.36.188 -f -N
