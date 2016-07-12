@@ -8,7 +8,8 @@ var Picks = new Schema({
 	week: Number,
 	game: {type: Schema.Types.ObjectId, ref: 'Games'},
 	winner: String,
-  result: String
+  result: String,
+  season: Number
 },
 {
 	timestamps: true

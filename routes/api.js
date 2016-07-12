@@ -15,4 +15,3 @@ router.use('/games', gameRoutes);
 router.use('/logos', logoRoutes);
 
 module.exports = router;
-	

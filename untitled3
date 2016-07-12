@@ -1,0 +1,1328 @@
+[
+    [
+        {
+            "_id": "5741dfb906123ba4259265a0",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac58c",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.980Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a2",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac58e",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.982Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a3",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac58f",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.983Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a4",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac590",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.984Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a5",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac591",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.986Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a6",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac592",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.987Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a8",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac594",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.989Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a9",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac595",
+            "winner": "away",
+            "updated": "2016-05-22T16:35:05.990Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265aa",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac596",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.991Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265ab",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac597",
+            "winner": "away",
+            "updated": "2016-05-22T16:35:05.992Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265ac",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac598",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.994Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265ad",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac599",
+            "winner": "away",
+            "updated": "2016-05-22T16:35:05.995Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265ae",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac59a",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:05.997Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265af",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac59b",
+            "winner": "away",
+            "updated": "2016-05-22T16:35:05.998Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265b8",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac5a4",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.012Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265c0",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac5ac",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.021Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265c1",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac5ad",
+            "winner": "away",
+            "updated": "2016-05-22T16:35:06.022Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265c2",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac5ae",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.026Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265c3",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac5af",
+            "winner": "away",
+            "updated": "2016-05-22T16:35:06.027Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265c4",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac5b0",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.028Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba42592659e",
+            "username": "thy",
+            "week": 4,
+            "game": "57408dbaf3499aec13684035",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:05.975Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a1",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac58d",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:05.981Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba42592659f",
+            "username": "thy",
+            "week": 4,
+            "game": "574097903af17938247ac58b",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:05.978Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741e81fff975cd4111abd55",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac58c",
+            "winner": "home",
+            "updated": "2016-05-22T17:10:55.976Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741e840ff975cd4111abd56",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac591",
+            "winner": "home",
+            "updated": "2016-05-22T17:11:28.755Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfb906123ba4259265a7",
+            "username": "thy",
+            "week": 4,
+            "game": "574098823af17938247ac593",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:05.988Z",
+            "__v": 0
+        },
+        {
+            "_id": "5741dfba06123ba4259265b1",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac59d",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:06.002Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.883Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b7",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a3",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.012Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.883Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b9",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a5",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.884Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265ba",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a6",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:06.016Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.885Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265bd",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a9",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.018Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.886Z"
+        },
+        {
+            "_id": "5741fa91ff975cd4111abd58",
+            "username": "thy",
+            "week": 1,
+            "game": "574098823af17938247ac58d",
+            "winner": "visitor",
+            "updated": "2016-05-22T18:29:37.241Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:16:36.997Z",
+            "createdAt": "2016-06-01T23:10:05.358Z"
+        },
+        {
+            "_id": "57422e3dff975cd4111abd59",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a4",
+            "winner": "visitor",
+            "updated": "2016-05-22T22:10:05.062Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.887Z"
+        },
+        {
+            "_id": "57422fafff975cd4111abd5c",
+            "username": "thy",
+            "week": 11,
+            "game": "574098823af17938247ac61e",
+            "winner": "home",
+            "updated": "2016-05-22T22:16:15.490Z",
+            "__v": 0
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1ed",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac640",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1ee",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac641",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "57422e93ff975cd4111abd5a",
+            "username": "thy",
+            "week": 1,
+            "game": "574098823af17938247ac58e",
+            "winner": "home",
+            "updated": "2016-05-22T22:11:31.589Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:10:18.540Z",
+            "createdAt": "2016-06-01T23:10:18.540Z"
+        },
+        {
+            "_id": "57422fabff975cd4111abd5b",
+            "username": "thy",
+            "week": 11,
+            "game": "574098823af17938247ac61f",
+            "winner": "visitor",
+            "updated": "2016-05-22T22:16:11.274Z",
+            "__v": 0
+        },
+        {
+            "_id": "574232c81ee54d701d56256f",
+            "username": "thy",
+            "week": 1,
+            "game": "574098823af17938247ac58c",
+            "winner": "visitor",
+            "updated": "2016-05-22T22:29:28.084Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:36.504Z"
+        },
+        {
+            "_id": "574f606d8cc42c6833d7b179",
+            "username": "thy",
+            "week": 1,
+            "game": "574098823af17938247ac59b",
+            "winner": "visitor",
+            "updated": "2016-06-01T22:23:41.580Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:36.517Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b17a",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac58f",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.508Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b17c",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac591",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.511Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b17e",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac593",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.512Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b17f",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac594",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T22:50:59.628Z",
+            "updatedAt": "2016-06-01T23:07:36.512Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b182",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac597",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T22:50:59.627Z",
+            "updatedAt": "2016-06-01T23:07:36.514Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b184",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac599",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T22:50:59.627Z",
+            "updatedAt": "2016-06-01T23:07:36.516Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b185",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac59a",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T22:50:59.628Z",
+            "updatedAt": "2016-06-01T23:07:36.517Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b0",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac59c",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:06.001Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.851Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b3",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac59f",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:06.004Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.868Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b4",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a0",
+            "winner": "visitor",
+            "updated": "2016-05-22T16:35:06.007Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.869Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b2",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac59e",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.003Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.864Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b6",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a2",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.009Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.874Z"
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1dd",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac620",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1df",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac622",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1de",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac621",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e0",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac623",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e1",
+            "winner": "home",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac624",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e2",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac625",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e3",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac626",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e4",
+            "winner": "home",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac627",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e5",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac628",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e6",
+            "winner": "visitor",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac629",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e7",
+            "winner": "home",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac62a",
+            "__v": 0
+        },
+        {
+            "_id": "574f694d8cc42c6833d7b1e8",
+            "winner": "home",
+            "week": 11,
+            "username": "thy",
+            "game": "574098823af17938247ac62b",
+            "__v": 0
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1e9",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac63c",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f1",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac644",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f2",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac645",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "home"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f4",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac647",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "home"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f8",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac64b",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "home"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1ea",
+            "winner": "visitor",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac63d",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1ec",
+            "winner": "visitor",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac63f",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1ef",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac642",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f0",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac643",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T23:02:52.509Z"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f3",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac646",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "visitor"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f6",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac649",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "visitor"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f7",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac64a",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "visitor"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1f5",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac648",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.509Z",
+            "winner": "visitor"
+        },
+        {
+            "_id": "574f697f8cc42c6833d7b1eb",
+            "winner": "visitor",
+            "week": 13,
+            "username": "thy",
+            "game": "574098823af17938247ac63e",
+            "__v": 0,
+            "updated": "2016-06-01T23:02:52.508Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265bc",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a8",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.017Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.878Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265be",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5aa",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.019Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.881Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265b5",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a1",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.008Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.870Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265bb",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5a7",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.017Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.876Z"
+        },
+        {
+            "_id": "5741dfba06123ba4259265bf",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5ab",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.020Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.882Z"
+        },
+        {
+            "_id": "5743b1726c3a3c0430c6e4a8",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5aa",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.887Z"
+        },
+        {
+            "_id": "5743b1c06368045c3475d0ae",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5aa",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.888Z"
+        },
+        {
+            "_id": "5743b1cf19668214171e7e73",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5aa",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.889Z"
+        },
+        {
+            "_id": "5743b20eb56baad035887d54",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5aa",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.889Z"
+        },
+        {
+            "_id": "5743b368ed515b6c1da76727",
+            "username": "thy",
+            "week": 2,
+            "game": "574098823af17938247ac5aa",
+            "winner": "home",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.889Z"
+        },
+        {
+            "_id": "5743b6e5f8da94d82d943fe6",
+            "updated": "2016-05-22T16:35:06.015Z",
+            "winner": "home",
+            "game": "574098823af17938247ac5aa",
+            "week": 2,
+            "username": "thy",
+            "__v": 0,
+            "updatedAt": "2016-06-01T23:07:22.890Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b17b",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac590",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.510Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b17d",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac592",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.511Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b180",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac595",
+            "__v": 0,
+            "winner": "visitor",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.513Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b181",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac596",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T22:50:59.626Z",
+            "updatedAt": "2016-06-01T23:07:36.514Z"
+        },
+        {
+            "_id": "574f66c58cc42c6833d7b183",
+            "week": 1,
+            "username": "thy",
+            "game": "574098823af17938247ac598",
+            "__v": 0,
+            "winner": "home",
+            "updated": "2016-06-01T22:50:59.627Z",
+            "updatedAt": "2016-06-01T23:07:36.515Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9975",
+            "updatedAt": "2016-06-01T23:07:59.691Z",
+            "winner": "visitor",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5cb",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.691Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9976",
+            "updatedAt": "2016-06-01T23:07:59.692Z",
+            "winner": "visitor",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5cc",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.692Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9977",
+            "updatedAt": "2016-06-01T23:07:59.693Z",
+            "winner": "visitor",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5cd",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.693Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9978",
+            "updatedAt": "2016-06-01T23:07:59.699Z",
+            "winner": "home",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5ce",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.699Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9979",
+            "updatedAt": "2016-06-01T23:07:59.700Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5cf",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.700Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b997a",
+            "updatedAt": "2016-06-01T23:07:59.701Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d0",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.701Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b997b",
+            "updatedAt": "2016-06-01T23:07:59.702Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d1",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.702Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b997c",
+            "updatedAt": "2016-06-01T23:07:59.704Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d2",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.704Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b997d",
+            "updatedAt": "2016-06-01T23:07:59.704Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d3",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.704Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b997e",
+            "updatedAt": "2016-06-01T23:07:59.705Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d4",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.705Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b997f",
+            "updatedAt": "2016-06-01T23:07:59.705Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d5",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.705Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9980",
+            "updatedAt": "2016-06-01T23:07:59.705Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d6",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.705Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9981",
+            "updatedAt": "2016-06-01T23:07:59.708Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d7",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.708Z"
+        },
+        {
+            "_id": "574f6acf93737cb42f2b9982",
+            "updatedAt": "2016-06-01T23:07:59.709Z",
+            "week": 5,
+            "username": "thy",
+            "game": "574098823af17938247ac5d8",
+            "__v": 0,
+            "createdAt": "2016-06-01T23:07:59.709Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367af",
+            "updatedAt": "2016-06-10T00:11:06.353Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac62c",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.353Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b0",
+            "updatedAt": "2016-06-10T00:11:06.355Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac62d",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.355Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b1",
+            "updatedAt": "2016-06-10T00:11:06.358Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac62e",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.358Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b2",
+            "updatedAt": "2016-06-10T00:11:30.310Z",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac62f",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.360Z",
+            "winner": "visitor"
+        },
+        {
+            "_id": "575a059a14a003e0291367b3",
+            "updatedAt": "2016-06-10T00:11:06.361Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac630",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.361Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b4",
+            "updatedAt": "2016-06-10T00:11:06.361Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac631",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.361Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b5",
+            "updatedAt": "2016-06-10T00:11:06.361Z",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac632",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.361Z",
+            "winner": "visitor"
+        },
+        {
+            "_id": "575a059a14a003e0291367b6",
+            "updatedAt": "2016-06-10T00:11:06.362Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac633",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.362Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b7",
+            "updatedAt": "2016-06-10T00:11:06.362Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac634",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.362Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b8",
+            "updatedAt": "2016-06-10T00:11:06.362Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac635",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.362Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367b9",
+            "updatedAt": "2016-06-10T00:11:06.365Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac636",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.365Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367ba",
+            "updatedAt": "2016-06-10T00:11:06.365Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac637",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.365Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367bb",
+            "updatedAt": "2016-06-10T00:11:06.366Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac638",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.366Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367bc",
+            "updatedAt": "2016-06-10T00:11:06.367Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac639",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.367Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367bd",
+            "updatedAt": "2016-06-10T00:11:06.367Z",
+            "winner": "visitor",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac63a",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.367Z"
+        },
+        {
+            "_id": "575a059a14a003e0291367be",
+            "updatedAt": "2016-06-10T00:11:06.368Z",
+            "winner": "home",
+            "week": 12,
+            "username": "thy",
+            "game": "574098823af17938247ac63b",
+            "__v": 0,
+            "createdAt": "2016-06-10T00:11:06.368Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a1c",
+            "updatedAt": "2016-06-15T23:17:13.014Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac66c",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.014Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a1d",
+            "updatedAt": "2016-06-15T23:17:13.021Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac66d",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.021Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a1e",
+            "updatedAt": "2016-06-15T23:17:13.022Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac66e",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.022Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a1f",
+            "updatedAt": "2016-06-15T23:17:13.022Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac66f",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.022Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a20",
+            "updatedAt": "2016-06-15T23:17:13.023Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac670",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.023Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a21",
+            "updatedAt": "2016-06-15T23:17:13.023Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac671",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.023Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a22",
+            "updatedAt": "2016-06-15T23:17:13.024Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac672",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.024Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a23",
+            "updatedAt": "2016-06-15T23:17:13.024Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac673",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.024Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a24",
+            "updatedAt": "2016-06-15T23:17:13.024Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac674",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.024Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a25",
+            "updatedAt": "2016-06-15T23:17:13.024Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac675",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.024Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a26",
+            "updatedAt": "2016-06-15T23:17:13.025Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac676",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.025Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a27",
+            "updatedAt": "2016-06-15T23:17:13.025Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac677",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.025Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a28",
+            "updatedAt": "2016-06-15T23:17:13.025Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac678",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.025Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a29",
+            "updatedAt": "2016-06-15T23:17:13.026Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac679",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.026Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a2a",
+            "updatedAt": "2016-06-15T23:17:13.026Z",
+            "winner": "visitor",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac67a",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.026Z"
+        },
+        {
+            "_id": "5761e1f9ecc295e005e86a2b",
+            "updatedAt": "2016-06-15T23:17:13.026Z",
+            "winner": "home",
+            "week": 16,
+            "username": "thy",
+            "game": "574098823af17938247ac67b",
+            "__v": 0,
+            "createdAt": "2016-06-15T23:17:13.026Z"
+        }
+    ],
+    []
+]

@@ -2,6 +2,7 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
     $scope.currentGames;
     $scope.userModel = {}
     $scope.dis = false;
+    $scope.currentSeason = 2016;
 
     games.getWeekList().success(function(data) {
         $scope.weekList = data[0].weeks;
@@ -15,7 +16,7 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
     this.getCurrentWeekGames = function(currentWeek) {
 
         //get list of games for this week, assign to currentGames
-        games.getGamesByWeek(currentWeek).success(function(gameList) {
+        games.getGamesByWeek(currentWeek, $scope.currentSeason).success(function(gameList) {
             $scope.currentGames = gameList;
 
             //Get User Model by User Id

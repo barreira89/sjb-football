@@ -1,0 +1,20 @@
+//For a given league, get all user picks
+//Group the picks by week
+//Display the users in that league
+
+//Sort by the leader
+//Overall leader
+
+Week 1:
+  Steve: Wins/Losses
+  Thy: Wins/ Losses
+
+//TODO Need to do on Server
+1. Gather all users in the league (GET /league/{id})
+2. For Each user in League, gather user picks (GET /picks?username={username}&week={weeknumber})
+
+
+Remove First Print
+\[.*?\]
+
+\$.*?}\)

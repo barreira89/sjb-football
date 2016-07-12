@@ -58,6 +58,7 @@ router.get('/:league_id', function(req, res) {
         }
     });
 })
+
 router.get('/:league_id/summary', function(req, res) {
     var query = {
         _id: req.params.league_id
@@ -70,7 +71,6 @@ router.get('/:league_id/summary', function(req, res) {
                 res.sendStatus(500);
             } else {
                 var userNameList = leagues[0].users;
-
                 var pickQuery = {
                     username: {
                         $in: userNameList

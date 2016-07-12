@@ -1,13 +1,13 @@
 var http = require('http');
 
-var games = require('./2015results.js');
+var games = require('./season2016.js');
 
 function newRequest(gameId) {
 	return http.request({
 		hostname : '127.0.0.1',
 		port : '3000',
-		path : '/api/games/' + gameId,
-		method : 'PUT',
+		path : '/api/games/',
+		method : 'POST',
 		headers : {
 			'Content-Type' : 'application/json'
 		}
@@ -17,16 +17,6 @@ function newRequest(gameId) {
 		})
 	})
 }
-//console.log(season.length);
-// post_req.on('error', function (err){
-	// console.log(err);
-
-// })
-//post_req.write(JSON.stringify(season[0]));
-// console.log(JSON.stringify({"visitor":"DUMMY","home":"49ers","weekNumber":95,"season":2015,"date":"January 03rd","time":"4:25 PM ET "}));
-// var x = newRequest();
-// console.log(x);
-
 
 games.forEach(function(game){
 	post_req = newRequest(game._id);

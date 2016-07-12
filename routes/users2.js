@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 	var accountObj = accountMapper(req);
-	
+
 	Accounts.register(new Accounts(accountObj), req.body.password, function (err, account) {
 		if (err) {
 			return res.status(400).send(err);
@@ -35,23 +35,6 @@ router.post('/', function(req, res, next) {
 	});
 });
 
-// router.get('/:username/picks', function (req, res){
-	// var userName = req.params.username;
-	// Picks.find({username:userName}, function(err, picks){
-		// if(err){
-			// res.json(err);
-		// } else {
-			// Schedules.find(function (err,schedule){
-				// if(err)
-					// return res.send(err);
-				
-				// var lookUp = gameDetailLookUp(schedule);
-				// var picksWithDetails = withGameDetails(picks, lookUp);
-				// return res.json(picksWithDetails);
-			// })
-		// }
-	// })
-// })
 
 router.get('/:user_id/picks', function (req, res){
 	//var userName = req.params.username;
@@ -66,7 +49,7 @@ router.get('/:user_id/picks', function (req, res){
 					Schedules.find(function (err,schedule){
 						if(err)
 							return res.send(err);
-						
+
 						var lookUp = gameDetailLookUp(schedule);
 						var picksWithDetails = withGameDetails(picks, lookUp);
 						account.picks = picksWithDetails;
@@ -74,13 +57,13 @@ router.get('/:user_id/picks', function (req, res){
 					})
 				}
 			})
-		}	
+		}
 	})
 })
 
 router.get('/:userid', function (req, res) {
 	var userid = req.params.userid;
-	
+
 	//Find the account
 	Accounts.findById({_id : userid}, accountFieldFilter, function (err, docs) {
 		if (err) {
@@ -99,7 +82,7 @@ router.put('/:userid', function (req, res) {
 		leagues: req.body.leagues,
 		roles: req.body.roles
 	}
-	
+
 	//Find the account
 	Accounts.findById({_id : userid}, function (err, acct) {
 		if (err) {
@@ -111,9 +94,9 @@ router.put('/:userid', function (req, res) {
 			acct.roles = requestAccount.roles;
 			acct.save(function (err, updated){
 				if (err) return res.sendStatus(500)
-					
+
 			res.json(updated);
-				
+
 			})
 		}
 	})
@@ -123,7 +106,7 @@ router.put('/:userid', function (req, res) {
 router.delete('/:userid', function(req, res){
 	var userid = req.params.userid;
 	var query = {_id: userid};
-	
+
 	Accounts.findOneAndRemove(query, function (err){
 		if(err){
 			console.log(err);
@@ -174,4 +157,3 @@ function gameDetailLookUp(schedule){
 }
 
 module.exports = router;
-	

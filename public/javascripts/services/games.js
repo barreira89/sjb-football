@@ -1,6 +1,6 @@
-app.factory('games', ['$http', function($http) { 
+app.factory('games', ['$http', function($http) {
  var gameServices = {};
- 
+
 gameServices.getGames = function (){
 	 return $http({
 		 method: 'GET',
@@ -13,19 +13,20 @@ gameServices.getGameById = function (gameId){
 		method: 'GET',
 		url: '/api/games/' + gameId
 	})
-} 
+}
 gameServices.getWeekList = function (){
 	return $http({
 		method: 'GET',
 		url: '/api/games?weeklist=1'
 	})
-	
+
 }
 
-gameServices.getGamesByWeek = function (weekNumber) {
+gameServices.getGamesByWeek = function (weekNumber, season) {
+  var seasonQuery = addSeasonQuery(season);
 	return $http({
 			method: 'GET',
-			url: '/api/games' + '?weeknumber=' + parseInt(weekNumber)
+			url: '/api/games' + '?weeknumber=' + parseInt(weekNumber) + seasonQuery
 	})
 }
 
@@ -50,6 +51,15 @@ gameServices.updateGame = function (gameId, data){
 		data: data
 	})
 }
- 
+
  return gameServices;
+
+function addSeasonQuery(season){
+  var seasonQuery = '';
+  if(season){
+    seasonQuery = '&season=' + season;
+  }
+  return seasonQuery;
+}
+
 }]);

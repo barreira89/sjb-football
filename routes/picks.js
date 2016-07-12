@@ -3,6 +3,16 @@ var router = express.Router();
 var Picks = require('../models/picks');
 var Accounts = require('../models/account');
 var mongoose = require('mongoose');
+var fieldList = {
+		username : 0,
+		week : 0,
+		userId: 0,
+		picks : 0,
+		winner : 0,
+		game : 0,
+		season : 0
+}
+var mapper = require('./utils').bodyToModel(fieldList);
 
 router.get('/', function (req, res) {
 	var query = buildQuery(req);
@@ -91,7 +101,7 @@ router.get('/withGame/:pick_id', function (req, res) {
 })
 
 router.post('/', function (req, res) {
-	var mappedPick = bodyToPickMapper(req.body);
+	var mappedPick = mapper(req.body, {});
 	newPick = new Picks(mappedPick);
 
 	newPick.save(function (err, pick) {
@@ -105,7 +115,7 @@ router.post('/', function (req, res) {
 				res.sendStatus(500);
 			}
 		} else {
-			res.location('api/picks/'+ pick.extId);
+			res.location('api/picks/'+ pick._id);
 			res.status(201).json(pick);
 		}
 	})
@@ -125,47 +135,23 @@ router.get('/:pick_id', function (req, res){
 	});
 })
 
-router.put('/:pick_id', function (req, res){
+router.put('/:pick_id', function(req, res) {
 
-	Picks.findOne({_id:req.params.pick_id}, function (err, pick){
-		if(err){
-			console.log(err);
-			return res.send(err);
-		} else {
-			var pickObj = bodyToPickMapper(req.body);
-			//if exists
-			if(pick){
-
-				with(pick) {
-				    username = pickObj.username;
-				    week = pickObj.week;
-				    userId = pickObj.userId;
-				    picks = pickObj.picks;
-				    winner = pickObj.winner;
-				    game = pickObj.game;
-				}
-				
-				pick.save(function(err, doc){
-					if(err){
-							console.log("Error Saving Update");
-						return res.send(err);
-					}
-
-					return res.json(doc);
-				});
-			} else {
-				newPick = new Picks(pickObj);
-				newPick.extId = req.params.pick_id;
-				newPick.save(function (err, newDoc) {
-					if(err) return res.send(err);
-
-					return res.status(201).json(newPick);
-
-				})
-			}
-		}
-	})
-
+    Picks.findOne({_id: req.params.pick_id}, function(err, pick) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        } else {
+            updatedPick = mapper(req.body, pick);
+            updatedPick.save(function(err, doc) {
+                if (err) {
+                    console.log("Error Saving Update");
+                    return res.send(err);
+                }
+                return res.json(doc);
+            });
+        }
+    })
 })
 
 module.exports = router;
@@ -178,6 +164,9 @@ function buildQuery (request){
 
 	if (request.query.userid)
 		query.user = request.query.userid;
+
+	if (request.query.season)
+		query.season = request.query.season;
 
 	if(request.query.week)
 		query.week = request.query.week;
@@ -193,6 +182,7 @@ function bodyToPickMapper(requestBody) {
 			picks: requestBody.picks,
 			userId: requestBody.userId,
 			game: requestBody.game,
-			winner: requestBody.winner
+			winner: requestBody.winner,
+			season: requestBody.season
 		}
 }

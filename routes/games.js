@@ -2,6 +2,19 @@ var express = require('express');
 var router = express.Router();
 var Games = require('../models/games');
 var mongoose = require('mongoose');
+var util = require('./utils');
+var mappedO = {
+    'home': 0,
+    'visitor': 0,
+    'winner': 0,
+    'homescore': 0,
+    'visitscore': 0,
+    'weekNumber': 0,
+    'season': 0,
+    'date': 0,
+    'time': 0
+};
+var mapper = util.bodyToModel(mappedO);
 
 router.get('/', function (req, res) {
 	var query = {}
@@ -9,7 +22,7 @@ router.get('/', function (req, res) {
 	if (req.query.weeklist) {
 		Games.aggregate(
 		[
-			{$group: 
+			{$group:
 				{
 					_id: null,
 					weeks: {$addToSet: "$weekNumber"}
@@ -22,21 +35,21 @@ router.get('/', function (req, res) {
 				return res.json(docs);
 		});
 	} else{
-	
+
 		Games.find(query, function (err, games){
 			if(err) return res.send(err);
-			
+
 			return res.send(games);
-			
+
 		})
 	}
-	
+
 })
 
 router.post('/', function (req, res) {
-	var mappedGame = bodyToGameMapper(req.body);
+	var mappedGame = mapper(req.body, {});
 	newGame = new Games(mappedGame);
-		
+
 	newGame.save(function (err, doc) {
 		if (err) {
 			console.log(err);
@@ -54,19 +67,19 @@ router.post('/', function (req, res) {
 })
 router.put('/', function(req,res){
 	//Check query for weeknumber
-	
+
 	if(req.query.weeknumber){
 		if(Array.isArray(req.body)){
 			var results = [];
 			var recordsDone = 0;
-			
+
 			//Loop through each game in the array, add or update the game;
 			for(var i = 0, len = req.body.length; i < len; i++){
 				var currentGame = req.body[i];
-				
+
 				//check if it has an ID, if not assign
 				if(!currentGame._id) currentGame._id = new mongoose.mongo.ObjectID();
-				
+
 				Games.findOneAndUpdate({_id:currentGame._id}, currentGame, {upsert:true, new:true}, function (err, doc){
 					//Add Results to results array
 					if (err){
@@ -79,7 +92,7 @@ router.put('/', function(req,res){
 					//send when complete
 					if(recordsDone == len){
 						return res.send(results);
-					}					
+					}
 				})
 			}
 		}
@@ -106,22 +119,13 @@ router.put('/:game_id', function (req, res){
 			console.log(err);
 			res.sendStatus(500);
 		} else {
-			var gameObj = bodyToGameMapper(req.body);
-			
-			game.home = gameObj.home;
-			game.visitor = gameObj.visitor;
-			game.winner = gameObj.winner;
-			game.homescore = gameObj.homescore;
-			game.visitscore = gameObj.visitscore;
-			game.weekNumber = gameObj.weekNumber;
-			game.season = gameObj.season;
-			game.date = gameObj.date;
-			game.time = gameObj.time;
-			
-			game.save(function(err, doc){
+			var gameNew = mapper(req.body, game);
+			//console.log(gameNew);
+
+			gameNew.save(function(err, doc){
 				if(err)
 					res.sendStatus(500);
-				
+
 				res.json(doc);
 			});
 		}
@@ -133,8 +137,13 @@ router.put('/:game_id', function (req, res){
 module.exports = router;
 
 function gameMerge (gameFromDb, gameFromRequest){
+
 	for (key in gameFromDb){
-		if (gameFromRequest[key]) gameFromDb[key] = gameFromRequest[key];
+		//console.log(gameFromDb.hasOwnProperty(key) + ' ' + key);
+		if (gameFromRequest[key]) {
+			gameFromDb[key] = gameFromRequest[key];
+			console.log('added');
+		}
 	}
 	return gameFromDb;
 }
@@ -142,22 +151,31 @@ function gameMerge (gameFromDb, gameFromRequest){
 function buildQuery(req){
 	query = {};
 	if(req.query.weeknumber) query.weekNumber = req.query.weeknumber
-	
+
 	if(req.query.season) query.season = req.query.season
-	
+
 	if(req.query.home) query.home = req.query.home
-	
+
 	if(req.query.team){
 		query.$or = [
 			{home: req.query.team},
 			{visitor: req.query.team}
-		]	
+		]
 	}
-	
+
 	return query
 }
 
+function requestToGame(requestBody, game){
+	for(key in requestBody){
+		if(key in game){
+			game[key] = requestBody[key];
+		}
+	}
+	return game;
+}
 
+var mappedFileds = ['home', 'visitor', 'winner', 'homescore', 'visitscore', 'weekNumber', 'season', 'date', 'time'];
 
 function bodyToGameMapper(requestBody) {
 	return {
