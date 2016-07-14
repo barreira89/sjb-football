@@ -7,11 +7,13 @@ var users = require('./users2');
 var picksRoutes = require('./picks');
 var gameRoutes = require('./games');
 var logoRoutes = require('./logos');
+var leagueRoutes = require('./leagues');
 
 
 router.use('/users', users);
 router.use('/picks', picksRoutes);
 router.use('/games', gameRoutes);
 router.use('/logos', logoRoutes);
+router.use('/leagues', leagueRoutes);
 
 module.exports = router;

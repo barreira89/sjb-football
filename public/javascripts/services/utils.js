@@ -24,6 +24,14 @@ app.factory('util', ['$http', function($http) {
  		}
  }
 
+ utils.objectToArray = function(object){
+   var arry = []
+   for(key in object){
+     arry.push(object[key]);
+   }
+   return arry;
+ }
+
  utils.gatherUserPicks = function (gameList) {
  	var userPicks = [];
 

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Accounts = require('../models/account');
 var Picks = require('../models/picks');
-var Schedules = require('../models/schedule');
+//var Schedules = require('../models/schedule');
 var passport = require('passport');
 var accountFieldFilter = {salt:0,hash:0, __v: 0};
 
@@ -46,15 +46,16 @@ router.get('/:user_id/picks', function (req, res){
 				if(err){
 					res.json(err);
 				} else {
-					Schedules.find(function (err,schedule){
-						if(err)
-							return res.send(err);
-
-						var lookUp = gameDetailLookUp(schedule);
-						var picksWithDetails = withGameDetails(picks, lookUp);
-						account.picks = picksWithDetails;
-						return res.json(account);
-					})
+					// 	Schedules.find(function (err,schedule){
+					// 		if(err)
+					// 			return res.send(err);
+					//
+					// 		//var lookUp = gameDetailLookUp(schedule);
+					// 		//var picksWithDetails = withGameDetails(picks, lookUp);
+					// 		account.picks = picks;
+					//
+					// })
+					return res.json(account);
 				}
 			})
 		}

@@ -21,24 +21,6 @@ pickServices.getPicksByUsername = function (username) {
 			url: '/api/picks/with' + '?username=' + username
 	})
 }
-pickServices.groupPicksByWeek = function (picks){
-	var output = [];
-
-	var mapped = {}
-	picks.forEach(function (obj) {
-		if (!mapped[obj.week]) 	mapped[obj.week] = [];
-
-    obj.userResult = calculateWinner(obj);
-
-		mapped[obj.week].push(obj);
-	})
-
-	for (x in mapped){
-		output.push({week: x, picks: mapped[x]})
-	}
-
-	return output;
-}
 
 pickServices.getPicksByUsernameAndWeek = function (username, week){
 	return $http({
@@ -111,6 +93,25 @@ pickServices.winCalculation = function total(userModel) {
              percent: (winCount / totalPicks)
          };
      })
+ }
+ pickServices.groupPicksByWeek = function(picks) {
+     var output = [];
+     var mapped = {};
+
+     picks.forEach(function(obj) {
+         mapped[obj.week] = mapped[obj.week] || [];
+         obj.userResult = calculateWinner(obj);
+         mapped[obj.week].push(obj);
+     })
+
+     for (key in mapped) {
+         output.push({
+             week: key,
+             picks: mapped[key]
+         });
+     }
+
+     return output;
  }
 
  return pickServices;

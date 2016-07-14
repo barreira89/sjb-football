@@ -4,35 +4,35 @@ app.factory('leagues', ['$http', function($http) {
 leagueServices.getLeagues = function (){
 	 return $http({
 		 method: 'GET',
-		 url: '/leagues'
+		 url: '/api/leagues'
 	 })
  }
 
 leagueServices.getLeagueById = function (leagueId){
 	return $http({
 		method: 'GET',
-		url: '/leagues/' + leagueId
+		url: '/api/leagues/' + leagueId
 	})
 }
 
 leagueServices.createLeague = function (username) {
 	return $http({
 			method: 'POST',
-			url: '/leagues'
+			url: '/api/leagues'
 	})
 }
 
 leagueServices.getLeaguesByUsername = function (username){
 	return $http({
 		method: 'GET',
-		url: '/leagues?username=' + username
+		url: '/api/leagues?username=' + username
 	})
 }
 
 leagueServices.updateLeague = function (leagueId, data){
 	return $http({
 		method: 'PUT',
-		url: '/leagues/' + leagueId,
+		url: '/api/leagues/' + leagueId,
 		data: data
 	})
 }
@@ -51,7 +51,7 @@ leagueServices.removeUserFromLeague = function (username, league){
  leagueServices.getLeagueSummary= function(leagueId){
    return $http({
      method: 'GET',
-     url: '/leagues/' + leagueId + '/summary'
+     url: '/api/leagues/' + leagueId + '/summary'
    })
 
  }

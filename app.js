@@ -4,20 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var MongoClient = require('mongodb').MongoClient;
-//var monk = require('monk');
-//var db = monk('127.0.0.1:27017/nodetest1');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
-var AWS = require('aws-sdk');
-var dynamodb = new AWS.DynamoDB();
+//var AWS = require('aws-sdk');
+//var dynamodb = new AWS.DynamoDB();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var dynamo = require('./routes/dynamo');
-var schedules = require('./routes/schedules');
-var leagues = require('./routes/leagues');
 var api = require('./routes/api');
 
 var app = express();
@@ -57,9 +51,6 @@ mongoose.connect('127.0.0.1:27017/nodetest1', function (err){
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/dynamo', dynamo);
-app.use('/schedules', schedules);
-app.use('/leagues', leagues);
 app.use('/api', api);
 
 // catch 404 and forward to error handler

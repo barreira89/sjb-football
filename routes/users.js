@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var Accounts = require('../models/account');
 var Picks = require('../models/picks');
-var Schedules = require('../models/schedule');
 var accountFieldFilter = {salt:0,hash:0, __v: 0};
 
 
@@ -17,27 +16,27 @@ router.get('/', function(req, res, next) {
 	})
 });
 
-router.get('/:username/picks', function (req, res){
-	var userName = req.params.username;
-	///console.log(userName);
-	Picks.find({username:userName}, function(err, picks){
-		if(err){
-			res.json(err);
-		} else {
-			Schedules.find(function (err,schedule){
-				if(err)
-					return res.send(err);
-				
-				var lookUp = gameDetailLookUp(schedule);
-				var picksWithDetails = withGameDetails(picks, lookUp);
-				return res.json(picksWithDetails);
-				
-			})
-			//res.json(picks);
-		}
-	})
-	
-})
+// router.get('/:username/picks', function (req, res){
+// 	var userName = req.params.username;
+// 	///console.log(userName);
+// 	Picks.find({username:userName}, function(err, picks){
+// 		if(err){
+// 			res.json(err);
+// 		} else {
+// 			Schedules.find(function (err,schedule){
+// 				if(err)
+// 					return res.send(err);
+//
+// 				var lookUp = gameDetailLookUp(schedule);
+// 				var picksWithDetails = withGameDetails(picks, lookUp);
+// 				return res.json(picksWithDetails);
+//
+// 			})
+// 			//res.json(picks);
+// 		}
+// 	})
+//
+// })
 
 router.get('/:username', function (req, res) {
 	var user = req.params.username;
@@ -71,7 +70,7 @@ router.get('/:username', function (req, res) {
 router.delete('/:username', function(req, res){
 	var user = req.params.username;
 	var query = {username: user};
-	
+
 	Accounts.findOneAndRemove(query, function (err){
 		if(err){
 			console.log(err);
@@ -104,4 +103,3 @@ function gameDetailLookUp(schedule){
 
 
 module.exports = router;
-	
