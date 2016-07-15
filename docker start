@@ -1,0 +1,7 @@
+#Mongo
+docker run -it --link mongo:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
+
+#Node
+docker run -it --name nodejs-4 -v "$(pwd)":/football/sjb-footbal --link mongo-2:mongo -w /data -p 8082:3000 node bash
+
+'mongodb://'+ process.env.MONGO_PORT_27017_TCP_ADDR + ':' +process.env.MONGO_PORT_27017_TCP_PORT+'/nodetest1'
