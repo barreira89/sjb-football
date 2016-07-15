@@ -1,39 +1,37 @@
 <div class="container-fluid">
-	<div class=>
-		<h3> Current Season </h3>
+	<h3> Current Season </h3>
+		<div class="row">
 		<div class="col-md-3">
-		<input type="text" class="form-control" ng-model="currentSeason"></input>
+		<input type="text" class="form-control" ng-model="currentConfig.currentSeason"></input>
 		</div>
-		<button class="btn btn-default" ng-click="updateSeason(currentSeason)"> Update Season </button>
+		<button class="btn btn-default" ng-click="updateConfig(currentConfig, currentConfig._id)"> Update Season </button>
 	</div>
-	<h1> Set Winners </h1>
-	<div class="text-center">
-		<label for="sel1">
+	<h3> Set Winners by Week </h3>
+	<div class="row">
+		<div class="col-md-2">
+			<label> Week: </label>
 			<select class="form-control" ng-model="wk.selected" ng-options="week for week in weekList | orderBy: week" ng-change="getScheduleByWeek(wk.selected)" />
-		</label>
-	</div>
-	<div class="container-fluid">
-	<div ng-repeat="game in currentGames">
-		<div class="panel panel-default col-sm-2">
-			<div class="row">
-				<div class="col-sm-7 col-xs-6">
-					<label class="btn btn-default btn-xs pickbtn" ng-model ="game.winner" uib-btn-radio="'visitor'"> <b> {{game.visitor}} </b></label>
-				</div>
-				<div class="col-sm-5 col-xs-6">
-					<input type="number" class="form-control input-sm score-txt" ng-model="game.visitscore"></input>
-				</div>
-			</div>
-			<div class="row">
-				{{game.calcWin()}}
-				<div class="col-sm-7 col-xs-6">
-					<label class="btn btn-default btn-xs pickbtn" ng-model ="game.winner" uib-btn-radio="'home'"> <b> {{game.home}} </b></label>
-				</div>
-				<div class="col-sm-5 col-xs-6">
-					<input type="number" class="form-control input-sm score-txt" ng-model="game.homescore"></input>
-				</div>
-			</div>
 		</div>
 	</div>
+</div>
+<div class="container-fluid">
+	<table class="table table-condensed">
+		<tr>
+		<th class="col-md-2"> visitor </th>
+		<th class="col-md-2"> home </th>
+		<th class="col-md-2"> visitor score </th>
+		<th class="col-md-2"> home score </th>
+		<th class="col-md-2"> winner </th>
+	</tr>
+	<tr ng-repeat="game in currentGames">
+		{{game.calcWin()}}
+		<td> {{game.visitor}} </td>
+		<td> {{game.home}} </td>
+		<td> <input type="number" class="form-control input-sm score-txt" ng-model="game.visitscore"></input></td>
+		<td> <input type="number" class="form-control input-sm score-txt" ng-model="game.homescore"></input></td>
+		<td> {{game.winner}} </td>
+	</tr>
+	</table>
 	</div>
 	<div class= "row">
 		<div class="col-md-8 col-md-offset-2" ng-show="currentGames">

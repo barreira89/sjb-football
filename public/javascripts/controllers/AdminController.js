@@ -4,8 +4,10 @@ app.controller('AdminController', ['$scope', 'games', 'config', function($scope,
         	update the list of games with the winners
 
         */
-        $scope.updateSeason = config.setCurrentSeason;
-        $scope.currentSeason = config.getCurrentSeason();
+        $scope.updateConfig = config.updateConfig;
+        config.getCurrentSeason().success(function (data){
+          $scope.currentConfig = data[0];
+        });
 
         //getWeekList
         games.getWeekList().success(function(data) {
@@ -13,7 +15,7 @@ app.controller('AdminController', ['$scope', 'games', 'config', function($scope,
         })
 
         $scope.getScheduleByWeek = function(week) {
-            games.getGamesByWeek(week, $scope.currentSeason).success(function(data) {
+            games.getGamesByWeek(week, $scope.currentConfig.currentSeason).success(function(data) {
                 $scope.currentGames = data;
                 $scope.currentGames.forEach(function(game){
 

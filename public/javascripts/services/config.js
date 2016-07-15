@@ -1,13 +1,19 @@
 app.factory('config', ['$http', function($http) {
- var currentSeason = 2015;
+ var query = '?name=defaultConfig';
 
  var configServices = {}
  configServices.getCurrentSeason = function(){
-   return currentSeason;
+   return $http({
+     method: 'GET',
+     url: '/api/configurations' + query
+   });
  }
- configServices.setCurrentSeason = function(season){
-   currentSeason = season;
-   return currentSeason;
+ configServices.updateConfig = function(configData, configId){
+  return $http({
+    method: 'PUT',
+    url: '/api/configurations/' + configId,
+    data: configData
+  })
  }
 
  return configServices;
