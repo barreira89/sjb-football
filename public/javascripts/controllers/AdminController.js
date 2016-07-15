@@ -1,9 +1,11 @@
-app.controller('AdminController', ['$scope', 'games', function($scope, games) {
+app.controller('AdminController', ['$scope', 'games', 'config', function($scope, games, config) {
         /**
         	get the list of games by week
         	update the list of games with the winners
 
         */
+        $scope.updateSeason = config.setCurrentSeason;
+        $scope.currentSeason = config.getCurrentSeason();
 
         //getWeekList
         games.getWeekList().success(function(data) {
@@ -11,7 +13,7 @@ app.controller('AdminController', ['$scope', 'games', function($scope, games) {
         })
 
         $scope.getScheduleByWeek = function(week) {
-            games.getGamesByWeek(week).success(function(data) {
+            games.getGamesByWeek(week, $scope.currentSeason).success(function(data) {
                 $scope.currentGames = data;
                 $scope.currentGames.forEach(function(game){
 
@@ -28,22 +30,6 @@ app.controller('AdminController', ['$scope', 'games', function($scope, games) {
             })
         }
 
-        // function calculateWinner(game){
-        // 	return (
-        // 		function(){
-        // 			if (game.homescore > game.visitscore) {
-        // 				game.winner = 'home';
-        // 			}
-        //
-        // 			if(game.visitscore > game.homescore){
-        // 				game.winner = 'visitor';
-        // 			}
-        //
-        // 			//return game.winner;
-        // 		}
-        // 	)
-        // }
-
         $scope.updateGames = function(weeknumber, gameData) {
             games.updateGamesByWeek(weeknumber, gameData).success(function(data) {
                 $scope.currentGames = data;
@@ -51,23 +37,3 @@ app.controller('AdminController', ['$scope', 'games', function($scope, games) {
             });
         }
     }])
-
-    /*.controller('testController', function ($scope) {
-    	//$scope.currentGame = {};
-
-    	$scope.$watch('game', function (newValue, oldValue) {
-    		if ($scope.game.homescore > $scope.game.visitscore) {
-    			$scope.game.winner = 'home';
-    		}
-    		if ($scope.game.visitscore > $scope.game.homescore) {
-    			$scope.game.winner = 'visitor';
-    		}
-    		//$scope.updateGame($scope.game.gid, $scope.game);
-    	}, true)
-
-    })
-    .controller('modalInstanceCtrl', function ($scope, $uibModalInstance) {
-    	$scope.ok = function () {
-    		$uibModalInstance.close();
-    	};
-    });*/

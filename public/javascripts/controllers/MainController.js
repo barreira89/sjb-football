@@ -1,8 +1,8 @@
-app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', function($scope, auth, users, games, picks, util) {
+app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', function($scope, auth, users, games, picks, util, config) {
     $scope.currentGames;
     $scope.userModel = {}
     $scope.dis = false;
-    $scope.currentSeason = 2016;
+    $scope.currentSeason = config.getCurrentSeason();
 
     games.getWeekList().success(function(data) {
         $scope.weekList = data[0].weeks;
