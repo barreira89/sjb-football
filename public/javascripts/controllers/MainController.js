@@ -1,7 +1,8 @@
-app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', function($scope, auth, users, games, picks, util, config) {
+app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', function($scope, auth, users, games, picks, util, config, AUTH_EVENTS) {
     $scope.currentGames;
     $scope.userModel = {}
     $scope.dis = false;
+
     config.getCurrentSeason().success(function(data){
       $scope.currentSeason = data[0].currentSeason;
     });

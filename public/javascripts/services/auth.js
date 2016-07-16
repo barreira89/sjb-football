@@ -40,8 +40,10 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
                 if (status === 200 && data.status) {
                     user = true;
                     //username = username;
+                    console.log(data);
                     userModel.id = data.user._id;
                     userModel.username = username;
+                    userModel.roles = data.user.roles || 'user';
                     deferred.resolve();
                 } else {
                     user = false;
@@ -108,6 +110,25 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
         // return promise object
         return deferred.promise;
 
+    }
+
+    authservices.isAuthorized  = function(roles){
+      //Clean this up...compare user roles to authorized roles.
+      var authorized = false;
+      if(!angular.isArray(roles)){
+        roles = [roles];
+      }
+      console.log(userModel.roles);
+
+      roles.forEach(function(role){
+        if(userModel.roles.indexOf(role) !== -1){
+          return authorized = true;
+        }
+        if(role == '*'){
+           return authorized = true;
+        }
+      })
+      return authorized;
     }
 
     return authservices;
