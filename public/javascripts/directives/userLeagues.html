@@ -1,0 +1,7 @@
+<div class="form-group">
+<h2> Current Leagues </h2>
+		<div ng-repeat="league in leagues track by $index">
+			<h4> <a ng-click="isShown = !isShown"> {{league.name}} </a> </h4>
+			<league-summary ng-show="isShown" username="username" league="league.summary"><league-summary>
+		</div>
+</div>

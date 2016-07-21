@@ -17,9 +17,13 @@ html(ng-app='Football')
 		script(src='public/javascripts/controllers/AdminController.js')
 		script(src='public/javascripts/controllers/CollapseController.js')
 		script(src='public/javascripts/controllers/LeagueController.js')
+		script(src='public/javascripts/controllers/ProfileController.js')
 		script(src='public/javascripts/directives/footballTeams.js')
 		script(src='public/javascripts/directives/gamePanel.js')
 		script(src='public/javascripts/directives/userStats.js')
+		script(src='public/javascripts/directives/userProfile.js')
+		script(src='public/javascripts/directives/userLeagues.js')
+		script(src='public/javascripts/directives/leagueSummary.js')
 		script(src='public/javascripts/services/leagues.js')
 		script(src='public/javascripts/services/logos.js')
 		script(src='public/javascripts/services/games.js')
@@ -38,7 +42,7 @@ html(ng-app='Football')
 						span(class="icon-bar")
 						span(class="icon-bar")
 						span(class="icon-bar")
-					a(class="navbar-brand" href="#/users" ng-data="masterUserName") {{masterUserName | uppercase}}
+					a(class="navbar-brand" href="#/profile" ng-data="masterUserName") {{masterUserName | uppercase}}
 				div(class="collapse navbar-collapse" uib-collapse="isCollapsed")
 					ul(class="nav navbar-nav navbar-right")
 						li
@@ -51,4 +55,6 @@ html(ng-app='Football')
 							a(href="#/admin" ng-click="menuCollapse()") Admin
 						li
 							a(href="#/leagues" ng-click="menuCollapse()") Leagues
+						li
+							a(href="#/profile" ng-click="menuCollapse()") Profile
 		block content

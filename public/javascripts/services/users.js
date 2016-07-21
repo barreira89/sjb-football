@@ -11,7 +11,7 @@ app.factory('users', ['$http', '$q', function($http, $q) {
     userservices.getUser = function(username) {
         return $http({
             method: 'GET',
-            url: '/users/' + username
+            url: '/api/users?username=' + username
         })
     }
 

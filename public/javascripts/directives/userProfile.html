@@ -1,0 +1,8 @@
+<div class="form-group">
+<label>Username: </label>
+<input type="text" class="form-control" ng-model="profile.username"></input>
+<label>Email: </label>
+<input type="text" class="form-control" ng-model="profile.email"></input>
+<label>Roles: </label>
+	 	<div ng-repeat="role in profile.roles"> {{role}} </div>
+</div>

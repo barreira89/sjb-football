@@ -9,7 +9,8 @@ var accountFieldFilter = {salt:0,hash:0, __v: 0};
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	Accounts.find({},accountFieldFilter,function(err,docs){
+	var query = req.query;
+	Accounts.find(query,accountFieldFilter,function(err,docs){
 		if(err){
 			console.log(err);
 			return res.sendStatus(500);

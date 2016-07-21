@@ -118,10 +118,9 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
       if(!angular.isArray(roles)){
         roles = [roles];
       }
-      console.log(userModel.roles);
 
       roles.forEach(function(role){
-        if(userModel.roles.indexOf(role) !== -1){
+        if(userModel.roles && userModel.roles.indexOf(role) !== -1){
           return authorized = true;
         }
         if(role == '*'){

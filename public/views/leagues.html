@@ -37,34 +37,7 @@
 			</div>
 		</div>
 		<div class="col-md-5">
-			<div class="row">
-				<!--section for week with user picks and standings-->
-				<div ng-repeat="weeks in leagueSummary">
-						<h2> Week: {{weeks.week}} </h2>
-
-						<table class="table table-condensed table-striped">
-							<!--<tr>
-								<th> User Name </th>
-								<th> Wins </th>
-								<th> Losses </th>
-							</tr> -->
-							<tr ng-repeat="results in weeks.results | orderBy: '-wins'">
-								<td class="col-sm-2"> {{results.username}} </td>
-								<td class="col-sm-2"> {{results.wins}} </td>
-								<td class="col-sm-2"> {{results.losses}} </td>
-							</tr>
-						</table>
-						<!--
-					<div class="row" ng-repeat="results in weeks.results | orderBy: '-wins'">
-
-						<div class="col-md-2"><b>{{results.username}}</b></div>
-						<div class="col-md-8">
-							| Wins: {{results.wins}} Losses: {{results.losses}}
-						</div>
-					</div>
-					-->
-				</div>
-			</div>
+			<league-summary league="leagueSummary"></league-summary>
 		</div>
 	</div>
 </div>

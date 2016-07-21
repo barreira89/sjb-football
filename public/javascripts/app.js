@@ -44,6 +44,11 @@ app.config(['$routeProvider', 'USER_ROLES',  function ($routeProvider, USER_ROLE
 		templateUrl: 'public/views/leagues.html',
     data: {authorizedRoles: [USER_ROLES.all]}
 	})
+  .when('/profile', {
+		controller: 'ProfileController',
+		templateUrl: 'public/views/profile.html',
+    data: {authorizedRoles: [USER_ROLES.all]}
+	})
 	.otherwise({
       redirectTo: '/',
       data: {authorizedRoles: [USER_ROLES.all]}
@@ -59,7 +64,7 @@ app.constant('AUTH_EVENTS', {
 });
 app.run(function ($rootScope, AUTH_EVENTS, auth){
   $rootScope.$on('$routeChangeStart', function (event, next){
-    var authorizedRoles = next.data.authorizedRoles;
+    var authorizedRoles = next.data && next.data.authorizedRoles || USER_ROLES.all  ;
       if(!auth.isAuthorized(authorizedRoles)){
         event.preventDefault();
       };
