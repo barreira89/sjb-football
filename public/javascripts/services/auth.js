@@ -1,14 +1,7 @@
 app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
     var authservices = {};
-    var un;
     var user;
     var userModel = {};
-
-    /**
-    * Account Model = username, id
-    *
-    *
-    */
 
     authservices.isLoggedIn = function() {
         if (user) {
@@ -115,9 +108,7 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
     authservices.isAuthorized  = function(roles){
       //Clean this up...compare user roles to authorized roles.
       var authorized = false;
-      if(!angular.isArray(roles)){
-        roles = [roles];
-      }
+      if(!angular.isArray(roles)) roles = [roles];
 
       roles.forEach(function(role){
         if(userModel.roles && userModel.roles.indexOf(role) !== -1){

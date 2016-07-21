@@ -15,6 +15,14 @@ app.factory('users', ['$http', '$q', function($http, $q) {
         })
     }
 
+    userservices.updateUser = function(userId, userData){
+      return $http({
+        method: 'PUT',
+        url: '/api/users/' + userId,
+        data: userData
+      })
+    }
+
     userservices.getUserPicks = function(username) {
         return $http({
             method: 'GET',
@@ -33,65 +41,12 @@ app.factory('users', ['$http', '$q', function($http, $q) {
         return weekPicks;
     }
 
-    // userservices.getUserModel = function (userId, callback) {
-    // var user = $http({
-    // method: 'GET',
-    // url: '/api/users/' + userId
-    // });
-    // var picks = $http({
-    // method: 'GET',
-    // url: '/api/picks?username=thy'
-    // })
-    // var schedule = $http({
-    // method: 'GET',
-    // url: '/schedules'
-    // })
-    // $q.all([user,picks,schedule]).then(function (results){
-    // var dataObj = {
-    // userData : results[0].data,
-    // userPicks : results[1].data,
-    // schedule : results[2].data
-    // }
-    // callback(dataObj);
-    // });
-
-    // }
-
     userservices.getUserModel = function(userId) {
         return $http({
             method: 'GET',
             url: 'api/users/' + userId + '/picks'
         })
     }
-
-
-    //Returns an object where the week is the key and number of wins is the value
-    //{"1":15,"2":13,"total":49}
-    // userservices.getUserWins = function(userPicks, gameList) {
-    //     var winsByWeek = {};
-    //     var totalWins = 0;
-    //
-    //     for (i = 0; i < userPicks.length; i++) {
-    //         var currentWeek = userPicks[i].week;
-    //
-    //         var currentWins = 0;
-    //
-    //         var picks = userPicks[i].picks;
-    //
-    //         picks.forEach(function(pick) {
-    //             var actualWinner = gameList[pick.gameId].winner;
-    //             var userPick = pick.winner;
-    //             if (userPick == actualWinner) {
-    //                 ++currentWins;
-    //                 ++totalWins;
-    //             }
-    //         })
-    //
-    //         winsByWeek[currentWeek] = currentWins;
-    //     }
-    //     winsByWeek['total'] = totalWins;
-    //     return winsByWeek;
-    // }
 
     return userservices;
 }]);

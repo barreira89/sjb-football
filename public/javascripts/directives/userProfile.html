@@ -1,8 +1,10 @@
+<h2> User Info </h2>
 <div class="form-group">
 <label>Username: </label>
-<input type="text" class="form-control" ng-model="profile.username"></input>
+<input type="text" class="form-control" ng-model="profile.username" readonly></input>
 <label>Email: </label>
 <input type="text" class="form-control" ng-model="profile.email"></input>
 <label>Roles: </label>
 	 	<div ng-repeat="role in profile.roles"> {{role}} </div>
 </div>
+<button ng-click="updateUser(profile._id, profile)" > Update </button>

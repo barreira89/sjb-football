@@ -1,4 +1,4 @@
-var app = angular.module('Football', ['ui.bootstrap', 'ngRoute']);
+var app = angular.module('Football', ['ui.bootstrap', 'ngRoute', 'ui.router']);
 app.constant('USER_ROLES',{
   all: '*',
   admin: 'admin',

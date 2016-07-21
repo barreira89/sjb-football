@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', function($scope, auth, users, games, picks, util, config, AUTH_EVENTS) {
+app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', 'session', function($scope, auth, users, games, picks, util, config, session, AUTH_EVENTS) {
     $scope.currentGames;
     $scope.userModel = {}
     $scope.dis = false;
@@ -67,8 +67,10 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
     }
 
     setParentUser = function(userData) {
-        var username = userData.user[0] && userData.user[0].username;
-        if (username) $scope.$parent.$root.masterUserName = username;
+      userData = userData[0];
+      var username = userData.username;
+      session.userName = username;
+      if (username) $scope.$parent.$root.masterUserName = username;
     }
 
 }]);

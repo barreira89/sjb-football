@@ -82,7 +82,8 @@ router.put('/:userid', function (req, res) {
 	var requestAccount = {
 		username: req.body.username,
 		leagues: req.body.leagues,
-		roles: req.body.roles
+		roles: req.body.roles,
+		email: req.body.email
 	}
 
 	//Find the account
@@ -94,6 +95,8 @@ router.put('/:userid', function (req, res) {
 			acct.username = requestAccount.username;
 			acct.leagues = requestAccount.leagues;
 			acct.roles = requestAccount.roles;
+			acct.email = requestAccount.email;
+			
 			acct.save(function (err, updated){
 				if (err) return res.sendStatus(500)
 
