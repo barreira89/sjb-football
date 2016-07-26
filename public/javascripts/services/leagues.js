@@ -1,4 +1,4 @@
-app.factory('leagues', ['$http', function($http) {
+app.factory('leagues', ['$http', '$q', function($http, $q) {
  var leagueServices = {};
 
 leagueServices.getLeagues = function (){
@@ -27,6 +27,35 @@ leagueServices.getLeaguesByUsername = function (username){
 		method: 'GET',
 		url: '/api/leagues?username=' + username
 	})
+}
+
+leagueServices.getLeaguesByUsernameWithSummary = function (username){
+      var deferred = $q.defer();
+
+      //Get All the leagues a user is in
+      leagueServices.getLeaguesByUsername(username).success(function(userLeagues){
+        var outputArray = []
+
+        //Get the summary for each league
+        userLeagues.forEach(function(league, index){
+            leagueServices.getLeagueSummary(league._id).success(function(leagueSummary){
+              //Map the values
+              var outputValue = {id: league._id, name: league.name, summary: leagueSummary};
+              //Add them to the summary
+              outputArray.push(outputValue);
+              //If it's the last league, return the values to the promise
+              if(index == userLeagues.length - 1){
+                deferred.resolve(outputArray);
+              }
+            }).error(function(err){
+                deffered.reject();
+            })
+        })
+      }).error(function(err){
+            deferred.reject();
+      })
+
+      return deferred.promise;
 }
 
 leagueServices.updateLeague = function (leagueId, data){

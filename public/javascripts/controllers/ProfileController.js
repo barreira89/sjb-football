@@ -1,30 +1,33 @@
-app.controller('ProfileController', ['$scope', 'users', 'leagues', 'picks', 'games', 'config', 'session', function($scope, users, leagues, picks, games, config, session) {
+app.controller('ProfileController', ['$scope', '$state','users', 'leagues', 'picks', 'games', 'config', 'session', function($scope, $state, users, leagues, picks, games, config, session) {
       $scope.refresh = function(userName){
         getProfile(userName);
         getUserLeagues(userName);
+        getUserPicks(userName);
       }
       $scope.currentUser = session.userName;
+      $scope.userModel = {};
 
       getProfile = function(userName) {
          users.getUser(userName).success(function(userData){
            $scope.userData = userData[0];
          })
       }
-      getProfile($scope.currentUser);
-
       getUserLeagues = function(userName){
-        leagues.getLeaguesByUsername(userName).success(function(userLeagueData){
-          $scope.leagueData = userLeagueData;
-
-          //Clean this up, move to service
-          $scope.leagueSummary = [];
-
-          //Get the summary for every league a user is in
-          userLeagueData.forEach(function(league){
-            leagues.getLeagueSummary(league._id).success(function(leagueSummary){
-              $scope.leagueSummary.push({id: league._id, name: league.name, summary: leagueSummary});
-            })
-          })
+        leagues.getLeaguesByUsernameWithSummary(userName).then(function(leagueSummary){
+          $scope.leagueSummary = leagueSummary;
+        });
+      }
+      getUserPicks = function(userName){
+        picks.getPicksByUsername(userName).success(function(data){
+          //May not need to be added to scope;
+          $scope.userModel.newPickModel = data;
+          $scope.userModel.winTotal = picks.winCalculation($scope.userModel);
+          $scope.userPicksByWeek = picks.groupPicksByWeek(data);
         })
       }
+      getProfile($scope.currentUser);
+      getUserLeagues($scope.currentUser);
+      getUserPicks($scope.currentUser);
+
+
 }])

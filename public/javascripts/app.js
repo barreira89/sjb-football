@@ -4,7 +4,7 @@ app.constant('USER_ROLES',{
   admin: 'admin',
   user: 'user'
 });
-app.config(['$routeProvider', 'USER_ROLES',  function ($routeProvider, USER_ROLES) {
+/*app.config(['$routeProvider', 'USER_ROLES',  function ($routeProvider, USER_ROLES) {
   $routeProvider
     .when('/', {
       controller: 'MainController',
@@ -49,11 +49,66 @@ app.config(['$routeProvider', 'USER_ROLES',  function ($routeProvider, USER_ROLE
 		templateUrl: 'public/views/profile.html',
     data: {authorizedRoles: [USER_ROLES.all]}
 	})
-	.otherwise({
-      redirectTo: '/',
+}]);*/
+app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function($stateProvider, $urlRouterProvider, USER_ROLES){
+  $stateProvider
+    .state('pickem', {
+        url: '/',
+        controller: 'MainController',
+        templateUrl: 'public/views/pickem.html',
+  	    controllerAs: 'mctrl',
+        data: {authorizedRoles: [USER_ROLES.all]}
+      })
+  	.state('login', {
+  	            url: '/login',
+  	            views: {
+  	                '': {
+  	                    templateUrl: 'public/views/login.html',
+  	                    controller: 'LoginController',
+                        data: {authorizedRoles: [USER_ROLES.all]}
+  	                },
+                    'register@login':{
+                        templateUrl: 'public/views/register.html',
+                        controller: 'LoginController',
+                        data: {authorizedRoles: [USER_ROLES.all]}
+                    }
+  	            }
+  	})
+  	.state('login.register', {
+      url: '/register',
+  		controller: 'LoginController',
+  		templateUrl: 'public/views/register.html',
       data: {authorizedRoles: [USER_ROLES.all]}
-    });
-}]);
+  	})
+  	.state('users', {
+  		url:'/users',
+      controller: 'UserController',
+  		templateUrl: 'public/views/userlist.html',
+      data: {authorizedRoles: [USER_ROLES.all]}
+  	})
+  	.state('admin', {
+      url: '/admin',
+  		controller: 'AdminController',
+  		templateUrl: 'public/views/admin.html',
+      data: {
+        authorizedRoles: [USER_ROLES.admin]
+      }
+  	})
+  	.state('leagues', {
+      url: '/leagues',
+  		controller: 'LeagueController',
+  		templateUrl: 'public/views/leagues.html',
+      data: {authorizedRoles: [USER_ROLES.all]}
+  	})
+    .state('profile', {
+      url: '/profile',
+      views: {
+        '': {controller: 'ProfileController',
+      		templateUrl: 'public/views/profile.html',
+          data: {authorizedRoles: [USER_ROLES.all]}}}
+  	})
+    $urlRouterProvider.otherwise('/');
+}])
 app.constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
@@ -62,8 +117,8 @@ app.constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated',
   notAuthorized: 'auth-not-authorized'
 });
-app.run(function ($rootScope, AUTH_EVENTS, auth){
-  $rootScope.$on('$routeChangeStart', function (event, next){
+app.run(function ($rootScope, AUTH_EVENTS, USER_ROLES, auth){
+  $rootScope.$on('$stateChangeStart', function (event, next){
     var authorizedRoles = next.data && next.data.authorizedRoles || USER_ROLES.all  ;
       if(!auth.isAuthorized(authorizedRoles)){
         event.preventDefault();

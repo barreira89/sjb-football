@@ -17,10 +17,11 @@
 					<input type="password" class="form-control" id="pwd" ng-model="credentials.password"/>
 				</div>
 				<input type="submit" id="submit" class="btn btn-default" value="Submit"/>
-				<a href="#/register" class="btn btn-link"> Register </a> 
+				<a ui-sref="login.register" class="btn btn-link"> Register </a>
 			</div>
 		</form>
 		</div>
 	</div>
-</div>	
 </div>
+</div>
+<div ui-view></div>
