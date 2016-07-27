@@ -19,7 +19,6 @@ app.controller('ProfileController', ['$scope', '$state','users', 'leagues', 'pic
       }
       getUserPicks = function(userName){
         picks.getPicksByUsername(userName).success(function(data){
-          //May not need to be added to scope;
           $scope.userModel.newPickModel = data;
           $scope.userModel.winTotal = picks.winCalculation($scope.userModel);
           $scope.userPicksByWeek = picks.groupPicksByWeek(data);
@@ -28,6 +27,17 @@ app.controller('ProfileController', ['$scope', '$state','users', 'leagues', 'pic
       getProfile($scope.currentUser);
       getUserLeagues($scope.currentUser);
       getUserPicks($scope.currentUser);
+
+      $scope.showProfile = function (){
+        $state.transitionTo('profile.user');
+      }
+      $scope.showLeagues = function (){
+        $state.transitionTo('profile.leagues');
+      }
+      $scope.showPicks = function (){
+        $state.transitionTo('profile.picks');
+      }
+
 
 
 }])

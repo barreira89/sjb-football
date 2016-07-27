@@ -60,19 +60,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function($stat
         data: {authorizedRoles: [USER_ROLES.all]}
       })
   	.state('login', {
-  	            url: '/login',
-  	            views: {
-  	                '': {
-  	                    templateUrl: 'public/views/login.html',
-  	                    controller: 'LoginController',
-                        data: {authorizedRoles: [USER_ROLES.all]}
-  	                },
-                    'register@login':{
-                        templateUrl: 'public/views/register.html',
-                        controller: 'LoginController',
-                        data: {authorizedRoles: [USER_ROLES.all]}
-                    }
-  	            }
+  	    url: '/login',
+  	    templateUrl: 'public/views/login.html',
+  	    controller: 'LoginController',
+  	    data: {
+  	        authorizedRoles: [USER_ROLES.all]
+  	    }
   	})
   	.state('login.register', {
       url: '/register',
@@ -102,11 +95,29 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function($stat
   	})
     .state('profile', {
       url: '/profile',
-      views: {
-        '': {controller: 'ProfileController',
-      		templateUrl: 'public/views/profile.html',
-          data: {authorizedRoles: [USER_ROLES.all]}}}
+      controller: 'ProfileController',
+      templateUrl: 'public/views/profilemain.html',
+      data: {authorizedRoles: [USER_ROLES.all]}
   	})
+    .state('profile.user', {
+      url: '/user',
+      contoller: 'ProfileController',
+      templateUrl: 'public/views/userprof.html',
+      data: {authorizedRoles: [USER_ROLES.all]}
+    })
+    .state('profile.leagues', {
+          url: '/leagues',
+          contoller: 'ProfileController',
+          templateUrl: 'public/views/profleagues.html',
+          data: {authorizedRoles: [USER_ROLES.all]}
+    })
+    .state('profile.picks', {
+          url: '/picks',
+          contoller: 'ProfileController',
+          template: '  <user-stats userModel="userModel"> </user-stats> '+
+            '<my-picks userpicks="userPicksByWeek"></my-picks>',
+          data: {authorizedRoles: [USER_ROLES.all]}
+    })
     $urlRouterProvider.otherwise('/');
 }])
 app.constant('AUTH_EVENTS', {
