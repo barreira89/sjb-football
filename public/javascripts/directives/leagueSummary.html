@@ -4,9 +4,9 @@
 			<h6>  Week: {{weeks.week}}  </h6>
 			<table class="table table-condensed table-striped">
 				<tr ng-repeat="results in weeks.results | orderBy: '-wins'">
-					<td class="col-sm-2" ng-style="highlighted(username, results.username)"> {{results.username}} </td>
-					<td class="col-sm-2"> {{results.wins}} </td>
-					<td class="col-sm-2"> {{results.losses}} </td>
+					<td class="col-sm-2 col-xs-2" ng-style="highlighted(username, results.username)"> {{results.username}} </td>
+					<td class="col-sm-2 col-xs-2"> {{results.wins}} </td>
+					<td class="col-sm-2 col-xs-2"> {{results.losses}} </td>
 				</tr>
 			</table>
 	</div>

@@ -3,19 +3,19 @@
 		<h4> <a ng-click="hider = !hider" > Week: {{weekPick.week}} </a> </h4>
 		<div ng-show="hider" ng-repeat="pick in weekPick.picks">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-3 hidden-xs">
 				<select name="winnerSelect" ng-model="pick.winner">
 						<option value="home"> {{pick.game.home}} </option>
 						<option value="visitor"> {{pick.game.visitor}} </option>
 				</select>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 col-xs-6">
 					{{pick.game.visitor}} @ {{pick.game.home}}
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 col-xs-6">
 					 {{pick.userResult().gameResult}}
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 hidden-xs">
 					<button ng-click="updatePick(pick._id, pick)" class="btn btn-default"> Update </button>
 				</div>
 			</div>
