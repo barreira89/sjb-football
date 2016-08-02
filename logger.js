@@ -13,6 +13,6 @@ var accessLogStream = FileStreamRotator.getStream({
   verbose: false
 })
 
-var log = logger('combined', {stream: accessLogStream});
+var log = logger('common', {stream: accessLogStream});
 
 module.exports = log;
