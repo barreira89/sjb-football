@@ -11,7 +11,10 @@
 		<div class="row"> <h2> {{userModel.username | uppercase}} </h2>
 			<user-stats userModel="userModel"></user-stats>
 		</div>
-		<div ng-repeat="weekPick in userPicksByWeek">
+		<div class="row">
+			<my-picks userpicks="userPicksByWeek"></my-picks>
+		</div>
+		<!--<div ng-repeat="weekPick in userPicksByWeek">
 			<h1> Week: {{weekPick.week}} </h1>
 			<div ng-repeat="pick in weekPick.picks">
 				<div class="row">
@@ -32,7 +35,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<div class="col-md-2">
 		<h2 ng-show="userModel.leagues"> Leagues </h2>
