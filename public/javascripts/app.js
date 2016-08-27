@@ -4,52 +4,6 @@ app.constant('USER_ROLES',{
   admin: 'admin',
   user: 'user'
 });
-/*app.config(['$routeProvider', 'USER_ROLES',  function ($routeProvider, USER_ROLES) {
-  $routeProvider
-    .when('/', {
-      controller: 'MainController',
-      templateUrl: 'public/views/pickem.html',
-	    controllerAs: 'mctrl',
-      data: {authorizedRoles: [USER_ROLES.all]}
-    })
-	.when('/login', {
-		controller: 'LoginController',
-		templateUrl: 'public/views/login.html',
-    data: {authorizedRoles: [USER_ROLES.all]}
-	})
-	.when('/register', {
-		controller: 'LoginController',
-		templateUrl: 'public/views/register.html',
-    data: {authorizedRoles: [USER_ROLES.all]}
-	})
-	.when('/users', {
-		controller: 'UserController',
-		templateUrl: 'public/views/userlist.html',
-    data: {authorizedRoles: [USER_ROLES.all]}
-	})
-	.when('/users/details', {
-		controller: 'UserController',
-		templateUrl: 'public/views/userdetail.html',
-    data: {authorizedRoles: [USER_ROLES.all]}
-	})
-	.when('/admin', {
-		controller: 'AdminController',
-		templateUrl: 'public/views/admin.html',
-    data: {
-      authorizedRoles: [USER_ROLES.admin]
-    }
-	})
-	.when('/leagues', {
-		controller: 'LeagueController',
-		templateUrl: 'public/views/leagues.html',
-    data: {authorizedRoles: [USER_ROLES.all]}
-	})
-  .when('/profile', {
-		controller: 'ProfileController',
-		templateUrl: 'public/views/profile.html',
-    data: {authorizedRoles: [USER_ROLES.all]}
-	})
-}]);*/
 app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function($stateProvider, $urlRouterProvider, USER_ROLES){
   $stateProvider
     .state('pickem', {
@@ -84,7 +38,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function($stat
   		controller: 'AdminController',
   		templateUrl: 'public/views/admin.html',
       data: {
-        authorizedRoles: [USER_ROLES.admin]
+        authorizedRoles: [USER_ROLES.all]
       }
   	})
   	.state('leagues', {

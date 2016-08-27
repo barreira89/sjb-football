@@ -24,12 +24,11 @@
 		<th class="col-md-2"> winner </th>
 	</tr>
 	<tr ng-repeat="game in currentGames">
-		{{game.calcWin()}}
 		<td> {{game.visitor}} </td>
 		<td> {{game.home}} </td>
-		<td> <input type="number" class="form-control input-sm score-txt" ng-model="game.visitscore"></input></td>
+		<td> {{game.calculatedWinner()}} <input type="number" class="form-control input-sm score-txt" ng-model="game.visitscore"></input></td>
 		<td> <input type="number" class="form-control input-sm score-txt" ng-model="game.homescore"></input></td>
-		<td> {{game.winner}} </td>
+		<td ng-model="game.winner"> {{game.winner}}  </td>
 	</tr>
 	</table>
 	</div>

@@ -33,7 +33,7 @@ pickServices.getPicksByUsername = function (username, season) {
 
 	return $http({
 			method: 'GET',
-			url: '/api/picks/with' + '?username=' + username + seasonQuery
+			url: '/api/picks/with' + '?username=' + username 
 	})
 }
 
