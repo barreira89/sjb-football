@@ -97,6 +97,7 @@ router.get('/:league_id/summary', function(req, res) {
             }
         })
 })
+
 function calculateWinners(picks){
 	picks.forEach(function(pick) {
 					var currentGame = pick.game;

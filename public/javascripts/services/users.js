@@ -23,10 +23,15 @@ app.factory('users', ['$http', '$q', function($http, $q) {
       })
     }
 
-    userservices.getUserPicks = function(username) {
+    userservices.getUserPicks = function(username, season) {
+        var seasonQuery = '';
+        if(season){
+          seasonQuery = '&season=' + season;
+        }
+
         return $http({
             method: 'GET',
-            url: '/api/picks/' + '?username=' + username
+            url: '/api/picks/' + '?username=' + username + seasonQuery
         })
     }
 

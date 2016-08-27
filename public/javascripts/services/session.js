@@ -1,4 +1,4 @@
-app.factory('session', ['$http', function($http) {
+app.factory('session', ['$http',  function($http) {
     var userName;
     var userId;
 

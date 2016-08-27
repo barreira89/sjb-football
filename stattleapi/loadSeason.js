@@ -1,45 +1,5 @@
 var http = require('http');
 
-var picks = [{"game":"57408dbaf3499aec13684035","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574097903af17938247ac58b","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac58c","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac58d","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac58e","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac58f","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac590","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac591","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac592","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac593","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac594","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac595","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac596","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac597","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac598","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac599","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac59a","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac59b","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac59c","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac59d","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac59e","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac59f","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a0","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a1","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a2","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a3","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a4","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a5","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a6","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a7","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a8","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5a9","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5aa","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5ab","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5ac","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5ad","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5ae","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5af","week":4,"winner":"away","userid":"56845b9e078625601cf27dfa","username":"thy"},
-{"game":"574098823af17938247ac5b0","week":4,"winner":"home","userid":"56845b9e078625601cf27dfa","username":"thy"}]
-
 // var season = [{"visitor":"Steelers","home":"Patriots","weekNumber":1,"season":2015,"date":"September 10th","time":"8:30 PM ET "},
 // {"visitor":"Packers","home":"Bears","weekNumber":1,"season":2015,"date":"September 13th","time":"1:00 PM ET "},
 // {"visitor":"Chiefs","home":"Texans","weekNumber":1,"season":2015,"date":"September 13th","time":"1:00 PM ET "},
@@ -315,7 +275,7 @@ function newRequest() {
 //console.log(season.length);
 // post_req.on('error', function (err){
 	// console.log(err);
-	
+
 // })
 //post_req.write(JSON.stringify(season[0]));
 // console.log(JSON.stringify({"visitor":"DUMMY","home":"49ers","weekNumber":95,"season":2015,"date":"January 03rd","time":"4:25 PM ET "}));

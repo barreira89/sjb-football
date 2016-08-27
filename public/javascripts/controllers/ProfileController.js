@@ -1,4 +1,4 @@
-app.controller('ProfileController', ['$scope', '$state','users', 'leagues', 'picks', 'games', 'config', 'session', function($scope, $state, users, leagues, picks, games, config, session) {
+app.controller('ProfileController', ['$scope', '$state','users', 'leagues', 'picks', 'config', 'session', function($scope, $state, users, leagues, picks, config, session) {
       $scope.refresh = function(userName){
         getProfile(userName);
         getUserLeagues(userName);
@@ -18,12 +18,13 @@ app.controller('ProfileController', ['$scope', '$state','users', 'leagues', 'pic
         });
       }
       getUserPicks = function(userName){
-        picks.getPicksByUsername(userName).success(function(data){
+        picks.getPicksWithDetails({username:userName, season: '2015'}).success(function(data){
           $scope.userModel.newPickModel = data;
           $scope.userModel.winTotal = picks.winCalculation($scope.userModel);
           $scope.userPicksByWeek = picks.groupPicksByWeek(data);
         })
       }
+
       getProfile($scope.currentUser);
       getUserLeagues($scope.currentUser);
       getUserPicks($scope.currentUser);

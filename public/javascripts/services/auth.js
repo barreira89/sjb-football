@@ -32,8 +32,6 @@ app.factory('auth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
             .success(function(data, status) {
                 if (status === 200 && data.status) {
                     user = true;
-                    //username = username;
-                    console.log(data);
                     userModel.id = data.user._id;
                     userModel.username = username;
                     userModel.roles = data.user.roles || 'user';

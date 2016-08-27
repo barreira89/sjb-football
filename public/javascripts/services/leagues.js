@@ -43,7 +43,7 @@ leagueServices.getLeaguesByUsernameWithSummary = function (username){
               var outputValue = {id: league._id, name: league.name, summary: leagueSummary};
               //Add them to the summary
               outputArray.push(outputValue);
-              //If it's the last league, return the values to the promise
+              //If last league, return the values to the promise
               if(index == userLeagues.length - 1){
                 deferred.resolve(outputArray);
               }

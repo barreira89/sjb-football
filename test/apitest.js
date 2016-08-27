@@ -11,4 +11,10 @@ describe("API Test", function (){
       })
     })
   })
+  describe('Put Game', function(){
+    it('PUT Game', function(done){
+      request.put('http://127.0.0.1:3000/api/games')
+
+    })
+  })
 })

@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var Game = require('./games');
 
 var Picks = new Schema({
-    username: String,
+  username: String,
 	userId: String,
 	week: Number,
 	game: {type: Schema.Types.ObjectId, ref: 'Games'},

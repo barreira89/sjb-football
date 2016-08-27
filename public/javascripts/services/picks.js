@@ -1,11 +1,25 @@
-app.factory('picks', ['$http', function($http) {
+app.factory('picks', ['$http', '$httpParamSerializer', 'util', function($http, $httpParamSerializer, util) {
  var pickServices = {};
 
-pickServices.getPicks = function (){
+pickServices.getPicks = function (queryObject){
+    queryString = util.getQueryParams(queryObject);
+    if (queryString) queryString = '?' + queryString;
+
 	 return $http({
 		 method: 'GET',
-		 url: '/api/picks'
+		 url: '/api/picks/' + queryString
 	 })
+ }
+
+ pickServices.getPicksWithDetails = function(queryObject) {
+     queryString = util.getQueryParams(queryObject);
+     if (queryString) queryString = '?' + queryString;
+
+     return $http({
+         method: 'GET',
+         url: '/api/picks/with' + queryString
+     })
+
  }
 
 pickServices.getPickById = function (pickId){
@@ -15,17 +29,20 @@ pickServices.getPickById = function (pickId){
 	})
 }
 
-pickServices.getPicksByUsername = function (username) {
+pickServices.getPicksByUsername = function (username, season) {
+
 	return $http({
 			method: 'GET',
-			url: '/api/picks/with' + '?username=' + username
+			url: '/api/picks/with' + '?username=' + username + seasonQuery
 	})
 }
 
-pickServices.getPicksByUsernameAndWeek = function (username, week){
-	return $http({
+pickServices.getPicksByUsernameAndWeek = function (username, week, season){
+  qs = util.getQueryParams({username: username, week: week, season: season});
+
+  return $http({
 			method: 'GET',
-			url: '/api/picks' + '?username=' + username +'&'+'week=' + parseInt(week)
+			url: '/api/picks' + '?' + qs
 	})
 }
 
@@ -37,8 +54,8 @@ pickServices.getPicksByUserIdAndWeek = function (userid, week){
 }
 
 
-pickServices.updateListOfPicks = function (username, week, pickData){
-	return $http({
+pickServices.updateListOfPicks = function (username, week, season, pickData){
+  return $http({
 		method: 'PUT',
 		url: '/api/picks' + '?username=' + username +'&'+'week=' + parseInt(week),
 		data: pickData
