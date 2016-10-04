@@ -1,7 +1,6 @@
-app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', 'session', function($scope, auth, users, games, picks, util, config, session, AUTH_EVENTS) {
+app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', 'util', 'config', 'session', function($scope, auth, users, games, picks, util, config, session) {
     $scope.currentGames;
     $scope.userModel = {}
-    $scope.dis = false;
 
     config.getCurrentSeason().success(function(data){
       $scope.currentSeason = data[0].currentSeason;
@@ -17,17 +16,13 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
     }
 
     this.getCurrentWeekGames = function(currentWeek) {
-
         //get list of games for this week, assign to currentGames
         games.getGamesByWeek(currentWeek, $scope.currentSeason).success(function(gameList) {
             $scope.currentGames = gameList;
-
             //Get User Model by User Id
             if (accountModel) {
                 users.getUserModel(accountModel.id).success(function(data) {
                     $scope.userModel = data;
-
-                    //TODO Update with userId instead of username
 
                     picks.getPicksByUsernameAndWeek(accountModel.username, currentWeek).success(function(data) {
                         $scope.userModel.pickModel = data;
@@ -41,7 +36,6 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
     $scope.updatePicks = function(week, pickData) {
 				if (!accountModel) return;
 
-				console.log('Reached!');
 				var gameList = $scope.currentGames
         var userPicks = util.gatherUserPicks($scope.currentGames);
 
@@ -52,11 +46,6 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
             console.log(err);
         });
     }
-		/**
-		* If User Is Logged In, then get user information
-		*
-		*/
-
 
     if (accountModel && accountModel.username) {
         users.getUser($scope.userName).success(

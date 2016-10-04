@@ -1,6 +1,20 @@
 var http = require('http');
-
 var games = require('./season2016.js');
+/*
+	1. Select Local Games to Update (Manually? By week?)
+	2. Get Local Game (GET)
+	2. Call Stattle api (GET)
+	3. Get Updated Values (Code)
+	4. Update Local Game with new values (PUT)
+*/
+
+var weekToUpdate = 1;
+var season = 2016;
+var weekGames = [];
+
+http.request({
+	ho
+})
 
 function newRequest(gameId) {
 	return http.request({
