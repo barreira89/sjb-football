@@ -1,3 +1,4 @@
+var fs = require('fs');
 var gamesTranslation2016 = {
     "577ab62ad180718c2ead2fb9": "426ca435-c3a3-47e9-86ea-c127d0fbf38f",
     "577ab62ad180718c2ead2fba": "7a7fef8d-3343-4fa4-b282-e8277d1977fe",
@@ -256,9 +257,13 @@ var gamesTranslation2016 = {
     "577ab62ad180718c2ead30b7": "f04325fe-100c-4c18-8d54-9ee76d4e7c67",
     "577ab62ad180718c2ead30b8": "fb9c4a84-9345-4d4a-86f5-8ad7ff53c533"
 }
+var gamesLocalToStattle2016 = JSON.parse(fs.readFileSync('./season2016translation.json'));
 var translationService = {
     gameLookup : function(gameId) {
         return gamesTranslation2016[gameId];
+    },
+    gameSlugLookUp : function (gameId){
+      return gamesLocalToStattle2016[gameId];
     }
 }
 module.exports = translationService;

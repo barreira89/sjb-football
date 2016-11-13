@@ -23,7 +23,6 @@ app.controller('MainController', ['$scope', 'auth', 'users', 'games', 'picks', '
             if (accountModel) {
                 users.getUserModel(accountModel.id).success(function(data) {
                     $scope.userModel = data;
-
                     picks.getPicksByUsernameAndWeek(accountModel.username, currentWeek).success(function(data) {
                         $scope.userModel.pickModel = data;
                         util.attachUserPicksToGames(gameList, $scope.userModel);

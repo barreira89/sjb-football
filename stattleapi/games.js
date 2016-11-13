@@ -1,23 +1,37 @@
 var StattleShipAPI = require('node-stattleship');
 var statapi = new StattleShipAPI('e71760929c96fada648f5179b1935957');
 var fs = require('fs');
+var events = require('events');
 
+var emitter = new events.EventEmitter();
+
+emitter.on('finished', function(){
+	fs.writeFile('test.json', JSON.stringify(weeks), 'utf-8', function(err){
+		if(!err) console.log('Saved');
+	})
+})
 var params = {
-	week: 1,
+	week: 3,
 	season_id: 'nfl-2016-2017'
 }
 
+var weeks = [];
 
-statapi.games('football', 'nfl', params).then(function(games){
+for (var i = 2; i < 6; i++) {
+		params.week = i;
+		var weekNumber = 2;
 
-	console.log("Size " + games.length);
+    statapi.games('football', 'nfl', params).then(function(games) {
+				games.forEach(function(game){
+					weeks.push(game);
+				})
 
-	fs.writeFile('season2016-week1.json', JSON.stringify(games), function(err, sucess){
-		if(!err) console.log('Saved!')
+				if(weekNumber == 5){
+					emitter.emit('finished');
+				}
+				weekNumber ++;
 
-	})
-
-	//console.log(games);
-}).catch(function(err){
-	console.log(err);
-})
+    }).catch(function(err) {
+        console.log(err);
+    })
+}

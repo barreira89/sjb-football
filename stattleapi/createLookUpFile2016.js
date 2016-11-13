@@ -5,13 +5,18 @@ var teamLookUp = require('./teamLookupFile');
 var lookup = {}
 var translation = {}
 
+/*
+  Creates the Look Up JSON File
+  Uses the combo of home + away + week of each data set
+*/
+
 //home+away+week => stattle id
 season2016.forEach(game => {
   var home = lookupTeam(game.home_team_id);
   var away = lookupTeam(game.away_team_id);
   var week = game.interval_number;
   var key = home+away+week;
-  lookup[key] = game.id;
+  lookup[key] = game.slug;
 })
 
 //home+away+week => local id

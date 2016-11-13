@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Leagues = require('../models/leagues');
 var Accounts = require('../models/account');
-var Picks = require('../models/picks');
 var Games = require('../models/games');
+var pickApi = require('./pickQuery');
 
 router.get('/', function(req, res) {
     var query = {}
@@ -68,104 +68,24 @@ router.get('/:league_id/summary', function(req, res) {
         .exec(function(err, leagues) {
             if (err) {
                 console.log(err);
+                if(err.name == 'CastError') return res.sendStatus(404);
+
                 res.sendStatus(500);
             } else {
-                var userNameList = leagues[0].users;
-                var pickQuery = {
-                    username: {
-                        $in: userNameList
-                    }
-                };
+                var league = leagues[0];
+                if(!league) return res.sendStatus(404);
 
-                Picks
-										.find(pickQuery)
-                    .populate('game')
-                    .exec(function(err, picks) {
-                        if (err) return res.send(err);
+                var userNameList = league.users;
 
-                        var outArray = [];
+                pickApi.getUserSummary(userNameList, function(err, userSummary){
+                  if(err) return res.sendStatus(500);
 
-                        calculateWinners(picks);
+                  return res.json(userSummary);
+                })
 
-                        var reducedWeeks = reducePicksToWeeks(picks)
-
-                        outArray = resultsToArray(reducedWeeks);
-
-                        return res.json(outArray);
-
-                    })
             }
         })
 })
-
-function calculateWinners(picks){
-	picks.forEach(function(pick) {
-					var currentGame = pick.game;
-
-					if (currentGame && currentGame.winner) {
-							pick.result = (currentGame.winner == pick.winner) ? 'WIN' : 'LOST';
-					}
-			})
-}
-
-function reducePicksToWeeks(picks){
-	return picks.reduce(function(prev,current){
-			if(!prev[current.week]) prev[current.week] = []
-
-			prev[current.week].push(current)
-
-			return prev;
-	},{})
-
-}
-
-function mapUsersToResult(picks){
-	return picks.map(function(pick){
-		var result = pick.result || 'Not Set';
-		return {username:pick.username, result: result}
-	})
-
-}
-
-function reduceToSummary(mappedPicks){
-	return mappedPicks.reduce(function(prev, current){
-		if(!prev[current.username])
-			prev[current.username] = {wins:0, losses:0, notset:0}
-
-		if(current.result == 'WIN')
-			prev[current.username].wins ++;
-
-		if(current.result == 'LOST')
-			prev[current.username].losses ++;
-
-		if(current.result == 'Not Set')
-			prev[current.username].notset ++;
-
-		return prev;
-	},{})
-
-
-}
-
-function resultsToArray(weekSummaryObj){
-	var output = [];
-	for(week in weekSummaryObj){
-		var currentWeekPicks = weekSummaryObj[week];
-
-		var mappedWeek = mapUsersToResult(currentWeekPicks);
-		var reducedWeek = reduceToSummary(mappedWeek);
-		output.push({week:week, results: userResultToArray(reducedWeek)});
-	}
-	return output;
-}
-
-function userResultToArray(resultObj){
-	var outArray = []
-	for (key in resultObj){
-		outArray.push({username: key, wins: resultObj[key].wins, losses: resultObj[key].losses})
-	}
-	return outArray;
-}
 
 router.put('/:league_id', function(req, res) {
     Leagues.findById({
