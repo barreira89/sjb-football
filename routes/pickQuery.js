@@ -1,9 +1,10 @@
 var Picks = require('../models/picks');
 
-//Takes list of usernames and returns the summary
+
 
 
 var pickApi = {
+  //Takes list of usernames and returns the summary
   getUserSummary: function (userNameList, callback) {
       var pickQuery = {
         username: {
