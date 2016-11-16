@@ -14,34 +14,25 @@ var fieldList = {
     'time': 0
 };
 var mapper = require('./utils').bodyToModel(fieldList);
+var gamesApi = require('./gamesApi');
+
+
+router.get('/weeklists', (req, res) =>{
+  gamesApi.getWeekList((err,weekList)=>{
+    if(err) return res.send(err);
+
+    return res.json(weekList);
+  })
+})
 
 router.get('/', function(req, res) {
     var query = {}
     query = buildQuery(req);
-    if (req.query.weeklist) {
-        Games.aggregate(
-            [{
-                $group: {
-                    _id: null,
-                    weeks: {
-                        $addToSet: "$weekNumber"
-                    }
-                }
-            }],
-            function(err, docs) {
-                if (err)
-                    return res.send(err)
-
-                return res.json(docs);
-            });
-    } else {
-        Games.find(query, function(err, games) {
+    Games.find(query, (err, games) => {
             if (err) return res.send(err);
 
             return res.send(games);
-
-        })
-    }
+    })
 
 })
 
@@ -121,6 +112,17 @@ module.exports = router;
 
 function setId(gameObject){
 	return gameObject._id || new mongoose.mongo.ObjectID();
+}
+
+function aggregateQuery() {
+  return [{
+        $group: {
+            _id: null,
+            weeks: {
+                $addToSet: "$weekNumber"
+            }
+        }
+    }]
 }
 
 function buildQuery(req) {

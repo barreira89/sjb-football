@@ -1,8 +1,5 @@
 var Picks = require('../models/picks');
 
-
-
-
 var pickApi = {
   //Takes list of usernames and returns the summary
   getUserSummary: function (userNameList, callback) {

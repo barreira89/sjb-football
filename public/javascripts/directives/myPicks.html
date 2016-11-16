@@ -1,4 +1,4 @@
-<h2> My Picks </h2>
+<h2 ng-show="userpicks"> Picks </h2>
 <div ng-repeat="weekPick in userpicks">
 		<h4> <a ng-click="hider = !hider" > Week: {{weekPick.week}} </a> </h4>
 		<div ng-show="hider" ng-repeat="pick in weekPick.picks">

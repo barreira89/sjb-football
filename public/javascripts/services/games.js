@@ -17,7 +17,7 @@ gameServices.getGameById = function (gameId){
 gameServices.getWeekList = function (){
 	return $http({
 		method: 'GET',
-		url: '/api/games?weeklist=1'
+		url: '/api/games/weeklists'
 	})
 
 }
