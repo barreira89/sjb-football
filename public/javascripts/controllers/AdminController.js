@@ -15,7 +15,6 @@ app.controller('AdminController', ['$scope', 'games', 'config', function($scope,
                 $scope.currentGames.forEach(function(game) {
 
                   game.calculatedWinner = (function() {
-                    //console.log(game);
                     if(game.homescore > game.visitscore){
                       game.winner = 'home';
                     }

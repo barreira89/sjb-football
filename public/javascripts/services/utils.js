@@ -26,15 +26,16 @@ app.factory('util', ['$http', '$httpParamSerializer', function($http, $httpParam
   }
 
  utils.attachUserPicksToGames = function (gameList, userModel) {
- 	var userPicks = userModel.pickModel
+ 	  var userPicks = userModel.pickModel
 
  		if (gameList && userPicks) {
  			// console.log('loop');
- 			var userPickLookUp = {}
-
- 			userPicks.map(function (pick) {
- 				userPickLookUp[pick.game] = pick;
- 			})
+      var userPickLookUp = userPicks.reduce(function (prev, current){
+        prev[current.game] = current;
+        return prev;
+      }, {})
+      console.log(pickLookUp);
+      console.log(userPickLookUp);
 
  			gameList.forEach(function (game) {
  				var defaultGame = {

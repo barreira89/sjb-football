@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var mapper = require('../routes/utils').mapper('games');
 
 var Games = new Schema({
 		home: String,
@@ -23,5 +24,5 @@ Games.virtual('winnercalc').get(function(){
 	}
 })
 Games.set('toJSON', {getters: true, virtuals: true});
-
+Games.statics.mapper = mapper;
 module.exports = mongoose.model('Games', Games);
